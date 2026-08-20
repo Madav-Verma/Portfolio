@@ -1,0 +1,28 @@
+CERTIFICATE IMAGES LIVE HERE (01.png ... 15.png — matching the order in src/data.js)
+
+01 Business Analysis Foundations (LinkedIn Learning)          ✅ image
+02 Business Analysis: Essential Tools & Techniques (LinkedIn) ✅ image
+03 SQL Server 2022 Administration (LinkedIn)                  ✅ image
+04 Advance Your MS SQL Server Skills (LinkedIn)               ✅ image
+05 Introduction to Transact-SQL (LinkedIn)                    ✅ image
+06 Power BI for Data Analysis (Vodafone)                      ✅ image
+07 Build Reports & Dashboards in Power BI (Vodafone)          ✅ image
+08 SOAR — AI to be Aware (NASSCOM/NCVET)                      ✅ image
+09 MongoDB Basics (Credly)                                    ✅ image
+10 Introduction to Business Intelligence (Infosys)            ✅ image
+11 Operating System Fundamentals (NPTEL)                      ✅ image
+12 Data Science Completion Course                             ✅ image
+13 NumPy, SciPy, Matplotlib & Pandas A-Z (Udemy)              ✅ image
+14 Introduction to Microsoft Excel (Coursera)                 ✅ image
+15 Cyber Resilience Foundations (Cohesity/IBM SkillsBuild)    ✅ image
+
+HOW TO ADD/REPLACE AN IMAGE: save your file as the number above (e.g. 13.png)
+into this folder, then rebuild (npm run build). Cards without an image
+gracefully fall back to text-only.
+
+VERIFY LINKS: certificates with a public verification page (LinkedIn Learning,
+Credly) are clickable — the "Verify" link appears on hover. To add more,
+edit src/data.js and add `verify: 'https://...'` to the entry.
+
+SKIPPED (off-narrative): Cyber Security Fundamentals x2, NPTEL Introduction
+to IoT, NPTEL marklist. Tell the owner if you want any of these added back.
