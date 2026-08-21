@@ -14,6 +14,7 @@ function CertCard({ cert, i }) {
             src={cert.img}
             alt={`${cert.title} — certificate`}
             loading="lazy"
+            decoding="async"
             className={isPortrait ? 'cert-img portrait' : 'cert-img'}
             onLoad={(e) => setIsPortrait(e.target.naturalHeight > e.target.naturalWidth)}
             onError={() => setImgState(false)}

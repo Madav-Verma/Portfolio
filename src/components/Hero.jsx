@@ -17,6 +17,18 @@ function HeroActions() {
         <Icon name="download" size={17} />
         Resume
       </a>
+      {PROFILE.github && (
+        <a
+          className="btn btn-ghost"
+          href={PROFILE.github}
+          target="_blank"
+          rel="noopener noreferrer"
+          data-cursor="github"
+        >
+          <Icon name="github" size={16} />
+          GitHub
+        </a>
+      )}
     </div>
   )
 }
@@ -85,6 +97,8 @@ function IdentityRing() {
             className="identity-photo"
             onError={() => setShowPhoto(false)}
             loading="eager"
+            fetchpriority="high"
+            decoding="async"
           />
         ) : (
           <span className="identity-mono">

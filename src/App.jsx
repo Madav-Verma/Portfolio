@@ -1,18 +1,22 @@
-import Navbar from './components/Navbar.jsx'
+import { lazy, Suspense } from 'react'
 import Hero from './components/Hero.jsx'
-import Marquee from './components/Marquee.jsx'
-import About from './components/About.jsx'
-import Skills from './components/Skills.jsx'
-import Projects from './components/Projects.jsx'
-import Testimonials from './components/Testimonials.jsx'
-import Experience from './components/Experience.jsx'
-import LearningLog from './components/LearningLog.jsx'
-import Contact from './components/Contact.jsx'
-import Footer from './components/Footer.jsx'
-import BackToTop from './components/BackToTop.jsx'
 import Preloader from './components/Preloader.jsx'
 import Cursor from './components/Cursor.jsx'
 import { Icon } from './components/Shared.jsx'
+
+/* Below-the-fold sections load on demand — faster first paint, smaller bundle */
+const Navbar = lazy(() => import('./components/Navbar.jsx'))
+const Marquee = lazy(() => import('./components/Marquee.jsx'))
+const About = lazy(() => import('./components/About.jsx'))
+const Skills = lazy(() => import('./components/Skills.jsx'))
+const Offerings = lazy(() => import('./components/Offerings.jsx'))
+const Projects = lazy(() => import('./components/Projects.jsx'))
+const Testimonials = lazy(() => import('./components/Testimonials.jsx'))
+const Experience = lazy(() => import('./components/Experience.jsx'))
+const LearningLog = lazy(() => import('./components/LearningLog.jsx'))
+const Contact = lazy(() => import('./components/Contact.jsx'))
+const Footer = lazy(() => import('./components/Footer.jsx'))
+const BackToTop = lazy(() => import('./components/BackToTop.jsx'))
 
 /* Paths that must never 404 — the host may serve index.html for them when the
    file is missing, so treat them as the app instead of a dead page. */
@@ -71,20 +75,23 @@ export default function App() {
       <div className="grain" aria-hidden="true" />
       <Cursor />
 
-      <Navbar />
-      <main id="main">
-        <Hero />
-        <Marquee />
-        <About />
-        <Skills />
-        <Projects />
-        <Testimonials />
-        <Experience />
-        <LearningLog />
-        <Contact />
-      </main>
-      <Footer />
-      <BackToTop />
+      <Suspense fallback={null}>
+        <Navbar />
+        <main id="main">
+          <Hero />
+          <Marquee />
+          <About />
+          <Skills />
+          <Offerings />
+          <Projects />
+          <Testimonials />
+          <Experience />
+          <LearningLog />
+          <Contact />
+        </main>
+        <Footer />
+        <BackToTop />
+      </Suspense>
     </>
   )
 }

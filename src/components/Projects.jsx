@@ -13,6 +13,7 @@ function ProjectMockup({ project, index }) {
           src={project.screenshot}
           alt={`${project.title} — live application preview`}
           loading="lazy"
+          decoding="async"
           onError={() => setShotOk(false)}
         />
       </div>
@@ -49,14 +50,11 @@ function ProjectMockup({ project, index }) {
 
 function ProjectCard({ project, i }) {
   const tiltRef = useTilt(4)
-  const [hovered, setHovered] = useState(false)
   return (
     <article
       className={`project-card ${project.featured ? 'featured' : ''} ${project.status === 'soon' ? 'is-soon' : ''} reveal`}
       ref={tiltRef}
       style={{ '--i': (i % 2) * 0.08 }}
-      onMouseEnter={() => project.preview && setHovered(true)}
-      onMouseLeave={() => project.preview && setHovered(false)}
     >
        <div className="project-browser" style={{ background: project.gradient }}>
         <div className="browser-bar">
@@ -76,15 +74,6 @@ function ProjectCard({ project, i }) {
           <span className="browser-lock">🔒</span>
         </div>
         <ProjectMockup project={project} index={i} />
-        {project.preview && hovered && (
-          <iframe
-            className="project-preview"
-            src={project.preview}
-            title={`${project.title} live preview`}
-            loading="lazy"
-            sandbox="allow-scripts allow-same-origin allow-forms"
-          />
-        )}
         <div className="browser-shine" />
       </div>
 

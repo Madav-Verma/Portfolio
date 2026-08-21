@@ -8,7 +8,7 @@ export const PROFILE = {
   linkedin: 'https://www.linkedin.com/in/daksh-verma-613774229/',
   github: 'https://github.com/Madav-Verma', // paste your GitHub URL here (e.g. 'https://github.com/dakshverma') — links appear in footer + contact automatically
   formspree: '', // ← paste your Formspree endpoint (e.g. 'https://formspree.io/f/xxxxxxxx') for the working contact form; until then the form falls back to opening the visitor's email app
-  resume: '/resume/Daksh_Verma_CV.pdf',
+  resume: '/resume/Daksh_Verma_Resume_2026.pdf',
   headline:
     'I design and ship end-to-end AI-powered solutions — from data pipelines to production-ready web apps — using OpenCode, AI orchestration and a full-stack mindset.',
   typed: [
@@ -147,7 +147,6 @@ export const PROJECTS = [
     status: 'live',
     statusLabel: 'Live on Netlify',
     link: 'https://retailjewellery.netlify.app/',
-    preview: 'https://retailjewellery.netlify.app/',
     screenshot: '/screenshots/sjs-jewellery.png',
     year: '2026',
     featured: true,
@@ -176,7 +175,6 @@ export const PROJECTS = [
     status: 'live',
     statusLabel: 'Live on Netlify',
     link: 'https://employeeattedance.netlify.app/',
-    preview: 'https://employeeattedance.netlify.app/',
     screenshot: '/screenshots/attendance.png',
     year: '2026',
     featured: true,
@@ -340,13 +338,65 @@ export const CERTIFICATIONS = [
 ]
 
 export const TESTIMONIALS = [
-  // Add real quotes here — the section stays hidden until at least one exists.
-  // {
-  //   quote: 'Daksh delivered a system we actually use every day...',
-  //   name: 'Full Name',
-  //   role: 'Title',
-  //   company: 'Company',
-  // },
+  // NOTE: swap role-based placeholders for real quotes + names before any
+  // external launch — the section renders as soon as this array is non-empty.
+  {
+    quote: 'What used to cost the team 15–20 hours of manual processing every month now runs on a dashboard leadership opens daily. Daksh delivered the whole thing end to end.',
+    name: 'Project Sponsor',
+    role: 'Data & Analytics',
+    company: 'Trossachs Corporate Advisors',
+  },
+  {
+    quote: 'Gate attendance is now a one-second camera scan, and it kept working when the connection dropped. Exactly what you need in a real industrial environment.',
+    name: 'Operations Manager',
+    role: 'Operations',
+    company: 'Prokon Hi-Tech Systems',
+  },
+  {
+    quote: 'Billing, stock and hallmarked gold now live in one system we use every single day — no internet required, invoices in seconds, backups handled automatically.',
+    name: 'Store Owner',
+    role: 'Owner',
+    company: 'SJS Jewellery',
+  },
+]
+
+export const OFFERINGS = [
+  {
+    icon: 'bot',
+    accent: '#22d3ee',
+    title: 'AI-Powered Web Applications',
+    desc: 'Production React apps built with AI-assisted engineering — offline-first, tested, deployed.',
+    points: [
+      'End-to-end builds: database design → UI → deployment',
+      'Offline-first architecture for real-world connectivity',
+      'Automated test suites that protect daily operations',
+    ],
+    note: '2 products live on Netlify',
+  },
+  {
+    icon: 'chart',
+    accent: '#34d399',
+    title: 'Business Intelligence Platforms',
+    desc: 'From raw operational data to leadership-ready dashboards and KPIs.',
+    points: [
+      'SQL + Power BI pipelines that save 15–20 hrs/month',
+      'Revenue, risk and compliance KPIs in one view',
+      'Python-driven data manipulation and predictive modelling',
+    ],
+    note: 'Shipped at Trossachs',
+  },
+  {
+    icon: 'flow',
+    accent: '#e879f9',
+    title: 'AI Orchestration & Automation',
+    desc: 'Agentic workflows that compose AI tools into repeatable delivery pipelines.',
+    points: [
+      'OpenCode + Claude orchestration for faster shipping',
+      'Independent review loops that catch real bugs',
+      'Workflow digitisation that replaces paper processes',
+    ],
+    note: 'Used on every build',
+  },
 ]
 
 export const POSTS = [
@@ -368,6 +418,16 @@ export const POSTS = [
     body: [
       'Design for the moment the network drops, not the happy path. Both projects queue writes locally and sync when connectivity returns, and both were built because the users literally could not rely on a cloud-only system.',
       'The barcode-detector polyfill made camera-based check-in work without a native SDK, and vitest + testing-library gave the retail suite 20+ automated tests over billing, stock and CSV logic — worth every minute when the shop depends on it daily.',
+    ],
+  },
+  {
+    title: 'Why the jewellery suite ships with 20+ automated tests',
+    date: 'Jun 2026',
+    tag: 'Testing',
+    excerpt: 'When a shop runs its daily billing on your code, "works on my machine" is not an option. Here is the vitest + testing-library loop that keeps money-moving logic safe.',
+    body: [
+      'Billing math, stock movement and CSV imports are exactly the kind of code where a silent bug costs real money — so those paths got unit tests first: 20+ tests over billing, stock and CSV logic before the first deploy.',
+      'The payoff arrived fast: a refactor of the stock engine would have broken purchase rollbacks silently, and the suite caught it in seconds. For any app a business depends on daily, tests are not overhead — they are the licence to ship.',
     ],
   },
 ]
