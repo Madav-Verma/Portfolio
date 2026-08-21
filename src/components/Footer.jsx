@@ -9,13 +9,14 @@ export default function Footer() {
           <span className="logo-badge">DV</span>
           <span>
             <b>Daksh Verma</b>
-            <span className="footer-role">Applied AI Solutions Engineer</span>
+            <span className="footer-role">AI-Native Product Builder</span>
           </span>
         </div>
 
         <div className="footer-links">
           <a href="#about">About</a>
           <a href="#skills">Skills</a>
+          <a href="#workflow">Workflow</a>
           <a href="#projects">Work</a>
           <a href="#journey">Journey</a>
           <a href="#contact">Contact</a>
@@ -37,7 +38,7 @@ export default function Footer() {
       </div>
       <div className="container footer-bottom">
         <span>© {new Date().getFullYear()} Daksh Verma · Faridabad, India</span>
-        <span className="footer-mono">built with react · orchestrated by opencode ✦</span>
+        <span className="footer-mono">built with react · orchestrated by opencode ✦ agentic loops</span>
       </div>
     </footer>
   )

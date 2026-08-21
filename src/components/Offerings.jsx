@@ -9,8 +9,8 @@ export default function Offerings() {
       <div className="container">
         <SectionHeader
           kicker="What I Build"
-          title="Ways I Can Help"
-          sub="Three lanes, one goal — shipping complete products instead of point solutions."
+          title="AI-Native Solutions"
+          sub="Three lanes, one goal — shipping production-grade products with agentic workflows at 10x speed."
         />
 
         <div className="offerings-grid">

@@ -26,8 +26,8 @@ export default function Skills() {
       <div className="container">
         <SectionHeader
           kicker="Arsenal"
-          title="Skills & Tools"
-          sub="A modern AI-driven stack — the tools I orchestrate to build end-to-end solutions."
+          title="Skills & Stack"
+          sub="An AI-native engineering stack — multi-model orchestration, agentic workflows, and rapid prototyping."
         />
 
         <div className="skills-layout">

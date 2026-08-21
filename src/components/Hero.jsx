@@ -56,7 +56,7 @@ function TerminalCard() {
         <span className="term-dot red" />
         <span className="term-dot amber" />
         <span className="term-dot green" />
-        <span className="term-title">daksh@developer — zsh</span>
+        <span className="term-title">daksh@agentic-builder — zsh</span>
         <span className="term-rec">
           <span /> rec
         </span>
@@ -109,17 +109,17 @@ function IdentityRing() {
       <span className="identity-orbit orbit-a" aria-hidden="true" />
       <span className="identity-orbit orbit-b" aria-hidden="true" />
       <span className="identity-tag">
-        <Icon name="spark" size={11} /> AI Engineer
+        <Icon name="spark" size={11} /> AI-Native Builder
       </span>
     </div>
   )
 }
 
 const FLOAT_CHIPS = [
-  { label: 'React', icon: 'code', cls: 'chip-1' },
-  { label: 'SQL', icon: 'chart', cls: 'chip-2' },
+  { label: 'Multi-Model', icon: 'flow', cls: 'chip-1' },
+  { label: 'Supabase', icon: 'code', cls: 'chip-2' },
   { label: 'OpenCode', icon: 'bot', cls: 'chip-3' },
-  { label: 'Power BI', icon: 'chart', cls: 'chip-4' },
+  { label: 'Agent Loops', icon: 'spark', cls: 'chip-4' },
 ]
 
 export default function Hero() {
@@ -141,7 +141,7 @@ export default function Hero() {
         <div className="hero-left">
           <div className="hero-eyebrow reveal">
             <span className="eyebrow-pulse" aria-hidden="true" />
-            Available for AI solution engineering roles
+            Available for AI-Native Engineering roles
           </div>
 
           <h1 className="hero-name reveal">
@@ -163,7 +163,7 @@ export default function Hero() {
               <Icon name="bot" size={14} /> OpenCode
             </span>
             <span className="chip">
-              <Icon name="spark" size={14} /> AI Orchestration
+              <Icon name="flow" size={14} /> Multi-Agent Orchestration
             </span>
             <span className="chip">
               <Icon name="code" size={14} /> React · Python · SQL

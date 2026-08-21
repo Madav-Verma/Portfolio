@@ -9,6 +9,7 @@ const Navbar = lazy(() => import('./components/Navbar.jsx'))
 const Marquee = lazy(() => import('./components/Marquee.jsx'))
 const About = lazy(() => import('./components/About.jsx'))
 const Skills = lazy(() => import('./components/Skills.jsx'))
+const Workflow = lazy(() => import('./components/Workflow.jsx'))
 const Offerings = lazy(() => import('./components/Offerings.jsx'))
 const Projects = lazy(() => import('./components/Projects.jsx'))
 const Testimonials = lazy(() => import('./components/Testimonials.jsx'))
@@ -82,6 +83,7 @@ export default function App() {
           <Marquee />
           <About />
           <Skills />
+          <Workflow />
           <Offerings />
           <Projects />
           <Testimonials />

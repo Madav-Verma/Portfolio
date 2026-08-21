@@ -127,6 +127,20 @@ function ProjectCard({ project, i }) {
             </div>
           </details>
         )}
+        {project.workflow && (
+          <div className="workflow-callout reveal">
+            <div className="workflow-header">
+              <Icon name="flow" size={14} />
+              <span>Agentic Architecture</span>
+            </div>
+            <p className="workflow-text">{project.workflow.callout}</p>
+            <div className="workflow-stack">
+              {project.workflow.stack.map((tool) => (
+                <span key={tool} className="workflow-tool">{tool}</span>
+              ))}
+            </div>
+          </div>
+        )}
         {project.link && (
           <a className="project-link" href={project.link} target="_blank" rel="noopener noreferrer" data-cursor="visit">
             Visit live project
@@ -146,7 +160,7 @@ export default function Projects() {
         <SectionHeader
           kicker="Selected Work"
           title="Projects I've Shipped"
-          sub="End-to-end builds — from database design to production deployments on Netlify."
+          sub="End-to-end builds — from database design to production deployments, built with agentic workflows and multi-model orchestration."
         />
 
         <div className="projects-grid">
