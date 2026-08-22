@@ -9,7 +9,7 @@ export default function Footer() {
           <span className="logo-badge">DV</span>
           <span>
             <b>Daksh Verma</b>
-            <span className="footer-role">AI-Native Product Builder</span>
+            <span className="footer-role">{PROFILE.role}</span>
           </span>
         </div>
 

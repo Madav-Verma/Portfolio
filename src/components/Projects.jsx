@@ -141,12 +141,20 @@ function ProjectCard({ project, i }) {
             </div>
           </div>
         )}
-        {project.link && (
-          <a className="project-link" href={project.link} target="_blank" rel="noopener noreferrer" data-cursor="visit">
-            Visit live project
-            <Icon name="external" size={15} />
-          </a>
-        )}
+        <div className="project-links">
+          {project.link && (
+            <a className="project-link" href={project.link} target="_blank" rel="noopener noreferrer" data-cursor="visit">
+              Visit live project
+              <Icon name="external" size={15} />
+            </a>
+          )}
+          {project.repo && (
+            <a className="project-link project-link-repo" href={project.repo} target="_blank" rel="noopener noreferrer" data-cursor="code">
+              <Icon name="github" size={14} />
+              View code
+            </a>
+          )}
+        </div>
       </div>
     </article>
   )

@@ -12,9 +12,11 @@ export default function Navbar() {
   const menuRef = useRef(null)
   const toggleRef = useRef(null)
 
-  // Focus management + Escape to close while the mobile menu is open
+  // Focus management + Escape to close while the mobile menu is open,
+  // and lock page scroll behind the open menu
   useEffect(() => {
     if (!open) return
+    document.body.style.overflow = 'hidden'
     const first = menuRef.current?.querySelector('a, button')
     first?.focus()
     const onKey = (e) => {
@@ -38,7 +40,10 @@ export default function Navbar() {
       }
     }
     document.addEventListener('keydown', onKey)
-    return () => document.removeEventListener('keydown', onKey)
+    return () => {
+      document.body.style.overflow = ''
+      document.removeEventListener('keydown', onKey)
+    }
   }, [open])
 
   return (

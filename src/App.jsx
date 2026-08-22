@@ -1,4 +1,4 @@
-import { lazy, Suspense } from 'react'
+import { Component, lazy, Suspense } from 'react'
 import Hero from './components/Hero.jsx'
 import Preloader from './components/Preloader.jsx'
 import Cursor from './components/Cursor.jsx'
@@ -12,7 +12,6 @@ const Skills = lazy(() => import('./components/Skills.jsx'))
 const Workflow = lazy(() => import('./components/Workflow.jsx'))
 const Offerings = lazy(() => import('./components/Offerings.jsx'))
 const Projects = lazy(() => import('./components/Projects.jsx'))
-const Testimonials = lazy(() => import('./components/Testimonials.jsx'))
 const Experience = lazy(() => import('./components/Experience.jsx'))
 const LearningLog = lazy(() => import('./components/LearningLog.jsx'))
 const Contact = lazy(() => import('./components/Contact.jsx'))
@@ -77,22 +76,23 @@ export default function App() {
       <Cursor />
 
       <Suspense fallback={null}>
-        <Navbar />
-        <main id="main">
-          <Hero />
-          <Marquee />
-          <About />
-          <Skills />
-          <Workflow />
-          <Offerings />
-          <Projects />
-          <Testimonials />
-          <Experience />
-          <LearningLog />
-          <Contact />
-        </main>
-        <Footer />
-        <BackToTop />
+        <ErrorBoundary>
+          <Navbar />
+          <main id="main">
+            <Hero />
+            <Marquee />
+            <About />
+            <Skills />
+            <Workflow />
+            <Offerings />
+            <Projects />
+            <Experience />
+            <LearningLog />
+            <Contact />
+          </main>
+          <Footer />
+          <BackToTop />
+        </ErrorBoundary>
       </Suspense>
     </>
   )
@@ -111,4 +111,32 @@ function NotFound() {
       </a>
     </main>
   )
+}
+
+/* Last line of defence — if any section crashes, show a recovery screen
+   instead of a blank page. */
+class ErrorBoundary extends Component {
+  state = { crashed: false }
+
+  static getDerivedStateFromError() {
+    return { crashed: true }
+  }
+
+  render() {
+    if (this.state.crashed) {
+      return (
+        <main className="notfound" id="main">
+          <div className="notfound-code">!</div>
+          <h1 className="notfound-title">Something crashed in the pipeline</h1>
+          <p className="notfound-sub">
+            An unexpected error occurred while rendering this page. Reload to try again.
+          </p>
+          <a className="notfound-link" href="/">
+            <Icon name="arrow" size={14} /> Back to home
+          </a>
+        </main>
+      )
+    }
+    return this.props.children
+  }
 }

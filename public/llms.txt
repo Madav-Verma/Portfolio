@@ -1,6 +1,6 @@
 # Daksh Verma — Applied AI Solutions Engineer
 
-> Applied AI Solutions Engineer building end-to-end AI-powered products — from data pipelines and AI orchestration to production full-stack web applications. BCA (AI) student, 9.0 CGPA. Currently @ Prokon Hi-Tech.
+> Applied AI Solutions Engineer building production-grade, end-to-end AI-powered products — agentic workflows, multi-model orchestration, and a full-stack mindset. BCA (AI) student, 9.0 CGPA. Currently @ Prokon Hi-Tech.
 
 ## Key facts
 - Name: Daksh Verma
@@ -9,21 +9,23 @@
 - Education: BCA Artificial Intelligence (2023–2026), Lingaya's Vidyapeeth, 9.0 CGPA
 - Email: vermadaksh120@gmail.com
 - LinkedIn: https://www.linkedin.com/in/daksh-verma-613774229/
-- Resume: /resume/Daksh_Verma_CV.pdf
+- GitHub: https://github.com/Madav-Verma
+- Resume: /resume/Daksh_Verma_Resume_2026.pdf
 
 ## Experience
-- Applied AI Solutions Engineer @ Prokon Hi-Tech (present): building AI-powered solutions using OpenCode, AI orchestration, data engineering and full-stack development.
-- Data & Business Analyst Intern @ Trossachs (Jan–May 2026): data analysis, reporting and business insight work.
-- Software Development Intern @ Prokon Hi-Tech (Jun–Jul 2024).
+- Applied AI Solutions Engineer @ Prokon Hi-Tech (present): building end-to-end AI-powered solutions using agentic workflows — multi-model orchestration (OpenCode, Claude, DeepSeek, Gemini), autonomous review loops, rapid prototyping.
+- Data & Business Analyst Intern @ Trossachs (Jan–May 2026): delivered DataFlow Pro BI platform; saved 15–20 hours/month of manual processing.
+- Software Development Intern @ Prokon Hi-Tech (Jun–Jul 2024): digitised manual workflows into a Python/MySQL system.
 
 ## Live projects
-- SJS Retail Jewellery Suite (https://retailjewellery.netlify.app): retail management platform for a jewellery business — inventory, HUID tracking, billing, sales analytics.
-- Sewadar Attendance (https://employeeattedance.netlify.app): workforce attendance system — check-in/check-out, shift management, offline-first sync.
+- SJS Retail Jewellery Suite (https://retailjewellery.netlify.app): offline-first retail management platform for a jewellery business — billing, inventory, HUID tracking, PDF invoices, 20+ automated tests.
+- Employee Attendance System (https://employeeattedance.netlify.app): offline-first attendance system — camera QR/barcode check-in, 3 role tiers, queued sync, Excel export.
 
 ## Core skills
-- AI & ML: prompt engineering, RAG, AI orchestration (OpenCode), LLM integration, model selection
-- Data: SQL (T-SQL, SQL Server), MongoDB, Power BI, data pipelines, Excel analytics
-- Full-stack: React, Node.js, Python, REST APIs, Netlify deployments
+- Agentic orchestration: OpenCode, Claude, DeepSeek, Gemini, multi-model routing, agent workflows, automated code review, prompt engineering
+- Full-stack: React, Vite, JavaScript, Python, MySQL, Supabase, REST APIs, Git & GitHub, Vercel, Netlify, offline-first architecture
+- Data & BI: SQL (T-SQL), Power BI, Pandas & NumPy, predictive modeling, dashboarding, database design
+- Delivery: rapid prototyping, end-to-end delivery, requirements gathering, workflow digitisation, process automation
 
 ## Certifications (15+)
 - Business Analysis Foundations: Strategy Analysis (LinkedIn Learning · IIBA-endorsed, 2026)

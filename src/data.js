@@ -1,19 +1,18 @@
 export const PROFILE = {
   name: 'Daksh Verma',
   firstName: 'Daksh',
-  role: 'AI-Native Product Builder',
+  role: 'Applied AI Solutions Engineer',
   location: 'Faridabad, India',
   email: 'vermadaksh120@gmail.com',
   phone: '+91 95990 68010',
   linkedin: 'https://www.linkedin.com/in/daksh-verma-613774229/',
   github: 'https://github.com/Madav-Verma',
-  formspree: '',
   resume: '/resume/Daksh_Verma_Resume_2026.pdf',
   headline:
-    'AI-Native Product Builder & Agentic Workflow Architect. Building production-grade software at 10x speed using autonomous agent loops, multi-model orchestration, and a full-stack mindset.',
+    'Applied AI Solutions Engineer building production-grade, end-to-end AI-powered products — agentic workflows, multi-model orchestration, and a full-stack mindset.',
   typed: [
+    'Applied AI Solutions Engineer',
     'Agentic Workflow Architect',
-    'AI-Native Product Builder',
     'Multi-Model Orchestration',
     'From Concept to Production at 10x Speed',
   ],
@@ -25,6 +24,7 @@ export const NAV_LINKS = [
   { href: '#workflow', label: 'Workflow' },
   { href: '#projects', label: 'Work' },
   { href: '#journey', label: 'Journey' },
+  { href: '#log', label: 'Notes' },
   { href: '#contact', label: 'Contact' },
 ]
 
@@ -55,7 +55,7 @@ export const MARQUEE = [
 
 export const ABOUT = {
   kicker: 'The Story',
-  title: 'From Data Analyst to AI-Native Product Builder',
+  title: 'From Data Analyst to Applied AI Solutions Engineer',
   paragraphs: [
     "My journey started with a simple question: how do spreadsheets and dashboards become decisions? As a data analyst, I learned to turn raw data into insights people could act on — building BI platforms, automating reports, and saving teams 15–20 hours every month.",
     'Then I discovered something bigger: AI as an engineering multiplier. Today I build end-to-end products using agentic workflows — orchestrating multiple AI models, running autonomous review loops, and shipping complete systems at 10x speed. OpenCode, Claude, DeepSeek, Gemini — they are not just tools, they are my engineering team.',
@@ -177,7 +177,7 @@ export const PROJECTS = [
     },
   },
   {
-    title: 'Sewadar Attendance System',
+    title: 'Employee Attendance System',
     status: 'live',
     statusLabel: 'Live on Netlify',
     link: 'https://employeeattedance.netlify.app/',
@@ -213,6 +213,7 @@ export const PROJECTS = [
     status: 'shipped',
     statusLabel: 'Shipped at Trossachs',
     link: null,
+    repo: 'https://github.com/Madav-Verma/DataFlow-Pro',
     year: '2026',
     featured: false,
     gradient: 'linear-gradient(135deg, #7c3aed, #db2777)',
@@ -232,6 +233,11 @@ export const PROJECTS = [
       stack: ['OpenCode', 'Claude (SQL Refactor)', 'Power BI', 'Python', 'T-SQL'],
       callout: 'Multi-model routing: Claude for SQL refactoring and schema optimization, OpenCode for pipeline orchestration. Saved 15–20 hours/month through AI-accelerated data processing.',
     },
+    caseStudy: {
+      challenge: 'Leadership relied on scattered Excel exports and manual aggregation — revenue trends, compliance risk and operational KPIs had no single real-time view, and reporting consumed 15–20 hours of manual work every month.',
+      approach: 'Built DataFlow Pro as a Power BI analytics platform with AI-orchestrated SQL pipelines — Claude handled SQL refactoring and schema optimization while OpenCode orchestrated the pipeline, routing each phase to the right model.',
+      outcome: 'Revenue trends, compliance risk and operational KPIs now live in one dashboard leadership opens daily — 15–20 hours of manual data processing saved every month.',
+    },
   },
   {
     title: 'Prokon Digital Workflows',
@@ -250,12 +256,17 @@ export const PROJECTS = [
     metrics: [
       { v: '0', l: 'paper left' },
       { v: '2', l: 'workflows live' },
-      { v: '+', l: 'report accuracy' },
+      { v: '100%', l: 'digitised workflows' },
     ],
     tags: ['Python', 'MySQL', 'Workflow Automation', 'AI-Assisted'],
     workflow: {
       stack: ['Python', 'MySQL', 'HTML Forms', 'Google Suite'],
       callout: 'Early adoption of AI-assisted development: used code generation tools to accelerate Python/MySQL workflow digitisation. Replaced paper processes with automated digital pipelines.',
+    },
+    caseStudy: {
+      challenge: 'Business workflows ran on paper registers and manual Excel entries — inventory tracking and AMC management had no digital trail, and reporting accuracy suffered.',
+      approach: 'Digitised the workflows on a Python/MySQL stack with HTML forms and Google Suite integration, using early AI-assisted code generation to accelerate the build.',
+      outcome: 'Paper processes were replaced with automated digital pipelines — the operations team now reports from a single accurate source.',
     },
   },
   {
@@ -353,29 +364,6 @@ export const CERTIFICATIONS = [
   { title: 'Data Science Completion Course', org: 'Data Science Program', year: '2024', img: '/certifications/12.webp' },
   { title: 'NumPy, SciPy, Matplotlib & Pandas A–Z: ML', org: 'Udemy', year: '2024', img: '/certifications/13.webp' },
   { title: 'Introduction to Microsoft Excel', org: 'Coursera', year: '2023', img: '/certifications/14.webp' },
-]
-
-export const TESTIMONIALS = [
-  // NOTE: swap role-based placeholders for real quotes + names before any
-  // external launch — the section renders as soon as this array is non-empty.
-  {
-    quote: 'What used to cost the team 15–20 hours of manual processing every month now runs on a dashboard leadership opens daily. Daksh delivered the whole thing end to end.',
-    name: 'Project Sponsor',
-    role: 'Data & Analytics',
-    company: 'Trossachs Corporate Advisors',
-  },
-  {
-    quote: 'Gate attendance is now a one-second camera scan, and it kept working when the connection dropped. Exactly what you need in a real industrial environment.',
-    name: 'Operations Manager',
-    role: 'Operations',
-    company: 'Prokon Hi-Tech Systems',
-  },
-  {
-    quote: 'Billing, stock and hallmarked gold now live in one system we use every single day — no internet required, invoices in seconds, backups handled automatically.',
-    name: 'Store Owner',
-    role: 'Owner',
-    company: 'SJS Jewellery',
-  },
 ]
 
 export const OFFERINGS = [

@@ -1,11 +1,14 @@
 import { useEffect, useState } from 'react'
 
-/* Fast, elegant boot sequence — fades out in ~800ms and unmounts */
+/* Fast, elegant boot sequence — fades out in ~800ms and unmounts.
+   Returning visitors (same tab session) skip it entirely. */
 export default function Preloader() {
-  const [phase, setPhase] = useState('boot') // boot → fade → gone
+  const bootedBefore = typeof window !== 'undefined' && sessionStorage.getItem('daksh-booted') === '1'
+  const [phase, setPhase] = useState(bootedBefore ? 'gone' : 'boot') // boot → fade → gone
   const [lines, setLines] = useState([])
 
   useEffect(() => {
+    if (phase === 'gone') return
     const bootLines = [
       '> initializing daksh-verma portfolio…',
       '> loading modules: react, css, aurora…',
@@ -20,6 +23,7 @@ export default function Preloader() {
         i += 1
       } else {
         clearInterval(push)
+        sessionStorage.setItem('daksh-booted', '1')
         timeouts.push(setTimeout(() => setPhase('fade'), 250))
         timeouts.push(setTimeout(() => setPhase('gone'), 950))
       }
@@ -28,7 +32,7 @@ export default function Preloader() {
       clearInterval(push)
       timeouts.forEach(clearTimeout)
     }
-  }, [])
+  }, [phase])
 
   if (phase === 'gone') return null
 

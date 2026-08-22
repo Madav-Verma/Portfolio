@@ -109,7 +109,7 @@ function IdentityRing() {
       <span className="identity-orbit orbit-a" aria-hidden="true" />
       <span className="identity-orbit orbit-b" aria-hidden="true" />
       <span className="identity-tag">
-        <Icon name="spark" size={11} /> AI-Native Builder
+        <Icon name="spark" size={11} /> Applied AI Engineer
       </span>
     </div>
   )
