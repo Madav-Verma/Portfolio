@@ -1,0 +1,292 @@
+/* ---------- Filters ---------- */
+.work__filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-2);
+  margin-bottom: var(--s-5);
+}
+
+.work__filter {
+  min-height: 44px;
+  padding: 9px 16px;
+  background: transparent;
+  border: 1px solid var(--line-strong);
+  font-family: var(--font-mono);
+  font-size: var(--text-micro);
+  letter-spacing: var(--track-mono);
+  text-transform: uppercase;
+  color: var(--ink-2);
+  cursor: pointer;
+  transition:
+    color var(--t-fast) var(--ease-out),
+    border-color var(--t-fast) var(--ease-out),
+    background-color var(--t-fast) var(--ease-out),
+    transform var(--t-fast) var(--ease-out);
+}
+
+.work__filter:hover {
+  color: var(--ink);
+  border-color: var(--ink);
+}
+
+.work__filter:active { transform: translateY(1px); }
+
+.work__filter[aria-pressed="true"] {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: var(--paper);
+}
+
+/* ---------- Index rows ---------- */
+.work__list {
+  border-top: 1px solid var(--line-strong);
+}
+
+.work__item {
+  border-bottom: 1px solid var(--line);
+}
+
+.work__row-h { margin: 0; }
+
+.work__row {
+  display: grid;
+  grid-template-columns: 72px minmax(0, 1fr) auto auto auto 24px;
+  align-items: center;
+  gap: clamp(12px, 2vw, 28px);
+  width: 100%;
+  padding-block: clamp(20px, 3vh, 30px);
+  background: none;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+  transition: background-color var(--t-ui) var(--ease-out);
+}
+
+.work__row:hover {
+  background: var(--paper-raised);
+}
+
+.work__sheet-id { color: var(--ink-3); }
+
+.work__title {
+  font-size: clamp(1.35rem, 1.05rem + 1.4vw, 2rem);
+  font-weight: 620;
+  letter-spacing: -0.025em;
+  line-height: 1.08;
+}
+
+.work__domain {
+  font-size: var(--text-small);
+  color: var(--ink-2);
+  white-space: nowrap;
+}
+
+.work__caret {
+  justify-self: end;
+  transition: transform var(--t-drawer) var(--ease-drawer);
+  flex-shrink: 0;
+}
+
+.is-open .work__caret { transform: rotate(180deg); }
+.is-open .work__row { background: var(--paper-raised); }
+
+/* ---------- Expandable case-study panel (accordion height exception) ---------- */
+.work__panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows var(--t-drawer) var(--ease-drawer);
+}
+
+.is-open .work__panel { grid-template-rows: 1fr; }
+
+.work__panel-inner {
+  overflow: hidden;
+  min-height: 0;
+}
+
+.work__detail {
+  display: grid;
+  grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+  gap: clamp(28px, 4vw, 64px);
+  padding: var(--s-5) 0 var(--s-6);
+  opacity: 0;
+  translate: 0 6px;
+  transition:
+    opacity 320ms var(--ease-out) 120ms,
+    translate 320ms var(--ease-out) 120ms;
+}
+
+.is-open .work__detail {
+  opacity: 1;
+  translate: 0 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .work__detail { transition: opacity 160ms ease; translate: none; }
+}
+
+.work__tagline {
+  font-size: clamp(1.0625rem, 1rem + 0.6vw, 1.25rem);
+  font-weight: 540;
+  margin-bottom: var(--s-4);
+  max-width: 34em;
+}
+
+.work__case { display: grid; }
+
+.work__case-row {
+  display: grid;
+  grid-template-columns: 96px minmax(0, 1fr);
+  gap: var(--s-3);
+  padding-block: 14px;
+  border-top: 1px solid var(--line);
+}
+
+.work__case-row dd {
+  color: var(--ink-2);
+  font-size: 0.9375rem;
+}
+
+.work__bullets {
+  margin-top: var(--s-4);
+  display: grid;
+  gap: 8px;
+}
+
+.work__bullets li {
+  position: relative;
+  padding-left: 20px;
+  color: var(--ink-2);
+  font-size: 0.9375rem;
+}
+
+.work__bullets li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.62em;
+  width: 10px;
+  height: 1.5px;
+  background: var(--accent);
+}
+
+/* ---------- Side column ---------- */
+.work__side {
+  display: grid;
+  gap: var(--s-4);
+  align-content: start;
+}
+
+.work__figure {
+  border: 1px solid var(--line-strong);
+  background: var(--paper-sunk);
+}
+
+.work__figure img {
+  width: 100%;
+  height: auto;
+}
+
+.work__figure figcaption {
+  padding: 8px 12px;
+  border-top: 1px solid var(--line);
+  background: var(--paper-raised);
+}
+
+/* Typographic cover for projects without imagery — a designed plate,
+   never a fake screenshot */
+.cover {
+  aspect-ratio: 16 / 10;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: clamp(14px, 2vw, 22px);
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.cover--lg { aspect-ratio: 900 / 562; }
+
+.cover__sheet {
+  font-family: var(--font-mono);
+  font-size: var(--text-micro);
+  letter-spacing: var(--track-mono);
+  color: color-mix(in srgb, var(--paper) 65%, transparent);
+}
+
+.cover__title {
+  font-size: clamp(1.1rem, 0.95rem + 1vw, 1.6rem);
+  font-weight: 620;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+  max-width: 16ch;
+}
+
+.cover__meta {
+  font-family: var(--font-mono);
+  font-size: var(--text-micro);
+  letter-spacing: var(--track-mono);
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--paper) 65%, transparent);
+}
+
+.work__metrics {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+  border: 1px solid var(--line);
+}
+
+.work__metrics > div {
+  display: grid;
+  gap: 2px;
+  padding: 12px 14px;
+  border-right: 1px solid var(--line);
+}
+
+.work__metrics > div:last-child { border-right: none; }
+
+.work__metrics dd {
+  font-family: var(--font-sans);
+  font-size: 1.375rem;
+  font-weight: 640;
+  letter-spacing: -0.02em;
+}
+
+.work__metrics dt {
+  order: 2;
+  text-transform: uppercase;
+}
+
+.work__stack { line-height: 1.8; }
+.work__stack-k { color: var(--ink-3); margin-right: 10px; }
+
+.work__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-3);
+}
+
+.work__actions .btn { min-height: 44px; padding: 9px 16px; }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 960px) {
+  .work__row {
+    grid-template-columns: minmax(0, 1fr) auto 24px;
+    grid-template-areas:
+      "sheet year caret"
+      "title title title"
+      "stamp stamp stamp";
+    row-gap: 10px;
+  }
+
+  .work__sheet-id { grid-area: sheet; }
+  .work__year { grid-area: year; }
+  .work__caret { grid-area: caret; }
+  .work__title { grid-area: title; }
+  .work__row > .work__domain { display: none; }
+  .work__row > .stamp { grid-area: stamp; justify-self: start; }
+
+  .work__detail {
+    grid-template-columns: 1fr;
+  }
+}

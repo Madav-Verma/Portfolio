@@ -1,0 +1,103 @@
+/* ============================================================
+   DESIGN TOKENS — "Engineering Drawing Sheet"
+   Direction contract seed: fca87317 · mode: experience
+   World: technical-drawing grammar on paper. Ink lines, graph-paper
+   underlay, title blocks, stamps, provenance captions. One accent
+   (drafting cobalt). Radius 0 everywhere — sharp sheet edges.
+   Light is primary (recruiter at a desk, printable). Dark = drafting
+   film (inverted graphite ground, paper-white ink).
+   ============================================================ */
+
+:root {
+  /* ---- Color · light ("paper sheet") ---- */
+  --paper: #f6f5f1;            /* sheet ground */
+  --paper-raised: #fbfaf7;     /* plates sitting on the sheet */
+  --paper-sunk: #efeee8;       /* recessed fields */
+  --ink: #1a1a17;              /* working ink */
+  --ink-2: #54534b;            /* annotation ink  (7.0:1 on paper) */
+  --ink-3: #6b695e;            /* faint marks — ≥4.5:1 on paper */
+  --line: rgb(26 26 23 / 14%);
+  --line-strong: rgb(26 26 23 / 34%);
+  --accent: #1f3ac2;           /* drafting cobalt — the one accent */
+  --accent-ink: #172fb8;       /* pressed/hover accent */
+  --on-accent: #ffffff;
+  --live: #1b7f4b;             /* status green — flags only */
+
+}
+
+/* ---- Dark ("drafting film") ---- */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: #161613;
+    --paper-raised: #1d1d19;
+    --paper-sunk: #101010;
+    --ink: #eceae2;
+    --ink-2: #aeac9f;          /* 7.4:1 on film */
+    --ink-3: #7c7a6f;
+    --line: rgb(236 234 226 / 15%);
+    --line-strong: rgb(236 234 226 / 36%);
+    --accent: #96a8ff;         /* cobalt lifted for film */
+    --accent-ink: #b7c3ff;
+    --on-accent: #12121a;
+    --live: #4cc38a;
+  }
+}
+
+:root {
+
+  /* ---- Type ---- */
+  --font-sans: "Archivo Variable", "Archivo", system-ui, sans-serif;
+  --font-mono: "Fragment Mono", ui-monospace, "SF Mono", monospace;
+
+  --text-hero: clamp(2.9rem, 1.2rem + 6.2vw, 6rem);      /* display cap 6rem */
+  --text-h2: clamp(1.85rem, 1.2rem + 2.4vw, 2.75rem);
+  --text-h3: clamp(1.25rem, 1.05rem + 0.75vw, 1.55rem);
+  --text-body: 1.0625rem;
+  --text-small: 0.875rem;
+  --text-micro: 0.6875rem;     /* mono captions / title-block meta */
+
+  --leading-display: 0.98;
+  --leading-tight: 1.12;
+  --leading-body: 1.62;
+  --track-display: -0.035em;
+  --track-mono: 0.14em;        /* uppercase mono labels */
+
+  /* ---- Space (4/8 rhythm; generous section air) ---- */
+  --s-1: 4px;
+  --s-2: 8px;
+  --s-3: 16px;
+  --s-4: 24px;
+  --s-5: 32px;
+  --s-6: 48px;
+  --s-7: 64px;
+  --s-8: 96px;
+  --s-9: 128px;
+  --section-gap: clamp(96px, 14vh, 160px);
+  --gutter: clamp(20px, 4.5vw, 72px);
+  --measure: 66ch;
+  --sheet-max: 1440px;
+
+  /* ---- Motion (Emil-grade curves; transform/opacity only) ---- */
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-inout: cubic-bezier(0.77, 0, 0.175, 1);
+  --ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);
+  --t-fast: 140ms;   /* press feedback */
+  --t-ui: 220ms;     /* hovers, small reveals */
+  --t-reveal: 640ms; /* staged scroll reveals (marketing tier) */
+  --t-drawer: 440ms; /* case-study expansion */
+
+  /* ---- Depth: paper layers (offset + blur, tinted to ground) ---- */
+  --shadow-lift: 0 1px 0 var(--line), 0 14px 40px rgb(26 26 23 / 9%);
+  --shadow-float: 0 2px 0 var(--line), 0 24px 64px rgb(26 26 23 / 14%);
+
+  /* ---- Chrome geometry ---- */
+  --nav-h: 64px;
+  --tick-h: 10px;              /* ruler graduation strip height */
+  --grid-minor: 36px;          /* graph-paper underlay cell */
+
+  /* ---- Z-index scale (systemic layers only) ---- */
+  --z-nav: 100;
+  --z-overlay: 200;
+  --z-preview: 150;
+  --z-toast: 300;
+}

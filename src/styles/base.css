@@ -1,0 +1,328 @@
+/* ============================================================
+   BASE — reset, typography, drawing-sheet chrome, reveal engine
+   ============================================================ */
+
+/* ---------- Reset ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  scrollbar-color: var(--line-strong) var(--paper);
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-size: var(--text-body);
+  font-variation-settings: "wdth" 100;
+  line-height: var(--leading-body);
+  min-height: 100dvh;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+img,
+svg,
+video {
+  display: block;
+  max-width: 100%;
+}
+
+button,
+input {
+  font: inherit;
+  color: inherit;
+}
+
+a {
+  color: inherit;
+}
+
+ul[role="list"],
+ol[role="list"] {
+  list-style: none;
+  padding: 0;
+}
+
+/* ---------- Graph-paper underlay (Crouwel raise) ----------
+   Fixed, pointer-transparent construction grid under everything. */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(to right, rgb(26 26 23 / 3.5%) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(26 26 23 / 3.5%) 1px, transparent 1px),
+    linear-gradient(to right, rgb(26 26 23 / 6%) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(26 26 23 / 6%) 1px, transparent 1px);
+  background-size:
+    var(--grid-minor) var(--grid-minor),
+    var(--grid-minor) var(--grid-minor),
+    calc(var(--grid-minor) * 4) calc(var(--grid-minor) * 4),
+    calc(var(--grid-minor) * 4) calc(var(--grid-minor) * 4);
+}
+
+@media (prefers-color-scheme: dark) {
+  body::before {
+    background-image:
+      linear-gradient(to right, rgb(236 234 226 / 4%) 1px, transparent 1px),
+      linear-gradient(to bottom, rgb(236 234 226 / 4%) 1px, transparent 1px),
+      linear-gradient(to right, rgb(236 234 226 / 7%) 1px, transparent 1px),
+      linear-gradient(to bottom, rgb(236 234 226 / 7%) 1px, transparent 1px);
+  }
+}
+
+@media (prefers-reduced-transparency: reduce) {
+  body::before { display: none; }
+}
+
+main { position: relative; z-index: 1; }
+
+/* ---------- Typography ---------- */
+h1, h2, h3 {
+  font-weight: 640;
+  line-height: var(--leading-tight);
+  letter-spacing: var(--track-display);
+  text-wrap: balance;
+}
+
+p {
+  max-width: var(--measure);
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--on-accent);
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 0;
+}
+
+/* ---------- Sheet layout ---------- */
+.sheet {
+  width: 100%;
+  max-width: var(--sheet-max);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.section {
+  padding-top: var(--section-gap);
+  position: relative;
+}
+
+/* Title block: every sheet carries its heading inside drafting metadata */
+.plate-head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--s-4);
+  border-top: 2px solid var(--ink);
+  border-bottom: 1px solid var(--line);
+  padding-block: var(--s-3);
+  margin-bottom: clamp(40px, 6vh, 72px);
+}
+
+.plate-head h2 {
+  font-size: var(--text-h2);
+}
+
+.plate-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-5);
+  font-family: var(--font-mono);
+  font-size: var(--text-micro);
+  letter-spacing: var(--track-mono);
+  text-transform: uppercase;
+  color: var(--ink-2);
+  padding-bottom: 6px;
+  white-space: nowrap;
+}
+
+/* Ruler graduations framing a section (VU raise) */
+.ruler {
+  height: var(--tick-h);
+  background-image: repeating-linear-gradient(
+    to right,
+    var(--line-strong) 0 1px,
+    transparent 1px 12px
+  );
+  background-size: 100% 60%;
+  background-position: bottom;
+  background-repeat: no-repeat;
+  opacity: 0.9;
+}
+
+/* ---------- Controls ---------- */
+.btn {
+  --btn-bg: var(--ink);
+  --btn-fg: var(--paper);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--s-2);
+  min-height: 48px;
+  padding: 12px 22px;
+  background: var(--btn-bg);
+  color: var(--btn-fg);
+  border: 1px solid var(--ink);
+  font-weight: 560;
+  font-size: var(--text-small);
+  letter-spacing: 0.01em;
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    transform var(--t-fast) var(--ease-out),
+    box-shadow var(--t-fast) var(--ease-out),
+    background-color var(--t-fast) var(--ease-out);
+}
+
+.btn:hover { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
+
+.btn:active {
+  transform: translateY(1px);
+  box-shadow: inset 0 2px 4px rgb(0 0 0 / 22%);
+}
+
+.btn--ghost {
+  --btn-bg: transparent;
+  --btn-fg: var(--ink);
+  background: var(--btn-bg);
+}
+
+.btn--ghost:hover {
+  background: var(--ink);
+  color: var(--paper);
+  border-color: var(--ink);
+}
+
+.btn--ghost:active { box-shadow: inset 0 2px 6px rgb(26 26 23 / 18%); }
+.btn--ghost:hover:active { box-shadow: inset 0 2px 6px rgb(255 255 255 / 25%); }
+
+@media (hover: none) {
+  .btn:hover { background: var(--btn-bg); color: var(--btn-fg); border-color: var(--ink); }
+}
+
+/* Status stamps */
+.stamp {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 5px 10px 4px;
+  border: 1px solid currentColor;
+  font-family: var(--font-mono);
+  font-size: var(--text-micro);
+  letter-spacing: var(--track-mono);
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.stamp--live { color: var(--live); }
+.stamp--shipped { color: var(--ink-2); }
+.stamp--wip { color: var(--accent); }
+
+.live-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .live-dot { animation: live-pulse 2.4s var(--ease-out) infinite; }
+  @keyframes live-pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.45; }
+  }
+}
+
+/* Mono caption / provenance strip (Quilt raise) */
+.caption {
+  font-family: var(--font-mono);
+  font-size: var(--text-micro);
+  letter-spacing: var(--track-mono);
+  text-transform: uppercase;
+  color: var(--ink-2);
+}
+
+/* Ink link with drafting underline draw */
+.link-draw {
+  position: relative;
+  text-decoration: none;
+}
+
+.link-draw::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  width: 100%;
+  height: 1.5px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform var(--t-ui) var(--ease-inout);
+}
+
+.link-draw:hover::after,
+.link-draw:focus-visible::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+/* ---------- Reveal engine (transform/opacity only) ---------- */
+html.js [data-reveal] {
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity var(--t-reveal) var(--ease-out),
+    transform var(--t-reveal) var(--ease-out);
+  transition-delay: calc(var(--d, 0) * 70ms);
+}
+
+html.js [data-revealed] {
+  opacity: 1;
+  transform: none;
+}
+
+/* ---------- Skip link ---------- */
+.skip-link {
+  position: absolute;
+  left: var(--s-4);
+  top: -64px;
+  z-index: var(--z-toast);
+  padding: 12px 18px;
+  background: var(--ink);
+  color: var(--paper);
+  font-size: var(--text-small);
+  text-decoration: none;
+  transition: top var(--t-fast) var(--ease-out);
+}
+
+.skip-link:focus-visible { top: var(--s-3); }
+
+/* ---------- Reduced motion: gentler, not zero ---------- */
+@media (prefers-reduced-motion: reduce) {
+  html.js [data-reveal] {
+    opacity: 1;
+    transform: none;
+    transition: opacity 160ms ease;
+  }
+
+  .link-draw::after { transition-duration: 120ms; }
+}

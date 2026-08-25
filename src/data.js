@@ -1,482 +1,336 @@
 export const PROFILE = {
-  name: 'Daksh Verma',
-  firstName: 'Daksh',
-  role: 'Applied AI Solutions Engineer',
-  location: 'Faridabad, India',
-  email: 'vermadaksh120@gmail.com',
-  phone: '+91 95990 68010',
-  linkedin: 'https://www.linkedin.com/in/daksh-verma-613774229/',
-  github: 'https://github.com/Madav-Verma',
-  resume: '/resume/Daksh_Verma_Resume_2026.pdf',
-  headline:
-    'Applied AI Solutions Engineer building production-grade, end-to-end AI-powered products — agentic workflows, multi-model orchestration, and a full-stack mindset.',
-  typed: [
-    'Applied AI Solutions Engineer',
-    'Agentic Workflow Architect',
-    'Multi-Model Orchestration',
-    'From Concept to Production at 10x Speed',
-  ],
+  name: "Daksh Verma",
+  initials: "DV",
+  role: "Applied AI Solutions Engineer",
+  location: "Faridabad, India",
+  email: "vermadaksh120@gmail.com",
+  phone: "+91 95990 68010",
+  linkedin: "https://www.linkedin.com/in/daksh-verma-613774229/",
+  github: "https://github.com/Madav-Verma",
+  resume: "/resume/Daksh_Verma_Resume_2026.pdf",
+  headline: "Production software, shipped end to end.",
+  subline:
+    "I orchestrate agentic workflows — OpenCode, Claude, DeepSeek, Gemini — to ship complete products: offline-first, tested, live.",
+  status: "Open to new roles",
 }
 
 export const NAV_LINKS = [
-  { href: '#about', label: 'About' },
-  { href: '#skills', label: 'Skills' },
-  { href: '#workflow', label: 'Workflow' },
-  { href: '#projects', label: 'Work' },
-  { href: '#journey', label: 'Journey' },
-  { href: '#log', label: 'Notes' },
-  { href: '#contact', label: 'Contact' },
+  { href: "#work", label: "Work" },
+  { href: "#capabilities", label: "Capabilities" },
+  { href: "#process", label: "Process" },
+  { href: "#journey", label: "Journey" },
+  { href: "#notes", label: "Notes" },
+  { href: "#contact", label: "Contact" },
 ]
 
-export const STATS = [
-  { value: 9.0, suffix: ' CGPA', decimals: 1, label: 'BCA (AI) — Lingaya\'s Vidyapeeth', icon: 'grad' },
-  { value: 2, suffix: '', decimals: 0, label: 'Products live in production', icon: 'rocket' },
-  { value: 10, suffix: 'x', decimals: 0, label: 'Faster shipping with agent loops', icon: 'spark' },
-  { value: 15, suffix: '+', decimals: 0, label: 'Certifications & courses', icon: 'check' },
-]
-
-export const TERMINAL = [
-  { type: 'cmd', text: 'whoami' },
-  { type: 'out', text: 'AI-Native Product Builder @ Prokon Hi-Tech' },
-  { type: 'cmd', text: 'cat workflow.txt' },
-  { type: 'out', text: 'opencode · multi-agent loops · claude · deepseek · gemini' },
-  { type: 'cmd', text: './ship --end-to-end --agents' },
-  { type: 'out', text: '✓ 2 products live · review loops active · 10x velocity' },
-  { type: 'cmd', text: 'status' },
-  { type: 'out', text: 'agentic pipeline ready — scroll to explore →' },
+export const HERO_META = [
+  { k: "Base", v: "Faridabad, IN" },
+  { k: "Focus", v: "Agentic · Full-stack" },
+  { k: "BCA (AI)", v: "9.0 CGPA" },
 ]
 
 export const MARQUEE = [
-  'OpenCode', 'Agentic Orchestration', 'Claude', 'DeepSeek', 'Gemini',
-  'Multi-Model Routing', 'React', 'Vite', 'Python', 'SQL · T-SQL',
-  'Supabase', 'Vercel', 'Automated Code Review', 'Agent Workflows',
-  'Prompt Engineering', 'Offline-First', 'REST APIs', 'Git & GitHub',
+  "OpenCode", "Claude", "DeepSeek", "Gemini", "Multi-Model Routing",
+  "Agent Workflows", "Automated Review Loops", "React", "Vite", "Python",
+  "SQL · T-SQL", "Supabase", "Vercel", "Prompt Engineering",
+  "Offline-First", "REST APIs", "Power BI", "Git & GitHub",
 ]
 
 export const ABOUT = {
-  kicker: 'The Story',
-  title: 'From Data Analyst to Applied AI Solutions Engineer',
+  title: "From data analyst to applied AI engineer.",
   paragraphs: [
-    "My journey started with a simple question: how do spreadsheets and dashboards become decisions? As a data analyst, I learned to turn raw data into insights people could act on — building BI platforms, automating reports, and saving teams 15–20 hours every month.",
-    'Then I discovered something bigger: AI as an engineering multiplier. Today I build end-to-end products using agentic workflows — orchestrating multiple AI models, running autonomous review loops, and shipping complete systems at 10x speed. OpenCode, Claude, DeepSeek, Gemini — they are not just tools, they are my engineering team.',
-    "I am an AI-native product builder: part analyst who understands the business, part engineer who ships the software, and part orchestrator who makes AI do the heavy lifting. My advantage is execution speed — I can conceptualize and ship end-to-end products in record time.",
+    "I started as a data analyst, learning how spreadsheets become decisions — building BI platforms that saved teams 15–20 hours a month. Then I found a bigger lever: AI as an engineering multiplier.",
+    "Today I build end-to-end products with agentic workflows — orchestrating multiple models, running autonomous review loops, shipping whole systems at speed. The models aren't toys; they're my engineering team.",
+    "The proof is in production: two live offline-first apps and a leadership BI platform, all built this way.",
   ],
-  points: [
-    {
-      title: 'Agentic Engineering',
-      desc: 'Building production apps with autonomous agent loops — code generation, automated review, and multi-model orchestration on every build.',
-      icon: 'bot',
-    },
-    {
-      title: 'Multi-Model Orchestration',
-      desc: 'Routing tasks across Claude, DeepSeek, and Gemini — the right model for the right phase of development.',
-      icon: 'flow',
-    },
-    {
-      title: 'Rapid Prototyping',
-      desc: 'Concept to deployed Vercel/Supabase application in record time. Agent-assisted scaffolding and full-stack delivery.',
-      icon: 'rocket',
-    },
-    {
-      title: 'End-to-End Delivery',
-      desc: 'From requirements and database design to UI, deployment and docs — I ship complete, usable products.',
-      icon: 'chart',
-    },
-  ],
-  identity: {
-    label: 'Identity card',
-    rows: [
-      { k: 'Focus', v: 'AI-Native · Agentic' },
-      { k: 'Base', v: 'Faridabad, India' },
-      { k: 'Studies', v: 'BCA (AI) · 9.0 CGPA' },
-      { k: 'Status', v: 'Open to AI-Native roles', live: true },
-    ],
-  },
 }
 
-export const CORE_SKILLS = [
-  { name: 'Agentic Orchestration & AI Tooling', pct: 92, accent: '#22d3ee' },
-  { name: 'Full-Stack Engineering (React)', pct: 87, accent: '#818cf8' },
-  { name: 'SQL & Data Modeling', pct: 88, accent: '#34d399' },
-  { name: 'Multi-Model Routing & Review', pct: 85, accent: '#e879f9' },
-  { name: 'Python & Automation', pct: 82, accent: '#fbbf24' },
-  { name: 'Rapid Prototyping & Delivery', pct: 90, accent: '#fb7185' },
-]
-
-export const SKILLS = [
-  {
-    group: 'Agentic Orchestration',
-    icon: 'bot',
-    accent: '#22d3ee',
-    tags: [
-      'OpenCode', 'Claude', 'DeepSeek', 'Gemini',
-      'Multi-Model Routing', 'Agent Workflows', 'Prompt Engineering',
-      'Automated Code Review', 'Sub-Agent Loops',
-    ],
-  },
-  {
-    group: 'Engineering & Product',
-    icon: 'code',
-    accent: '#a78bfa',
-    tags: [
-      'React', 'Vite', 'JavaScript', 'Python', 'MySQL', 'Supabase',
-      'REST APIs', 'Git & GitHub', 'Vercel', 'Netlify', 'Offline-First',
-    ],
-  },
-  {
-    group: 'Data & BI',
-    icon: 'chart',
-    accent: '#34d399',
-    tags: [
-      'SQL (T-SQL)', 'Power BI', 'Pandas & NumPy',
-      'Predictive Modeling', 'Dashboarding', 'Database Design',
-    ],
-  },
-  {
-    group: 'Process & Delivery',
-    icon: 'rocket',
-    accent: '#fbbf24',
-    tags: [
-      'Rapid Prototyping', 'End-to-End Delivery', 'Requirements Gathering',
-      'Workflow Digitization', 'Process Automation', 'Stakeholder Communication',
-    ],
-  },
+export const FILTERS = [
+  { id: "all", label: "All work" },
+  { id: "production", label: "In production" },
+  { id: "shipped", label: "Shipped" },
+  { id: "wip", label: "Building now" },
 ]
 
 export const PROJECTS = [
   {
-    title: 'SJS Retail Jewellery Suite',
-    status: 'live',
-    statusLabel: 'Live on Netlify',
-    link: 'https://retailjewellery.netlify.app/',
-    screenshot: '/screenshots/sjs-jewellery.png',
-    year: '2026',
-    featured: true,
-    gradient: 'linear-gradient(135deg, #0e7490, #6d28d9)',
-    tagline: 'Complete retail management system — built with agentic review loops and shipped in record time.',
+    id: "sjs",
+    sheet: "SJS-01",
+    title: "SJS Retail Jewellery Suite",
+    domain: "Production system",
+    status: "live",
+    statusLabel: "Live on Netlify",
+    link: "https://retailjewellery.netlify.app/",
+    screenshot: "/screenshots/sjs-jewellery.png",
+    year: "2026",
+    tagline: "Complete retail management for a working jewellery store — billing to backup.",
     bullets: [
-      'Billing, stock, purchases, customers & invoices with PDF generation',
-      'Live gold-rate price calculator and hallmark HUID splitting engine',
-      'Role-based auth, audit trails and offline local database',
-      '20+ automated unit tests covering billing, stock and CSV logic',
+      "Billing, stock, purchases, customers & invoices with PDF generation",
+      "Live gold-rate price calculator and hallmark HUID splitting engine",
+      "Role-based auth, audit trails and offline local database",
+      "20+ automated unit tests covering billing, stock and CSV logic",
     ],
     metrics: [
-      { v: '20+', l: 'unit tests' },
-      { v: '4', l: 'core modules' },
-      { v: '100%', l: 'offline-capable' },
+      { v: "20+", l: "unit tests" },
+      { v: "4", l: "core modules" },
+      { v: "100%", l: "offline-capable" },
     ],
-    tags: ['React', 'Vite', 'Supabase', 'Offline-First', 'PDF', 'Testing', 'AI-Assisted'],
-    workflow: {
-      stack: ['OpenCode', 'Claude (Review Agent)', 'Vitest', 'React', 'Supabase'],
-      callout: 'Continuous review sub-agent loop: code modifications are automatically flagged, reviewed by an independent Claude agent, and patched before deployment. 20+ unit tests ensure billing logic stays bulletproof.',
-    },
+    stack: ["OpenCode", "Claude review agent", "Vitest", "React", "Supabase"],
     caseStudy: {
-      challenge: 'The jewellery store ran on paper registers and Excel sheets — stock, hallmarked gold and daily billing had no single source of truth, and the shop\'s internet connection is unreliable.',
-      approach: 'Built an offline-first React app with a local database and queued sync. Added a live gold-rate calculator and a hallmark HUID splitting engine that tracks each hallmarked item uniquely for GST compliance, with PDF invoices and an automated backup script.',
-      outcome: 'Billing, stock, purchases and customer records now live in one system the shop uses daily — no internet required, data protected by scripted backups.',
+      challenge:
+        "The store ran on paper registers and Excel — stock, hallmarked gold and daily billing had no single source of truth, and the shop's internet is unreliable.",
+      approach:
+        "Offline-first React app with a local database and queued sync. A live gold-rate calculator and a hallmark HUID splitting engine track each hallmarked item uniquely for GST compliance; PDF invoices and scripted backups protect the data.",
+      outcome:
+        "Billing, stock, purchases and customer records live in one system the shop uses daily — no internet required.",
     },
+    tags: ["React", "Vite", "Supabase", "Offline-First", "PDF", "Testing"],
   },
   {
-    title: 'Employee Attendance System',
-    status: 'live',
-    statusLabel: 'Live on Netlify',
-    link: 'https://employeeattedance.netlify.app/',
-    screenshot: '/screenshots/attendance.png',
-    year: '2026',
-    featured: true,
-    gradient: 'linear-gradient(135deg, #0f766e, #2563eb)',
-    tagline: 'Offline-first employee attendance — camera QR/barcode scanning with agentic code generation.',
+    id: "attendance",
+    sheet: "ATT-02",
+    title: "Employee Attendance System",
+    domain: "Field operations",
+    status: "live",
+    statusLabel: "Live on Netlify",
+    link: "https://employeeattedance.netlify.app/",
+    screenshot: "/screenshots/attendance.png",
+    year: "2026",
+    tagline: "Camera-based QR/barcode check-in that survives connection dropouts.",
     bullets: [
-      'Camera-based QR & barcode check-in for gate entry',
-      'Role-based permissions — employee, admin, super admin',
-      'Offline-first with online/offline detection and queued sync',
-      'Reports with Excel export and full attendance records',
+      "Camera-based QR & barcode check-in for gate entry",
+      "Role-based permissions — employee, admin, super admin",
+      "Offline-first with online/offline detection and queued sync",
+      "Reports with Excel export and full attendance records",
     ],
     metrics: [
-      { v: '3', l: 'role tiers' },
-      { v: '1s', l: 'scan check-in' },
-      { v: '✓', l: 'offline-first' },
+      { v: "3", l: "role tiers" },
+      { v: "~1s", l: "scan check-in" },
+      { v: "0", l: "records lost offline" },
     ],
-    tags: ['React', 'Vite', 'Barcode Vision', 'Offline-First', 'Excel Export', 'AI-Assisted'],
-    workflow: {
-      stack: ['OpenCode', 'DeepSeek (Code Gen)', 'React', 'Barcode Vision', 'IndexedDB'],
-      callout: 'Rapid prototyping with AI-assisted code generation: from concept to deployed Netlify app in under 48 hours. Camera-based barcode detection built with a polyfill — no native SDK required.',
-    },
+    stack: ["OpenCode", "DeepSeek code-gen", "Barcode-detector polyfill", "IndexedDB", "React"],
     caseStudy: {
-      challenge: 'Gate attendance was manual — slow queues and easy proxy marking. Connectivity at the entry point also drops, so a cloud-only system would fail exactly when it was needed.',
-      approach: 'Used camera-based QR/barcode detection (barcode-detector polyfill) for one-second check-in at the gate, with role-based tiers for employee, admin and super admin. Writes queue locally and sync when the connection returns; reports export to Excel.',
-      outcome: 'Check-in is a one-second camera scan, proxies are hard, and attendance records stay complete even through connection dropouts.',
+      challenge:
+        "Gate attendance was manual — slow queues, easy proxy marking — and connectivity at the entry point drops exactly when check-in happens.",
+      approach:
+        "Camera-based QR/barcode detection via the barcode-detector polyfill — no native SDK. Role tiers for employee, admin and super admin; writes queue locally and sync when the network returns.",
+      outcome:
+        "Check-in is a one-second camera scan, proxies are hard, and records stay complete through dropouts.",
     },
+    tags: ["React", "Vite", "Barcode Vision", "Offline-First", "Excel Export"],
   },
   {
-    title: 'DataFlow Pro — BI Platform',
-    status: 'shipped',
-    statusLabel: 'Shipped at Trossachs',
+    id: "dataflow",
+    sheet: "BI-03",
+    title: "DataFlow Pro — BI Platform",
+    domain: "Data & analytics",
+    status: "shipped",
+    statusLabel: "Shipped at Trossachs",
     link: null,
-    repo: 'https://github.com/Madav-Verma/DataFlow-Pro',
-    year: '2026',
-    featured: false,
-    gradient: 'linear-gradient(135deg, #7c3aed, #db2777)',
-    tagline: 'Real-time analytics platform — AI-orchestrated SQL pipelines for leadership visibility.',
+    repo: "https://github.com/Madav-Verma/DataFlow-Pro",
+    screenshot: null,
+    year: "2026",
+    tagline: "Real-time analytics platform — AI-orchestrated SQL pipelines for leadership.",
     bullets: [
-      'Revenue trends, compliance risk and operational KPIs in one view',
-      'Saved the firm 15–20 hours/month of manual data processing',
-      'AI-assisted delivery — Claude + OpenCode for SQL refactoring and speed',
+      "Revenue trends, compliance risk and operational KPIs in one view",
+      "Saved the firm 15–20 hours/month of manual data processing",
+      "Claude + OpenCode routed per phase — SQL refactoring to orchestration",
     ],
     metrics: [
-      { v: '15–20h', l: 'saved monthly' },
-      { v: '3', l: 'KPI domains' },
-      { v: 'AI', l: 'assisted build' },
+      { v: "15–20h", l: "saved monthly" },
+      { v: "3", l: "KPI domains" },
     ],
-    tags: ['Power BI', 'SQL', 'Python', 'AI-Assisted', 'Multi-Model'],
-    workflow: {
-      stack: ['OpenCode', 'Claude (SQL Refactor)', 'Power BI', 'Python', 'T-SQL'],
-      callout: 'Multi-model routing: Claude for SQL refactoring and schema optimization, OpenCode for pipeline orchestration. Saved 15–20 hours/month through AI-accelerated data processing.',
-    },
+    stack: ["OpenCode", "Claude SQL refactor", "Power BI", "Python", "T-SQL"],
     caseStudy: {
-      challenge: 'Leadership relied on scattered Excel exports and manual aggregation — revenue trends, compliance risk and operational KPIs had no single real-time view, and reporting consumed 15–20 hours of manual work every month.',
-      approach: 'Built DataFlow Pro as a Power BI analytics platform with AI-orchestrated SQL pipelines — Claude handled SQL refactoring and schema optimization while OpenCode orchestrated the pipeline, routing each phase to the right model.',
-      outcome: 'Revenue trends, compliance risk and operational KPIs now live in one dashboard leadership opens daily — 15–20 hours of manual data processing saved every month.',
+      challenge:
+        "Leadership relied on scattered Excel exports — revenue trends, compliance risk and operational KPIs had no single real-time view, and reporting ate 15–20 hours a month.",
+      approach:
+        "Built DataFlow Pro on Power BI with AI-orchestrated SQL pipelines — Claude refactored SQL and optimized schemas while OpenCode orchestrated the pipeline, each phase routed to the right model.",
+      outcome:
+        "Revenue, risk and KPIs live in one dashboard leadership opens daily — 15–20 hours of manual processing saved monthly.",
     },
+    tags: ["Power BI", "SQL", "Python", "Multi-Model"],
   },
   {
-    title: 'Prokon Digital Workflows',
-    status: 'shipped',
-    statusLabel: 'Shipped at Prokon Hi-Tech',
+    id: "prokon",
+    sheet: "WF-04",
+    title: "Prokon Digital Workflows",
+    domain: "Process automation",
+    status: "shipped",
+    statusLabel: "Shipped at Prokon Hi-Tech",
     link: null,
-    year: '2024',
-    featured: false,
-    gradient: 'linear-gradient(135deg, #b45309, #dc2626)',
-    tagline: 'Digitised manual business workflows — Python + MySQL system replacing paper processes.',
+    repo: null,
+    screenshot: null,
+    year: "2024",
+    tagline: "Paper processes replaced by a Python/MySQL digital pipeline.",
     bullets: [
-      'Inventory tracking and AMC management on a Python/MySQL stack',
-      'Replaced paper-based processes with HTML forms & Google Suite',
-      'Improved reporting accuracy for the operations team',
+      "Inventory tracking and AMC management on Python/MySQL",
+      "Paper registers replaced with HTML forms & Google Suite",
+      "Reporting accuracy improved for the operations team",
     ],
     metrics: [
-      { v: '0', l: 'paper left' },
-      { v: '2', l: 'workflows live' },
-      { v: '100%', l: 'digitised workflows' },
+      { v: "2", l: "workflows digitised" },
+      { v: "100%", l: "paper eliminated" },
     ],
-    tags: ['Python', 'MySQL', 'Workflow Automation', 'AI-Assisted'],
-    workflow: {
-      stack: ['Python', 'MySQL', 'HTML Forms', 'Google Suite'],
-      callout: 'Early adoption of AI-assisted development: used code generation tools to accelerate Python/MySQL workflow digitisation. Replaced paper processes with automated digital pipelines.',
-    },
+    stack: ["Python", "MySQL", "HTML Forms", "Google Suite"],
     caseStudy: {
-      challenge: 'Business workflows ran on paper registers and manual Excel entries — inventory tracking and AMC management had no digital trail, and reporting accuracy suffered.',
-      approach: 'Digitised the workflows on a Python/MySQL stack with HTML forms and Google Suite integration, using early AI-assisted code generation to accelerate the build.',
-      outcome: 'Paper processes were replaced with automated digital pipelines — the operations team now reports from a single accurate source.',
+      challenge:
+        "Inventory tracking and AMC management ran on paper registers and manual Excel entries, with no digital trail and error-prone reporting.",
+      approach:
+        "Digitised both workflows on a Python/MySQL stack with HTML forms and Google Suite integration — my first use of AI-assisted code generation to accelerate delivery.",
+      outcome:
+        "Paper processes became automated digital pipelines; operations reports from a single accurate source.",
     },
+    tags: ["Python", "MySQL", "Workflow Automation"],
   },
   {
-    title: 'New Company Website',
-    status: 'soon',
-    statusLabel: 'In production — live soon',
+    id: "website",
+    sheet: "WEB-05",
+    title: "Company Website Rebuild",
+    domain: "Web platform",
+    status: "wip",
+    statusLabel: "In production — live soon",
     link: null,
-    year: '2026',
-    featured: false,
-    gradient: 'linear-gradient(135deg, #0891b2, #4f46e5)',
-    tagline: 'End-to-end build with full agentic orchestration — shipping soon.',
+    repo: null,
+    screenshot: null,
+    year: "2026",
+    tagline: "End-to-end build under full agentic orchestration.",
     bullets: [
-      'Full agentic workflow: multi-agent review loops on every commit',
-      'Modern stack with Vercel deployment and Supabase backend',
+      "Full agentic pipeline: multi-agent review loops on every commit",
+      "Modern stack — Vercel deployment, Supabase backend",
     ],
-    metrics: [
-      { v: 'WIP', l: 'design + build' },
-      { v: 'AI', l: 'assisted' },
-    ],
-    tags: ['React', 'AI-Assisted', 'WIP', 'Agentic'],
+    metrics: [{ v: "WIP", l: "design + build" }],
+    stack: ["OpenCode", "Claude review agent", "React", "Vercel", "Supabase"],
+    caseStudy: null,
+    tags: ["React", "AI-Assisted", "Agentic"],
   },
 ]
 
+export const CAPABILITIES = [
+  {
+    domain: "Agentic Orchestration",
+    focus: "Autonomous build loops — generation, independent review, auto-patch — across multiple model families.",
+    tools: ["OpenCode", "Claude", "DeepSeek", "Gemini", "Sub-agent loops", "Prompt engineering"],
+  },
+  {
+    domain: "Engineering & Product",
+    focus: "Complete product delivery: database design to UI to deployment, tested and documented.",
+    tools: ["React", "Vite", "JavaScript", "Python", "Supabase", "REST APIs", "Git", "Vercel", "Netlify"],
+  },
+  {
+    domain: "Data & BI",
+    focus: "Raw operational data to leadership-ready dashboards, pipelines and predictive models.",
+    tools: ["SQL (T-SQL)", "Power BI", "Pandas & NumPy", "Database design", "Dashboarding"],
+  },
+  {
+    domain: "Delivery & Process",
+    focus: "Requirements to rollout at startup speed — offline-first architecture for real-world conditions.",
+    tools: ["Rapid prototyping", "Offline-first", "Workflow digitisation", "Stakeholder communication"],
+  },
+]
+
+export const PROCESS = {
+  title: "How every build runs.",
+  intro:
+    "One loop, five phases. An independent reviewer on a different model family audits every diff before anything merges — no rubber-stamping.",
+  steps: [
+    { step: "01", label: "Scope", desc: "Define the feature, constraints and acceptance criteria.", trace: "spec.md → constraints + acceptance criteria" },
+    { step: "02", label: "Generate", desc: "A coding agent implements with full project context.", trace: "$ opencode \"implement feature\"" },
+    { step: "03", label: "Review", desc: "An independent agent on another model family audits the diff.", trace: "$ claude --review --diff HEAD~1" },
+    { step: "04", label: "Patch", desc: "Flagged issues are fixed before merge — zero rubber-stamping.", trace: "✓ 3 issues flagged → patched" },
+    { step: "05", label: "Ship", desc: "Deploy with automated test coverage protecting the build.", trace: "$ deploy → tests green → live" },
+  ],
+}
+
 export const EXPERIENCE = [
   {
-    role: 'AI-Native Solutions Engineer',
-    company: 'Prokon Hi-Tech Systems',
-    period: 'Present',
+    role: "AI-Native Solutions Engineer",
+    company: "Prokon Hi-Tech Systems",
+    period: "2025 — Present",
     current: true,
     points: [
-      'Building end-to-end AI-powered solutions using agentic workflows — multi-model orchestration, autonomous review loops, and rapid prototyping',
-      'Shipping a new company website with full agentic pipeline — from architecture to production (live soon)',
-      'Orchestrating OpenCode, Claude, DeepSeek, and Gemini for different development phases — the right model for the right task',
+      "Building end-to-end AI-powered solutions with agentic workflows — multi-model orchestration and autonomous review loops",
+      "Shipping a full company website rebuild through the agentic pipeline, architecture to production",
+      "Routing OpenCode, Claude, DeepSeek and Gemini per phase — the right model for the right task",
     ],
-    tags: ['OpenCode', 'Agentic Orchestration', 'Multi-Model', 'End-to-End Delivery'],
   },
   {
-    role: 'Data & Business Analyst Intern',
-    company: 'Trossachs Corporate Advisors',
-    period: 'Jan 2026 – May 2026',
+    role: "Data & Business Analyst Intern",
+    company: "Trossachs Corporate Advisors",
+    period: "Jan 2026 — May 2026",
     current: false,
     points: [
-      'Delivered DataFlow Pro — a BI & analytics platform with real-time visibility into revenue trends, compliance risk and operational KPIs',
-      'Saved leadership 15–20 hours/month of manual data processing and reporting',
-      'Used AI-assisted tools (Claude, OpenCode) to accelerate delivery and SQL refactoring',
+      "Delivered DataFlow Pro — real-time BI visibility into revenue trends, compliance risk and operational KPIs",
+      "Saved leadership 15–20 hours/month of manual data processing and reporting",
+      "Used Claude + OpenCode to accelerate SQL refactoring and delivery",
     ],
-    tags: ['Power BI', 'SQL', 'Python', 'AI-Assisted'],
   },
   {
-    role: 'Software Developer Intern',
-    company: 'Prokon Hi-Tech Systems',
-    period: 'Jun 2024 – Jul 2024',
+    role: "Software Developer Intern",
+    company: "Prokon Hi-Tech Systems",
+    period: "Jun 2024 — Jul 2024",
     current: false,
     points: [
-      'Digitised manual business workflows — inventory tracking and AMC management — into a Python/MySQL system',
-      'Replaced paper-based processes with HTML forms and Google Suite, cutting administrative turnaround time',
+      "Digitised inventory tracking and AMC management into a Python/MySQL system",
+      "Replaced paper-based processes with HTML forms and Google Suite, cutting administrative turnaround",
     ],
-    tags: ['Python', 'MySQL', 'HTML', 'Automation'],
   },
 ]
 
 export const EDUCATION = [
   {
-    degree: 'Bachelor of Computer Applications — AI',
+    degree: "Bachelor of Computer Applications — AI",
     school: "Lingaya's Vidyapeeth, Faridabad",
-    period: '2023 – 2026',
-    note: 'Specialising in AI & ML foundations',
-    highlight: '9.0',
-    highlightLabel: 'CGPA',
-    icon: 'grad',
+    period: "2023 — 2026",
+    note: "Specialising in AI & ML foundations",
+    highlight: "9.0 CGPA",
   },
   {
-    degree: 'Senior Secondary — Commerce',
-    school: 'Grand Columbus International School, Faridabad',
-    period: '2021 – 2023',
-    note: 'Class 12: 93% · Class 10: 90%',
-    highlight: '93%',
-    highlightLabel: 'Class 12',
-    icon: 'school',
+    degree: "Senior Secondary — Commerce",
+    school: "Grand Columbus International School, Faridabad",
+    period: "2021 — 2023",
+    note: "Class 10: 90%",
+    highlight: "93%",
+  },
+]
+
+export const NOTES = [
+  {
+    title: "Building with agentic loops",
+    date: "Aug 2026",
+    tag: "AI Engineering",
+    excerpt:
+      "Scope it, delegate implementation to a coding agent, hand the diff to an independent reviewer on a different model family before calling it done. The loop keeps quality high while shipping fast — it caught critical bugs in this very site before they reached production.",
+  },
+  {
+    title: "Multi-model routing: the right model for the phase",
+    date: "Jul 2026",
+    tag: "Architecture",
+    excerpt:
+      "Code generation ≠ code review ≠ architecture planning. Claude reasons and reviews, DeepSeek generates fast, Gemini handles multimodal analysis. Routing tasks across model families is not a nice-to-have — it's the competitive advantage.",
+  },
+  {
+    title: "What offline-first taught me about real software",
+    date: "Jun 2026",
+    tag: "Engineering Notes",
+    excerpt:
+      "Two shipped projects run offline-first because the real world has patchy internet. Design for the moment the network drops, not the happy path: queue writes locally, sync on return, and test what users depend on daily.",
   },
 ]
 
 export const CERTIFICATIONS = [
-  { title: 'Business Analysis Foundations: Strategy Analysis', org: 'LinkedIn Learning · IIBA-endorsed', year: '2026', img: '/certifications/01.webp', verify: 'https://www.linkedin.com/learning/certificates/1262f12054207bc0e3940e7b179eb74503a5de97ced33d036824ddf6ae83a263', recent: true },
-  { title: 'Business Analysis: Essential Tools & Techniques', org: 'LinkedIn Learning', year: '2026', img: '/certifications/02.webp', verify: 'https://www.linkedin.com/learning/certificates/8b961f90ab88e05dadfb871a28408ae5f1ab1897e1746dab720657f2fe0e1a8f', recent: true },
-  { title: 'SQL Server 2022 Administration', org: 'LinkedIn Learning · Microsoft Press', year: '2025', img: '/certifications/03.webp', verify: 'https://www.linkedin.com/learning/certificates/74c91cf89b2cff72c7dde729cdfecbc4ef160f50ab832795335281164e83669c', recent: true },
-  { title: 'Advance Your MS SQL Server Skills', org: 'LinkedIn Learning', year: '2025', img: '/certifications/04.webp', verify: 'https://www.linkedin.com/learning/certificates/ad8a61bb0b45ee55caa90d13fcd1f1638fef376ef18e9d1288adf17a9c2c663b', recent: true },
-  { title: 'Introduction to Transact-SQL', org: 'LinkedIn Learning', year: '2025', img: '/certifications/05.webp', verify: 'https://www.linkedin.com/learning/certificates/652b8b73b335a447ca3c5ff7d9fd66dec6c1bff434f373907f6a163ba5f2da87', recent: true },
-  { title: 'Power BI for Data Analysis', org: 'Vodafone Idea Foundation', year: '2025', img: '/certifications/06.webp', recent: true },
-  { title: 'Build Reports & Dashboards in Power BI', org: 'Vodafone Idea Foundation', year: '2025', img: '/certifications/07.webp', recent: true },
-  { title: 'SOAR — AI to be Aware (NSQF Level 2)', org: 'NASSCOM / NCVET', year: '2025', img: '/certifications/08.webp', recent: true },
-  { title: 'MongoDB Basics for Students', org: 'MongoDB · Credly', year: '2025', img: '/certifications/09.webp', verify: 'https://www.credly.com/go/RZxqRxHT', recent: true },
-  { title: 'Introduction to Business Intelligence', org: 'Infosys Springboard', year: '2024', img: '/certifications/10.webp' },
-  { title: 'Operating System Fundamentals', org: 'NPTEL · IIT Kharagpur', year: '2024', img: '/certifications/11.webp' },
-  { title: 'Data Science Completion Course', org: 'Data Science Program', year: '2024', img: '/certifications/12.webp' },
-  { title: 'NumPy, SciPy, Matplotlib & Pandas A–Z: ML', org: 'Udemy', year: '2024', img: '/certifications/13.webp' },
-  { title: 'Introduction to Microsoft Excel', org: 'Coursera', year: '2023', img: '/certifications/14.webp' },
-]
-
-export const OFFERINGS = [
-  {
-    icon: 'bot',
-    accent: '#22d3ee',
-    title: 'AI-Powered Web Applications',
-    desc: 'Production React apps built with AI-assisted engineering — offline-first, tested, deployed.',
-    points: [
-      'End-to-end builds: database design → UI → deployment',
-      'Offline-first architecture for real-world connectivity',
-      'Automated test suites that protect daily operations',
-    ],
-    note: '2 products live on Netlify',
-  },
-  {
-    icon: 'chart',
-    accent: '#34d399',
-    title: 'Business Intelligence Platforms',
-    desc: 'From raw operational data to leadership-ready dashboards and KPIs.',
-    points: [
-      'SQL + Power BI pipelines that save 15–20 hrs/month',
-      'Revenue, risk and compliance KPIs in one view',
-      'Python-driven data manipulation and predictive modelling',
-    ],
-    note: 'Shipped at Trossachs',
-  },
-  {
-    icon: 'flow',
-    accent: '#e879f9',
-    title: 'AI Orchestration & Automation',
-    desc: 'Agentic workflows that compose AI tools into repeatable delivery pipelines.',
-    points: [
-      'OpenCode + Claude orchestration for faster shipping',
-      'Independent review loops that catch real bugs',
-      'Workflow digitisation that replaces paper processes',
-    ],
-    note: 'Used on every build',
-  },
-]
-
-export const WORKFLOW = {
-  kicker: 'How I Ship',
-  title: 'AI-Native Workflow',
-  subtitle: 'My engineering pipeline is built around autonomous agent loops and multi-model orchestration — not just writing code faster, but building smarter systems.',
-  pillars: [
-    {
-      icon: 'bot',
-      accent: '#22d3ee',
-      title: 'Orchestration Engine',
-      desc: 'Terminal-based AI agents (OpenCode) handle code generation, file edits, and project scaffolding. Every feature goes through autonomous agent loops before reaching production.',
-      tools: ['OpenCode', 'Claude', 'Sub-Agent Loops'],
-    },
-    {
-      icon: 'flow',
-      accent: '#818cf8',
-      title: 'Multi-Model Routing',
-      desc: 'Different models for different phases: Claude for code review and reasoning, DeepSeek for rapid code generation, Gemini for multimodal analysis. The right model for the right task.',
-      tools: ['Claude', 'DeepSeek', 'Gemini'],
-    },
-    {
-      icon: 'spark',
-      accent: '#e879f9',
-      title: 'Automated Review Loops',
-      desc: 'Independent review agents run on different model families to catch blind spots. Code is flagged, reviewed, and patched before deployment — zero rubber-stamping.',
-      tools: ['Independent Review', 'Diff Analysis', 'Auto-Patch'],
-    },
-    {
-      icon: 'rocket',
-      accent: '#34d399',
-      title: 'Rapid Prototyping',
-      desc: 'Concept to deployed Vercel/Supabase application in record time. Agent-assisted scaffolding, database design, and UI generation — shipping complete products, not just demos.',
-      tools: ['Vercel', 'Supabase', '48hr Deploy'],
-    },
-  ],
-  loop: [
-    { step: '01', label: 'Scope', desc: 'Define the feature, constraints, and acceptance criteria' },
-    { step: '02', label: 'Generate', desc: 'AI agent generates implementation with full context' },
-    { step: '03', label: 'Review', desc: 'Independent review agent audits the diff for bugs' },
-    { step: '04', label: 'Patch', desc: 'Issues flagged and auto-fixed before merge' },
-    { step: '05', label: 'Ship', desc: 'Deploy to production with automated test coverage' },
-  ],
-}
-
-export const POSTS = [
-  {
-    title: 'Building with agentic loops — how multi-model orchestration changed my workflow',
-    date: 'Aug 2026',
-    tag: 'AI Engineering',
-    excerpt: 'I now build production features with a multi-agent workflow: a specialist coder on OpenCode, an independent reviewer on a different model family, and automated test generation. Here is the loop that keeps quality high while shipping at 10x speed.',
-    body: [
-      'The pattern is simple: scope the feature, delegate the implementation to a coding agent, then hand the diff to an independent review agent before calling anything done. The reviewer runs on a different model family, so it genuinely catches blind spots instead of rubber-stamping.',
-      'This portfolio itself — every section, the cert wall, the reveal system — was built and audited this way. The review pass alone caught critical bugs (an invisible hero, counters that never ran) before they ever reached production.',
-    ],
-  },
-  {
-    title: 'Multi-model routing: using Claude, DeepSeek, and Gemini for different tasks',
-    date: 'Jul 2026',
-    tag: 'Architecture',
-    excerpt: 'Not all models are equal. Here is how I route tasks across Claude, DeepSeek, and Gemini — using each model for its strengths rather than forcing one model to do everything.',
-    body: [
-      'Claude excels at code review and reasoning — it catches bugs that other models miss. DeepSeek is fast and cost-effective for rapid code generation. Gemini handles multimodal analysis when I need vision capabilities.',
-      'The key insight: different phases of development benefit from different models. Code generation ≠ code review ≠ architecture planning. Multi-model routing is not a nice-to-have — it is a competitive advantage.',
-    ],
-  },
-  {
-    title: 'What going offline-first taught me about real-world software',
-    date: 'Jun 2026',
-    tag: 'Engineering Notes',
-    excerpt: 'Two of my shipped projects — a jewellery retail suite and a gate attendance system — run offline-first because the real world has patchy internet. A few lessons on local-first architecture that planning docs never mention.',
-    body: [
-      'Design for the moment the network drops, not the happy path. Both projects queue writes locally and sync when connectivity returns, and both were built because the users literally could not rely on a cloud-only system.',
-      'The barcode-detector polyfill made camera-based check-in work without a native SDK, and vitest + testing-library gave the retail suite 20+ automated tests over billing, stock and CSV logic — worth every minute when the shop depends on it daily.',
-    ],
-  },
+  { title: "Business Analysis Foundations: Strategy Analysis", org: "LinkedIn Learning · IIBA-endorsed", year: "2026", img: "/certifications/01.webp", verify: "https://www.linkedin.com/learning/certificates/1262f12054207bc0e3940e7b179eb74503a5de97ced33d036824ddf6ae83a263" },
+  { title: "Business Analysis: Essential Tools & Techniques", org: "LinkedIn Learning", year: "2026", img: "/certifications/02.webp", verify: "https://www.linkedin.com/learning/certificates/8b961f90ab88e05dadfb871a28408ae5f1ab1897e1746dab720657f2fe0e1a8f" },
+  { title: "SQL Server 2022 Administration", org: "LinkedIn Learning · Microsoft Press", year: "2025", img: "/certifications/03.webp", verify: "https://www.linkedin.com/learning/certificates/74c91cf89b2cff72c7dde729cdfecbc4ef160f50ab832795335281164e83669c" },
+  { title: "Advance Your MS SQL Server Skills", org: "LinkedIn Learning", year: "2025", img: "/certifications/04.webp", verify: "https://www.linkedin.com/learning/certificates/ad8a61bb0b45ee55caa90d13fcd1f1638fef376ef18e9d1288adf17a9c2c663b" },
+  { title: "Introduction to Transact-SQL", org: "LinkedIn Learning", year: "2025", img: "/certifications/05.webp", verify: "https://www.linkedin.com/learning/certificates/652b8b73b335a447ca3c5ff7d9fd66dec6c1bff434f373907f6a163ba5f2da87" },
+  { title: "Power BI for Data Analysis", org: "Vodafone Idea Foundation", year: "2025", img: "/certifications/06.webp", verify: null },
+  { title: "Build Reports & Dashboards in Power BI", org: "Vodafone Idea Foundation", year: "2025", img: "/certifications/07.webp", verify: null },
+  { title: "SOAR — AI to be Aware (NSQF Level 2)", org: "NASSCOM / NCVET", year: "2025", img: "/certifications/08.webp", verify: null },
+  { title: "MongoDB Basics for Students", org: "MongoDB · Credly", year: "2025", img: "/certifications/09.webp", verify: "https://www.credly.com/go/RZxqRxHT" },
+  { title: "Introduction to Business Intelligence", org: "Infosys Springboard", year: "2024", img: "/certifications/10.webp", verify: null },
+  { title: "Operating System Fundamentals", org: "NPTEL · IIT Kharagpur", year: "2024", img: "/certifications/11.webp", verify: null },
+  { title: "Data Science Completion Course", org: "Data Science Program", year: "2024", img: "/certifications/12.webp", verify: null },
+  { title: "NumPy, SciPy, Matplotlib & Pandas A–Z: ML", org: "Udemy", year: "2024", img: "/certifications/13.webp", verify: null },
+  { title: "Introduction to Microsoft Excel", org: "Coursera", year: "2023", img: "/certifications/14.webp", verify: null },
 ]

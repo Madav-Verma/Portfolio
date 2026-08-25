@@ -1,0 +1,65 @@
+.certs {
+  display: flex;
+  gap: var(--s-4);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding-bottom: var(--s-3);
+  scrollbar-width: thin;
+}
+
+.certs__card {
+  flex: 0 0 min(300px, 74vw);
+  scroll-snap-align: start;
+  border: 1px solid var(--line-strong);
+  background: var(--paper-raised);
+  box-shadow: var(--shadow-lift);
+  text-decoration: none;
+  color: inherit;
+  transition:
+    transform var(--t-ui) var(--ease-out),
+    box-shadow var(--t-ui) var(--ease-out);
+}
+
+.certs__card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-float);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .certs__card:hover { transform: none; }
+}
+
+@media (hover: none) {
+  .certs__card:hover { transform: none; }
+}
+
+.certs__card img {
+  width: 100%;
+  height: auto;
+  border-bottom: 1px solid var(--line);
+}
+
+.certs__caption {
+  display: grid;
+  gap: 4px;
+  padding: 10px 14px 12px;
+}
+
+.certs__title {
+  font-size: 0.8438rem;
+  font-weight: 580;
+  letter-spacing: -0.01em;
+  line-height: 1.35;
+}
+
+.certs__verify {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  margin: 0 14px 14px;
+  color: var(--accent);
+}
+
+.certs__hint {
+  margin-top: var(--s-2);
+}

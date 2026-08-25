@@ -1,0 +1,35 @@
+.notes {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr;
+  gap: clamp(28px, 4vw, 64px);
+}
+
+.notes__card {
+  border-top: 1px solid var(--line-strong);
+  padding-top: var(--s-4);
+  display: grid;
+  gap: var(--s-3);
+  align-content: start;
+  transition: background-color var(--t-ui) var(--ease-out);
+}
+
+.notes__meta { color: var(--ink-3); }
+
+.notes__title {
+  font-size: clamp(1.25rem, 1.1rem + 0.8vw, 1.6rem);
+  font-weight: 620;
+  letter-spacing: -0.02em;
+  max-width: 18ch;
+}
+
+.notes__excerpt {
+  color: var(--ink-2);
+  font-size: 0.9375rem;
+}
+
+@media (max-width: 860px) {
+  .notes {
+    grid-template-columns: 1fr;
+    gap: var(--s-5);
+  }
+}

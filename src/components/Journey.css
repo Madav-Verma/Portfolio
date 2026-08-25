@@ -1,0 +1,108 @@
+.journey__story {
+  columns: 1;
+  color: var(--ink-2);
+  font-size: clamp(1.0625rem, 1rem + 0.55vw, 1.25rem);
+  max-width: 52em;
+  margin-bottom: clamp(56px, 8vh, 96px);
+}
+
+.journey__ledger {
+  border-top: 1px solid var(--line-strong);
+}
+
+.journey__entry {
+  display: grid;
+  grid-template-columns: 220px minmax(0, 1fr);
+  gap: clamp(20px, 3vw, 64px);
+  padding-block: clamp(24px, 3.5vh, 36px);
+  border-bottom: 1px solid var(--line);
+}
+
+.journey__period {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  padding-top: 6px;
+}
+
+.journey__now { margin-top: 2px; }
+
+.journey__role {
+  font-size: var(--text-h3);
+  font-weight: 620;
+  letter-spacing: -0.02em;
+}
+
+.journey__company {
+  margin-block: 4px 14px;
+}
+
+.journey__points {
+  display: grid;
+  gap: 8px;
+}
+
+.journey__points li {
+  position: relative;
+  padding-left: 20px;
+  color: var(--ink-2);
+  font-size: 0.9375rem;
+}
+
+.journey__points li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.62em;
+  width: 10px;
+  height: 1.5px;
+  background: var(--accent);
+}
+
+/* Education block */
+.journey__edu-head {
+  margin-top: clamp(56px, 8vh, 88px);
+}
+
+.journey__edu-title {
+  font-size: var(--text-h3);
+  font-weight: 620;
+}
+
+.journey__edu .journey__role {
+  font-size: 1.125rem;
+}
+
+.journey__edu .journey__company { margin-bottom: 10px; }
+
+.journey__note {
+  color: var(--ink-2);
+  font-size: 0.9375rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--s-3);
+}
+
+.journey__highlight {
+  font-family: var(--font-mono);
+  font-size: var(--text-micro);
+  letter-spacing: var(--track-mono);
+  text-transform: uppercase;
+  color: var(--accent);
+  border: 1px solid currentColor;
+  padding: 4px 8px 3px;
+}
+
+@media (max-width: 760px) {
+  .journey__entry {
+    grid-template-columns: 1fr;
+    gap: var(--s-2);
+  }
+
+  .journey__period {
+    flex-direction: row;
+    align-items: center;
+  }
+}

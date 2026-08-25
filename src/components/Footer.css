@@ -1,0 +1,107 @@
+/* The closing plate: ink ground in BOTH themes (a fixed dark close,
+   never a theme flip). Local tokens keep it stable while the page
+   above flips between paper and film. */
+.footer {
+  --ffg: #ecebe4;                              /* footer foreground, both themes */
+  --fdim: rgb(236 235 228 / 64%);
+  --fline: rgb(236 235 228 / 22%);
+  background: #191916;
+  color: var(--ffg);
+}
+
+@media (prefers-color-scheme: dark) {
+  .footer {
+    background: #0d0d0b;                       /* deeper than the film ground */
+  }
+}
+
+/* Focus ring must survive the dark ground in light theme too */
+.footer :focus-visible {
+  outline-color: #96a8ff;
+}
+
+.footer ::selection {
+  background: var(--ffg);
+  color: #171714;
+}
+
+.footer__head {
+  display: grid;
+  gap: var(--s-4);
+  padding-block: clamp(72px, 11vh, 128px) clamp(40px, 6vh, 64px);
+}
+
+.footer__mail {
+  justify-self: start;
+  font-size: clamp(1.35rem, 0.9rem + 3.4vw, 4rem);
+  font-weight: 640;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+  text-decoration: none;
+  overflow-wrap: anywhere;
+}
+
+.footer__mail::after {
+  height: 2px;
+  bottom: -6px;
+}
+
+.footer__pitch {
+  color: var(--fdim);
+  max-width: 34em;
+}
+
+.footer__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--s-5);
+  padding-block: clamp(32px, 5vh, 56px);
+  border-top: 1px solid var(--fline);
+}
+
+.footer__col {
+  display: grid;
+  gap: 12px;
+  align-content: start;
+}
+
+.footer__dt { color: var(--fdim); }
+
+.footer__col dd {
+  margin: 0;
+  display: grid;
+  gap: 10px;
+  justify-items: start;
+}
+
+.footer__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  min-height: 32px;
+  color: var(--ffg);
+  text-decoration: none;
+  opacity: 0.92;
+  transition: opacity var(--t-fast) var(--ease-out);
+}
+
+.footer__link:hover { opacity: 1; text-decoration: underline; text-underline-offset: 4px; }
+
+.footer__ext { opacity: 0.55; }
+
+.footer__base {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: var(--s-2) var(--s-5);
+  padding-block: var(--s-4);
+  border-top: 1px solid var(--fline);
+  padding-bottom: max(var(--s-4), env(safe-area-inset-bottom));
+}
+
+@media (max-width: 760px) {
+  .footer__grid {
+    grid-template-columns: 1fr;
+    gap: var(--s-5);
+  }
+}

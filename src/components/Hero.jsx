@@ -1,202 +1,122 @@
-import { useState } from 'react'
-import { Icon } from './Shared.jsx'
-import { useTyped, useCounter, useReveal, useMagnetic, useScrolled } from '../hooks.js'
-import { PROFILE, STATS, TERMINAL } from '../data.js'
-
-function HeroActions() {
-  const primaryRef = useMagnetic(18)
-  const ghostRef = useMagnetic(10)
-  return (
-    <div className="hero-actions reveal">
-      <a className="btn btn-primary" href="#projects" data-cursor="work" ref={primaryRef}>
-        View my work
-        <Icon name="arrow" size={17} />
-        <span className="btn-shine" aria-hidden="true" />
-      </a>
-      <a className="btn btn-ghost" href={PROFILE.resume} download data-cursor="cv" ref={ghostRef}>
-        <Icon name="download" size={17} />
-        Resume
-      </a>
-      {PROFILE.github && (
-        <a
-          className="btn btn-ghost"
-          href={PROFILE.github}
-          target="_blank"
-          rel="noopener noreferrer"
-          data-cursor="github"
-        >
-          <Icon name="github" size={16} />
-          GitHub
-        </a>
-      )}
-    </div>
-  )
-}
-
-function Stat({ stat, delay }) {
-  const [ref, value] = useCounter(stat.value, { decimals: stat.decimals ?? 0, delay })
-  return (
-    <div className="stat reveal" ref={ref}>
-      <div className="stat-icon">
-        <Icon name={stat.icon} size={16} />
-      </div>
-      <div className="stat-value">
-        {value}
-        <span className="stat-suffix">{stat.suffix}</span>
-      </div>
-      <div className="stat-label">{stat.label}</div>
-    </div>
-  )
-}
-
-function TerminalCard() {
-  return (
-    <div className="terminal reveal" aria-hidden="true">
-      <div className="terminal-bar">
-        <span className="term-dot red" />
-        <span className="term-dot amber" />
-        <span className="term-dot green" />
-        <span className="term-title">daksh@agentic-builder — zsh</span>
-        <span className="term-rec">
-          <span /> rec
-        </span>
-      </div>
-      <div className="terminal-body">
-        {TERMINAL.map((line, i) =>
-          line.type === 'cmd' ? (
-            <div key={i} className="term-line">
-              <span className="term-prompt">➜</span>
-              <span className="term-cmd">{line.text}</span>
-            </div>
-          ) : (
-            <div key={i} className="term-line term-out">
-              <span className="term-out-text">{line.text}</span>
-            </div>
-          )
-        )}
-        <div className="term-line">
-          <span className="term-prompt">➜</span>
-          <span className="term-cursor" aria-hidden="true" />
-        </div>
-      </div>
-    </div>
-  )
-}
-
-/* Identity ring — drop a real photo at public/photo.jpg and it appears automatically */
-function IdentityRing() {
-  const [showPhoto, setShowPhoto] = useState(true)
-  return (
-    <div className="identity-ring reveal" data-cursor="photo">
-      <div className="identity-rotor" aria-hidden="true" />
-      <div className="identity-inner identity-tilt">
-        {showPhoto ? (
-          <img
-            src="/photo.jpg"
-            alt="Daksh Verma"
-            className="identity-photo"
-            onError={() => setShowPhoto(false)}
-            loading="eager"
-            fetchpriority="high"
-            decoding="async"
-          />
-        ) : (
-          <span className="identity-mono">
-            DV<span>·</span>
-          </span>
-        )}
-      </div>
-      <span className="identity-orbit orbit-a" aria-hidden="true" />
-      <span className="identity-orbit orbit-b" aria-hidden="true" />
-      <span className="identity-tag">
-        <Icon name="spark" size={11} /> Applied AI Engineer
-      </span>
-    </div>
-  )
-}
-
-const FLOAT_CHIPS = [
-  { label: 'Multi-Model', icon: 'flow', cls: 'chip-1' },
-  { label: 'Supabase', icon: 'code', cls: 'chip-2' },
-  { label: 'OpenCode', icon: 'bot', cls: 'chip-3' },
-  { label: 'Agent Loops', icon: 'spark', cls: 'chip-4' },
-]
+import { useEffect, useRef, useState } from "react";
+import { ArrowDown, DownloadSimple } from "@phosphor-icons/react";
+import { HERO_META, PROFILE } from "../data.js";
+import "./Hero.css";
 
 export default function Hero() {
-  const typed = useTyped(PROFILE.typed)
-  const ref = useReveal()
-  const scrolled = useScrolled(120)
+  const titleRef = useRef(null);
+  const plateRef = useRef(null);
+  const [dims, setDims] = useState(null); // real rendered measurements, px
+
+  /* Dimension annotations are measured from the live layout after the
+     intro settles — real numbers, never invented ones. No JS, no dims. */
+  useEffect(() => {
+    let raf = 0;
+    let t = 0;
+    const measure = () => {
+      const lines = titleRef.current?.querySelectorAll(".hero__line-inner");
+      const plateH = plateRef.current?.offsetHeight;
+      let w = 0;
+      lines?.forEach((l) => { w = Math.max(w, l.offsetWidth); });
+      if (w && plateH) setDims({ w, h: plateH });
+    };
+    const start = () => {
+      raf = requestAnimationFrame(() => { t = setTimeout(measure, 1250); });
+    };
+    if (document.fonts?.ready) document.fonts.ready.then(start);
+    else start();
+    return () => { cancelAnimationFrame(raf); clearTimeout(t); };
+  }, []);
 
   return (
-    <section className="hero" id="home" ref={ref}>
-      <div className="hero-grid" />
-      <span
-        className={`hero-watermark ${scrolled ? 'hero-watermark-scrolled' : ''}`}
-        aria-hidden="true"
-      >
-        DAKSH
-      </span>
+    <section className="hero sheet" id="top" aria-label="Introduction">
+      <div className="hero__sweep" aria-hidden="true" />
 
-      <div className="container hero-inner">
-        <div className="hero-left">
-          <div className="hero-eyebrow reveal">
-            <span className="eyebrow-pulse" aria-hidden="true" />
-            Available for AI-Native Engineering roles
-          </div>
+      <div className="hero__copy">
+        <p className="stamp stamp--live hero__status">
+          <span className="live-dot" aria-hidden="true" />
+          {PROFILE.status}
+        </p>
 
-          <h1 className="hero-name reveal">
-            Daksh
-            <span className="hero-name-accent"> Verma</span>
-          </h1>
-
-          <div className="hero-role reveal">
-            <span className="hero-typed">{typed}</span>
-            <span className="typed-caret" aria-hidden="true" />
-          </div>
-
-          <p className="hero-desc reveal">{PROFILE.headline}</p>
-
-          <HeroActions />
-
-          <div className="hero-chips reveal">
-            <span className="chip">
-              <Icon name="bot" size={14} /> OpenCode
+        <h1 className="hero__title" ref={titleRef}>
+          <span className="hero__line">
+            <span className="hero__line-inner">Production software,</span>
+          </span>
+          <span className="hero__line">
+            <span className="hero__line-inner">
+              shipped <em className="hero__em">end&nbsp;to&nbsp;end.</em>
             </span>
-            <span className="chip">
-              <Icon name="flow" size={14} /> Multi-Agent Orchestration
-            </span>
-            <span className="chip">
-              <Icon name="code" size={14} /> React · Python · SQL
-            </span>
-          </div>
-        </div>
+          </span>
+        </h1>
 
-        <div className="hero-right">
-          <div className="hero-visual">
-            <IdentityRing />
-            <TerminalCard />
-            <div className="hero-glow" />
-            {FLOAT_CHIPS.map((c) => (
-              <span key={c.label} className={`float-chip ${c.cls}`} aria-hidden="true">
-                <Icon name={c.icon} size={13} /> {c.label}
-              </span>
-            ))}
-          </div>
+        {dims && (
+          <span
+            className="hero__dim hero__dim--h"
+            style={{ "--w": `${dims.w}px` }}
+            aria-hidden="true"
+          >
+            <i className="hero__dim-tick" />
+            <i className="hero__dim-line" />
+            <i className="hero__dim-tick" />
+            <span className="hero__dim-label">{dims.w} PX</span>
+          </span>
+        )}
+
+        <p className="hero__sub" data-load style={{ "--d": 5 }}>
+          {PROFILE.subline}
+        </p>
+
+        <div className="hero__cta" data-load style={{ "--d": 6 }}>
+          <a className="btn" href="#work">
+            View selected work
+            <ArrowDown size={16} weight="bold" aria-hidden="true" />
+          </a>
+          <a
+            className="btn btn--ghost"
+            href={PROFILE.resume}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Download résumé
+            <DownloadSimple size={16} weight="bold" aria-hidden="true" />
+          </a>
         </div>
       </div>
 
-      <div className="stats-bar container reveal">
-        {STATS.map((s, i) => (
-          <Stat key={i} stat={s} delay={(i + 1) * 300} />
-        ))}
-      </div>
-
-      <a className="hero-scroll" href="#about" aria-label="Scroll down">
-        <span>scroll</span>
-        <div className="scroll-line">
-          <span />
+      <figure className="hero__plate" data-load style={{ "--d": 7 }} ref={plateRef}>
+        <div className="hero__plate-frame">
+          <span className="ruler hero__plate-ruler" aria-hidden="true" />
+          <img
+            src="/photo.jpg"
+            alt={`Portrait of ${PROFILE.name}`}
+            width="320"
+            height="320"
+            loading="eager"
+            fetchPriority="high"
+          />
         </div>
-      </a>
+        <figcaption className="hero__plate-caption">
+          <span>Fig. A — {PROFILE.name}</span>
+          <span>{PROFILE.role}</span>
+        </figcaption>
+        <dl className="hero__meta caption">
+          {HERO_META.map((m) => (
+            <div key={m.k} className="hero__meta-row">
+              <dt>{m.k}</dt>
+              <dd>{m.v}</dd>
+            </div>
+          ))}
+        </dl>
+
+        {dims && (
+          <span className="hero__dim hero__dim--v" aria-hidden="true">
+            <i className="hero__dim-tick" />
+            <i className="hero__dim-line" />
+            <i className="hero__dim-tick" />
+            <span className="hero__dim-label">{dims.h} PX</span>
+          </span>
+        )}
+      </figure>
     </section>
-  )
+  );
 }
