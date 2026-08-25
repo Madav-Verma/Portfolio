@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { ArrowDown, DownloadSimple } from "@phosphor-icons/react";
+import { ArrowDown, DownloadSimple, EnvelopeSimple } from "@phosphor-icons/react";
 import { HERO_META, PROFILE } from "../data.js";
 import "./Hero.css";
 
@@ -67,7 +67,11 @@ export default function Hero() {
         </p>
 
         <div className="hero__cta" data-load style={{ "--d": 6 }}>
-          <a className="btn" href="#work">
+          <a className="btn" href={`mailto:${PROFILE.email}`}>
+            Email me
+            <EnvelopeSimple size={16} weight="bold" aria-hidden="true" />
+          </a>
+          <a className="btn btn--ghost" href="#work">
             View selected work
             <ArrowDown size={16} weight="bold" aria-hidden="true" />
           </a>
@@ -86,14 +90,15 @@ export default function Hero() {
       <figure className="hero__plate" data-load style={{ "--d": 7 }} ref={plateRef}>
         <div className="hero__plate-frame">
           <span className="ruler hero__plate-ruler" aria-hidden="true" />
-          <img
-            src="/photo.jpg"
-            alt={`Portrait of ${PROFILE.name}`}
-            width="320"
-            height="320"
-            loading="eager"
-            fetchPriority="high"
-          />
+           <img
+             src="/photo.jpg"
+             alt={`Portrait of ${PROFILE.name}`}
+             width="320"
+             height="320"
+             loading="eager"
+             fetchPriority="high"
+             decoding="async"
+           />
         </div>
         <figcaption className="hero__plate-caption">
           <span>Fig. A — {PROFILE.name}</span>

@@ -63,6 +63,7 @@ export const PROJECTS = [
     link: "https://retailjewellery.netlify.app/",
     screenshot: "/screenshots/sjs-jewellery.png",
     year: "2026",
+    metric: "20+ automated tests · 100% offline-capable",
     tagline: "Complete retail management for a working jewellery store — billing to backup.",
     bullets: [
       "Billing, stock, purchases, customers & invoices with PDF generation",
@@ -96,6 +97,7 @@ export const PROJECTS = [
     link: "https://employeeattedance.netlify.app/",
     screenshot: "/screenshots/attendance.png",
     year: "2026",
+    metric: "~1s camera check-in · 0 records lost offline",
     tagline: "Camera-based QR/barcode check-in that survives connection dropouts.",
     bullets: [
       "Camera-based QR & barcode check-in for gate entry",
@@ -130,6 +132,7 @@ export const PROJECTS = [
     repo: "https://github.com/Madav-Verma/DataFlow-Pro",
     screenshot: null,
     year: "2026",
+    metric: "15–20 hrs/month of reporting saved",
     tagline: "Real-time analytics platform — AI-orchestrated SQL pipelines for leadership.",
     bullets: [
       "Revenue trends, compliance risk and operational KPIs in one view",
@@ -162,6 +165,7 @@ export const PROJECTS = [
     repo: null,
     screenshot: null,
     year: "2024",
+    metric: "2 workflows digitised · paper eliminated",
     tagline: "Paper processes replaced by a Python/MySQL digital pipeline.",
     bullets: [
       "Inventory tracking and AMC management on Python/MySQL",
@@ -194,6 +198,7 @@ export const PROJECTS = [
     repo: null,
     screenshot: null,
     year: "2026",
+    metric: "Full agentic pipeline — review on every commit",
     tagline: "End-to-end build under full agentic orchestration.",
     bullets: [
       "Full agentic pipeline: multi-agent review loops on every commit",

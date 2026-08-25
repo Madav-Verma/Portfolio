@@ -132,6 +132,19 @@
   max-width: 34em;
 }
 
+/* Punchy one-line outcome, drawn as a drafting stamp */
+.work__metric {
+  display: inline-block;
+  margin-bottom: var(--s-3);
+  padding: 4px 9px 3px;
+  border: 1px solid currentColor;
+  font-family: var(--font-mono);
+  font-size: var(--text-micro);
+  letter-spacing: var(--track-mono);
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
 .work__case { display: grid; }
 
 .work__case-row {

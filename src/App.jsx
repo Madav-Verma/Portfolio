@@ -12,7 +12,7 @@ import Footer from "./components/Footer.jsx";
 export default function App() {
   return (
     <>
-      <a className="skip-link" href="#work">Skip to content</a>
+      <a className="skip-link" href="#main">Skip to content</a>
       <Nav />
       <main id="main">
         <Hero />

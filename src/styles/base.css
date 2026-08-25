@@ -326,3 +326,10 @@ html.js [data-revealed] {
 
   .link-draw::after { transition-duration: 120ms; }
 }
+
+/* Reveal safety: if the observer never fires (JS error mid-flight),
+   force all staged content visible so nothing is permanently hidden. */
+html.reveal-safety [data-reveal] {
+  opacity: 1 !important;
+  transform: none !important;
+}

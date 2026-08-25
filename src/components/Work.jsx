@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { ArrowUpRight, CaretDown, GithubLogo } from "@phosphor-icons/react";
 import { FILTERS, PROJECTS } from "../data.js";
 import { useReveal } from "../hooks/useReveal.js";
@@ -31,6 +31,20 @@ export default function Work() {
     () => (filter === "all" ? PROJECTS : PROJECTS.filter((p) => p.status === filter)),
     [filter],
   );
+
+  // Escape collapses the open case study and returns focus to its trigger.
+  useEffect(() => {
+    if (!openId) return;
+    const onKey = (e) => {
+      if (e.key === "Escape") {
+        const btn = document.querySelector(`[aria-controls="panel-${openId}"]`);
+        setOpenId(null);
+        btn?.focus();
+      }
+    };
+    document.addEventListener("keydown", onKey);
+    return () => document.removeEventListener("keydown", onKey);
+  }, [openId]);
 
   return (
     <section className="section" id="work" ref={sectionRef} aria-label="Selected work">
@@ -97,6 +111,7 @@ export default function Work() {
                   <div className="work__panel-inner">
                     <div className="work__detail">
                       <div className="work__prose">
+                        {p.metric && <p className="work__metric">{p.metric}</p>}
                         {p.tagline && <p className="work__tagline">{p.tagline}</p>}
                         {p.caseStudy && (
                           <dl className="work__case">
@@ -123,13 +138,14 @@ export default function Work() {
                         <figure className="work__figure">
                           {p.screenshot ? (
                             <>
-                              <img
-                                src={p.screenshot}
-                                alt={`${p.title} interface`}
-                                width="900"
-                                height="562"
-                                loading="lazy"
-                              />
+                               <img
+                                 src={p.screenshot}
+                                 alt={`${p.title} interface`}
+                                 width="900"
+                                 height="562"
+                                 loading="lazy"
+                                 decoding="async"
+                               />
                               <figcaption className="caption">
                                 Fig. — Production interface
                               </figcaption>

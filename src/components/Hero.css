@@ -96,8 +96,9 @@ html.js .hero__line:nth-child(2) .hero__line-inner { animation-delay: 360ms; }
   .hero__dim-tick, .hero__dim-label { animation: none !important; opacity: 1 !important; }
 }
 
-/* ---------- Load-in for the rest (existing system) ---------- */
-[data-load] { opacity: 0; }
+/* ---------- Load-in for the rest (existing system) ----------
+   Gated on html.js so content stays visible without JavaScript. */
+html.js [data-load] { opacity: 0; }
 
 @media (prefers-reduced-motion: no-preference) {
   [data-load] {
@@ -324,4 +325,8 @@ html.js .hero__line:nth-child(2) .hero__line-inner { animation-delay: 360ms; }
   }
 
   .hero__dim--v { display: none; }
+}
+
+@media (max-width: 600px) {
+  .hero__dim--h { display: none; }
 }

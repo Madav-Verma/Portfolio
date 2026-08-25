@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { List, X } from "@phosphor-icons/react";
 import { NAV_LINKS, PROFILE } from "../data.js";
 import { useScrollLock } from "../hooks/useReveal.js";
@@ -6,12 +6,50 @@ import "./Nav.css";
 
 export default function Nav() {
   const [open, setOpen] = useState(false);
+  const [progress, setProgress] = useState(0);
   useScrollLock(open);
 
   const close = () => setOpen(false);
 
+  // Scroll-progress hairline at the nav edge (rAF-throttled, passive).
+  useEffect(() => {
+    let raf = 0;
+    const onScroll = () => {
+      cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(() => {
+        const el = document.documentElement;
+        const max = el.scrollHeight - el.clientHeight;
+        setProgress(max > 0 ? (el.scrollTop / max) * 100 : 0);
+      });
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      cancelAnimationFrame(raf);
+    };
+  }, []);
+
+  // Escape closes the mobile overlay and returns focus to the toggle.
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (e) => {
+      if (e.key === "Escape") {
+        setOpen(false);
+        document.querySelector(".nav__toggle")?.focus();
+      }
+    };
+    document.addEventListener("keydown", onKey);
+    return () => document.removeEventListener("keydown", onKey);
+  }, [open]);
+
   return (
     <header className="nav">
+      <div
+        className="nav__progress"
+        style={{ width: `${progress}%` }}
+        aria-hidden="true"
+      />
       <div className="sheet nav__inner">
         <a className="nav__brand" href="#top" onClick={close} aria-label={`${PROFILE.name} — back to top`}>
           <span className="nav__mark" aria-hidden="true">{PROFILE.initials}</span>

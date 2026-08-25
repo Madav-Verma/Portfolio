@@ -8,6 +8,22 @@
   border-bottom: 1px solid var(--line);
 }
 
+/* Scroll-progress hairline at the sheet edge */
+.nav__progress {
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  height: 2px;
+  width: 0;
+  background: var(--accent);
+  z-index: 1;
+  transition: width 80ms linear;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nav__progress { transition: none; }
+}
+
 .nav__inner {
   display: flex;
   align-items: center;

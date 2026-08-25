@@ -1,23 +1,12 @@
 {
   "name": "Daksh Verma — Applied AI Solutions Engineer",
   "short_name": "Daksh Verma",
-  "description": "Portfolio of Daksh Verma, Applied AI Solutions Engineer. AI-powered solutions, data engineering and full-stack development.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#04050a",
-  "theme_color": "#04050a",
+  "background_color": "#f6f5f1",
+  "theme_color": "#f6f5f1",
   "icons": [
-    {
-      "src": "/favicon.svg",
-      "sizes": "any",
-      "type": "image/svg+xml",
-      "purpose": "any"
-    },
-    {
-      "src": "/apple-touch-icon.png",
-      "sizes": "180x180",
-      "type": "image/png",
-      "purpose": "any"
-    }
+    { "src": "/favicon.svg", "type": "image/svg+xml", "sizes": "any" },
+    { "src": "/apple-touch-icon.png", "type": "image/png", "sizes": "180x180" }
   ]
 }
