@@ -100,7 +100,7 @@ export default function Footer() {
         </dl>
 
         <div className="footer__base caption">
-          <span>© {year} {PROFILE.name} · Faridabad, India (IST)</span>
+          <span>© {year} {PROFILE.name} · Faridabad, India (IST) · {PROFILE.status}</span>
         </div>
       </div>
     </footer>

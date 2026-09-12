@@ -60,9 +60,15 @@ ink (#191916 light / #0d0d0b dark) with fixed foreground #ecebe4. No pure black/
   440ms var(--ease-drawer) (accordion height exception); inner content fades 320ms delayed.
 - **Cursor preview plate**: fixed, lerped transform via rAF writing style directly (no React state);
   gated to `(hover:hover) and (pointer:fine)` + no reduced motion; hidden while a panel is open.
-- **Cert rail**: scroll-snap flex, keyboard-focusable region, verify links where they exist.
+- **Cert wall**: salon-grid plates with pinned-sheet tilt, hover straighten + lift + shimmer, verify links where they exist.
 - **Footer**: giant mailto as the heading (aria-label="Contact" on landmark), mono link columns,
-  colophon base bar.
+  colophon base bar (year · location · availability status).
+- **Hero proof strip + availability line**: factual `dl` under the hero CTAs — live-app count
+  derived from `PROJECTS`, certification count from `CERTIFICATIONS`, tests/hours mirrored from
+  project metrics (never hard-coded). Fragment Mono values with tabular numerals, hairline
+  dividers, 2px ink top rule. Availability caption line (location · IST · status) follows with a
+  16px accent tick. Both join the `data-load` cascade at --d 7/8; reduced-motion resolves to the
+  standard fade.
 
 ## Motion
 
@@ -88,16 +94,17 @@ not a tracking gimmick. Voice tier softened (no "AI crew"): headline "Production
 end to end.", status "Open to new roles" — factual project/role language retained as evidence.
 
 ### Second peak — "The loop draws itself" (wow pass, 2026-09-12)
-One language, two moves, both the plotter drawing:
+One language, two moves — the trace draws, the wall hangs:
 1. Process trace — section scroll progress (rAF, one style write, zero deps) draws the accent
    hairline over the base rule and travels a square plotter head diamond through 01→05
    (vertical on mobile). No-JS renders the original hairline; reduced motion hides both.
-2. Credential vault scrub — GSAP ScrollTrigger pins the rail on desktop while vertical
-   scroll drives the 14 plates sideways (ease none, scrub 1, invalidateOnRefresh).
-   GSAP arrives by dynamic import so first paint never pays; touch, small screens,
-   reduced motion and no-JS keep native swipe/snap. Every card stays Tab-reachable.
-GSAP justification (PRODUCT.md runtime-dep rule): continuous pinned scrub cannot be built
-from IO (discrete) or rAF hairlines; scoped to CertRail with matchMedia cleanup.
+2. Credential pinned wall — the 14 plates hang salon-style (12-col grid, two wide
+   heroes, slight pinned-sheet tilt). Hover straightens, lifts, and sweeps candlelight
+   once; pure CSS, so touch, small screens, reduced motion, print and no-JS resolve
+   to the calm static wall. Every verifiable card stays a real link, Tab-reachable.
+Wall note (replaces GSAP justification): the vault scrub pin was retired for the pinned
+wall — same 14 plates, zero scroll trap, pure CSS. `gsap` stays in package.json unused;
+remove on the next dep pass.
 
 ### Reveal families (same tokens, same 70ms stagger clock)
 Plate heads wipe in (clip-path draw), work/FAQ rows slide from the margin (-14px X),

@@ -250,7 +250,7 @@ export const PROCESS = {
 
 export const EXPERIENCE = [
   {
-    role: "AI-Native Solutions Engineer",
+    role: "Applied AI Solutions Engineer",
     company: "Prokon Hi-Tech Systems",
     period: "2025 — Present",
     current: true,
@@ -366,4 +366,13 @@ export const CERTIFICATIONS = [
   { title: "Data Science Completion Course", org: "Data Science Program", year: "2024", img: "/certifications/12.webp", verify: null },
   { title: "NumPy, SciPy, Matplotlib & Pandas A–Z: ML", org: "Udemy", year: "2024", img: "/certifications/13.webp", verify: null },
   { title: "Introduction to Microsoft Excel", org: "Coursera", year: "2023", img: "/certifications/14.webp", verify: null },
+]
+
+/* Hero proof strip — derived from the data above so counts can never drift
+   from the source of truth (live apps and certifications are computed). */
+export const PROOF_POINTS = [
+  { k: "Live production apps", v: String(PROJECTS.filter((p) => p.status === "live").length) },
+  { k: "Automated tests — SJS", v: "20+" },
+  { k: "Reporting hrs saved / month", v: "15–20h" },
+  { k: "Verifiable certifications", v: String(CERTIFICATIONS.length) },
 ]

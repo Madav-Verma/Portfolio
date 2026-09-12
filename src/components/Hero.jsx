@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { ArrowDown, DownloadSimple, EnvelopeSimple } from "@phosphor-icons/react";
-import { HERO_META, PROFILE } from "../data.js";
+import { HERO_META, PROFILE, PROOF_POINTS } from "../data.js";
 import "./Hero.css";
 
 export default function Hero() {
@@ -85,6 +85,24 @@ export default function Hero() {
             <DownloadSimple size={16} weight="bold" aria-hidden="true" />
           </a>
         </div>
+
+        <dl
+          className="hero__proof"
+          data-load
+          style={{ "--d": 7 }}
+          aria-label="Key proof points"
+        >
+          {PROOF_POINTS.map((p) => (
+            <div key={p.k} className="hero__proof-item">
+              <dt className="caption hero__proof-label">{p.k}</dt>
+              <dd className="hero__proof-value">{p.v}</dd>
+            </div>
+          ))}
+        </dl>
+
+        <p className="hero__avail caption" data-load style={{ "--d": 8 }}>
+          {PROFILE.location} · IST (UTC+5:30) · {PROFILE.status}
+        </p>
       </div>
 
       <figure className="hero__plate" data-load style={{ "--d": 7 }} ref={plateRef}>
