@@ -20,6 +20,7 @@ export const NAV_LINKS = [
   { href: "#process", label: "Process" },
   { href: "#journey", label: "Journey" },
   { href: "#notes", label: "Notes" },
+  { href: "#faq", label: "FAQ" },
   { href: "#contact", label: "Contact" },
 ]
 
@@ -320,6 +321,33 @@ export const NOTES = [
     tag: "Engineering Notes",
     excerpt:
       "Two shipped projects run offline-first because the real world has patchy internet. Design for the moment the network drops, not the happy path: queue writes locally, sync on return, and test what users depend on daily.",
+  },
+]
+
+export const FAQS = [
+  {
+    q: "What does Daksh Verma do?",
+    a: "Applied AI Solutions Engineer in Faridabad, India. I ship complete production products with agentic workflows, orchestrating OpenCode, Claude, DeepSeek and Gemini from scope to deploy. Currently at Prokon Hi-Tech and open to new roles.",
+  },
+  {
+    q: "Which products are live right now?",
+    a: "Two. SJS Retail Jewellery Suite at retailjewellery.netlify.app covers billing, stock, HUID tracking and PDF invoices with 20+ automated tests and full offline support. Employee Attendance System at employeeattedance.netlify.app does camera QR and barcode check-in in about a second with zero records lost offline.",
+  },
+  {
+    q: "How does the agentic build loop work?",
+    a: "One loop, five phases. Scope the feature with acceptance criteria, generate with a coding agent, review with an independent agent on a different model family, patch every flagged issue before merge, then ship with automated tests green.",
+  },
+  {
+    q: "What is the proof behind the speed claims?",
+    a: "DataFlow Pro at Trossachs saved leadership 15 to 20 hours a month of manual reporting. Prokon digitised 2 paper workflows to zero paper. Both live products run offline-first because shop and gate connectivity drops in the real world.",
+  },
+  {
+    q: "What is the background?",
+    a: "BCA in Artificial Intelligence at Lingaya's Vidyapeeth, 2023 to 2026, 9.0 CGPA. Class 12 commerce at 93%. Data and business analyst intern at Trossachs, software developer intern at Prokon Hi-Tech in 2024.",
+  },
+  {
+    q: "How do I get in touch?",
+    a: "Email vermadaksh120@gmail.com directly, I read every message myself. Phone plus LinkedIn and GitHub links sit in the contact plate. No contact form by choice, mailto first, resume PDF linked in the hero and footer.",
   },
 ]
 

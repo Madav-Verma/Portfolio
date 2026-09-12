@@ -1,0 +1,59 @@
+# Daksh Verma — Applied AI Solutions Engineer (full record)
+
+> Applied AI Solutions Engineer building production-grade, end-to-end AI-powered products — agentic workflows, multi-model orchestration, and a full-stack mindset. BCA (AI), 9.0 CGPA, Lingaya's Vidyapeeth (2023-2026). Currently AI-Native Solutions Engineer at Prokon Hi-Tech. Contact mailto-first: vermadaksh120@gmail.com.
+> Canonical: https://portfolio-desibox.vercel.app/ · Sitemap: https://portfolio-desibox.vercel.app/sitemap.xml · Resume: /resume/Daksh_Verma_Resume_2026.pdf
+
+## Identity
+- Name: Daksh Verma
+- Role: Applied AI Solutions Engineer
+- Location: Faridabad, India
+- Email: vermadaksh120@gmail.com
+- Phone: +91 95990 68010
+- LinkedIn: https://www.linkedin.com/in/daksh-verma-613774229/
+- GitHub: https://github.com/Madav-Verma
+- Education: BCA Artificial Intelligence (2023-2026), Lingaya's Vidyapeeth, 9.0 CGPA; Senior Secondary Commerce, Grand Columbus International School, Class 12: 93%, Class 10: 90%
+
+## How every build runs
+- One loop, five phases: 01 Scope (spec + acceptance criteria), 02 Generate (coding agent implements), 03 Review (independent agent on another model family audits the diff), 04 Patch (flagged issues fixed before merge), 05 Ship (deploy with automated tests green).
+- Routing per phase: OpenCode orchestrates; Claude reasons and reviews; DeepSeek generates fast; Gemini handles multimodal analysis.
+
+## Live products (verifiable)
+- SJS Retail Jewellery Suite — https://retailjewellery.netlify.app/ — Complete retail management for a working jewellery store: billing, stock, purchases, customers, PDF invoices, live gold-rate price calculator, hallmark HUID splitting engine for GST compliance, role-based auth, audit trails, offline local database with queued sync. Evidence: 20+ automated unit tests (Vitest) covering billing, stock and CSV logic; 100% offline-capable.
+- Employee Attendance System — https://employeeattedance.netlify.app/ — Camera-based QR and barcode check-in for gate entry via barcode-detector polyfill (no native SDK). Three role tiers (employee, admin, super admin). Offline-first with online/offline detection and queued sync; reports with Excel export. Evidence: ~1s scan check-in; 0 records lost offline.
+- DataFlow Pro, BI Platform (shipped at Trossachs) — https://github.com/Madav-Verma/DataFlow-Pro — Real-time analytics on Power BI with AI-orchestrated SQL pipelines (Claude refactored SQL, OpenCode orchestrated). Revenue trends, compliance risk and operational KPIs in one view. Evidence: 15-20 hours/month of manual data processing saved.
+- Prokon Digital Workflows (shipped at Prokon Hi-Tech, 2024) — Inventory tracking and AMC management on Python/MySQL with HTML forms and Google Suite integration. Evidence: 2 workflows digitised; paper eliminated.
+- Company Website Rebuild (in production, live soon) — Full agentic pipeline with multi-agent review loops on every commit; React + Vercel + Supabase.
+
+## Experience
+- AI-Native Solutions Engineer, Prokon Hi-Tech Systems (2025-Present): end-to-end AI-powered solutions with agentic workflows; company website rebuild through the agentic pipeline.
+- Data & Business Analyst Intern, Trossachs Corporate Advisors (Jan-May 2026): DataFlow Pro delivery; 15-20 hours/month saved.
+- Software Developer Intern, Prokon Hi-Tech Systems (Jun-Jul 2024): digitised inventory and AMC into Python/MySQL; HTML forms + Google Suite.
+
+## Capabilities
+- Agentic orchestration: OpenCode, Claude, DeepSeek, Gemini, sub-agent loops, prompt engineering.
+- Engineering and product: React, Vite, JavaScript, Python, Supabase, REST APIs, Git, Vercel, Netlify, offline-first.
+- Data and BI: SQL (T-SQL), Power BI, Pandas and NumPy, database design, dashboarding.
+- Delivery: rapid prototyping, offline-first, workflow digitisation, stakeholder communication.
+
+## Engineering notes (authored)
+- Building with agentic loops (Aug 2026): scope, delegate to a coding agent, independent reviewer on a different model family before done.
+- Multi-model routing (Jul 2026): code generation is not code review is not architecture planning; route per phase.
+- Offline-first lessons (Jun 2026): queue writes locally, sync on return; design for the network drop, not the happy path.
+
+## Certifications (14, images in /certifications/*.webp)
+- Business Analysis Foundations: Strategy Analysis (LinkedIn Learning, IIBA-endorsed, 2026) — verifiable.
+- Business Analysis: Essential Tools and Techniques (LinkedIn Learning, 2026) — verifiable.
+- SQL Server 2022 Administration (LinkedIn Learning, Microsoft Press, 2025) — verifiable.
+- Advance Your MS SQL Server Skills (LinkedIn Learning, 2025) — verifiable.
+- Introduction to Transact-SQL (LinkedIn Learning, 2025) — verifiable.
+- Power BI for Data Analysis; Build Reports and Dashboards in Power BI (Vodafone Idea Foundation, 2025).
+- SOAR, AI to be Aware, NSQF Level 2 (NASSCOM/NCVET, 2025).
+- MongoDB Basics for Students (MongoDB, Credly, 2025) — verifiable: https://www.credly.com/go/RZxqRxHT
+- Introduction to Business Intelligence (Infosys Springboard, 2024).
+- Operating System Fundamentals (NPTEL, IIT Kharagpur, 2024).
+- Data Science Completion Course (2024); NumPy, SciPy, Matplotlib and Pandas A-Z: ML (Udemy, 2024); Introduction to Microsoft Excel (Coursera, 2023).
+
+## Contact
+- Email (primary, reads every message): vermadaksh120@gmail.com
+- Phone: +91 95990 68010 · LinkedIn and GitHub via sameAs in page JSON-LD.
+- No contact form by decision; mailto-first.

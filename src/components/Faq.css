@@ -1,0 +1,94 @@
+/* FAQ — drafting-sheet accordion, same contract as work rows.
+   Full-row button, grid-rows height exception only, answer fades in.
+   Sentence case throughout; mono meta lives in the plate-head. */
+
+.faq__list {
+  border-top: 1px solid var(--line-strong);
+}
+
+.faq__item {
+  border-bottom: 1px solid var(--line);
+}
+
+.faq__row-h {
+  margin: 0;
+}
+
+.faq__row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 24px;
+  align-items: center;
+  gap: clamp(12px, 2vw, 28px);
+  width: 100%;
+  padding-block: clamp(18px, 2.6vh, 26px);
+  background: none;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+  transition: background-color var(--t-ui) var(--ease-out);
+}
+
+.faq__row:hover {
+  background: var(--paper-raised);
+}
+
+.faq__q {
+  font-size: clamp(1.0625rem, 1rem + 0.6vw, 1.3rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+.faq__caret {
+  justify-self: end;
+  flex-shrink: 0;
+  transition: transform var(--t-drawer) var(--ease-drawer);
+}
+
+.is-open .faq__caret {
+  transform: rotate(180deg);
+}
+
+.is-open .faq__row {
+  background: var(--paper-raised);
+}
+
+.faq__panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows var(--t-drawer) var(--ease-drawer);
+}
+
+.is-open .faq__panel {
+  grid-template-rows: 1fr;
+}
+
+.faq__panel-inner {
+  overflow: hidden;
+  min-height: 0;
+}
+
+.faq__a {
+  padding: 0 0 var(--s-5);
+  padding-right: clamp(0px, 4vw, 64px);
+  color: var(--ink-2);
+  font-size: 0.975rem;
+  max-width: 72ch;
+  opacity: 0;
+  translate: 0 6px;
+  transition:
+    opacity 320ms var(--ease-out) 120ms,
+    translate 320ms var(--ease-out) 120ms;
+}
+
+.is-open .faq__a {
+  opacity: 1;
+  translate: 0 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .faq__a {
+    transition: opacity 160ms ease;
+    translate: none;
+  }
+}

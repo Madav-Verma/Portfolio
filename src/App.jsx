@@ -6,6 +6,7 @@ import Capabilities from "./components/Capabilities.jsx";
 import Process from "./components/Process.jsx";
 import Journey from "./components/Journey.jsx";
 import Notes from "./components/Notes.jsx";
+import Faq from "./components/Faq.jsx";
 import CertRail from "./components/CertRail.jsx";
 import Footer from "./components/Footer.jsx";
 
@@ -22,6 +23,7 @@ export default function App() {
         <Process />
         <Journey />
         <Notes />
+        <Faq />
         <CertRail />
       </main>
       <Footer />

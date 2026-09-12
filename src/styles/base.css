@@ -123,6 +123,14 @@ p {
 .section {
   padding-top: var(--section-gap);
   position: relative;
+  content-visibility: auto;
+  contain-intrinsic-size: auto 900px;
+}
+
+/* Anchored sections clear the fixed 64px nav. */
+section[id],
+footer[id] {
+  scroll-margin-top: calc(var(--nav-h) + 12px);
 }
 
 /* Title block: every sheet carries its heading inside drafting metadata */

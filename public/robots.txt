@@ -1,4 +1,27 @@
 User-agent: *
 Allow: /
 
+# AI assistants and answer engines are welcome on public pages.
+# No AI-only disallow; llms.txt mirrors this sitemap for clean ingestion.
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Bytespider
+Allow: /
+
 Sitemap: https://portfolio-desibox.vercel.app/sitemap.xml

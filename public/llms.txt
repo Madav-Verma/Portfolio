@@ -2,6 +2,10 @@
 
 > Applied AI Solutions Engineer building production-grade, end-to-end AI-powered products — agentic workflows, multi-model orchestration, and a full-stack mindset. BCA (AI) student, 9.0 CGPA. Currently @ Prokon Hi-Tech.
 
+Canonical: https://portfolio-desibox.vercel.app/
+Sitemap: https://portfolio-desibox.vercel.app/sitemap.xml
+Full record: https://portfolio-desibox.vercel.app/llms-full.txt
+
 ## Key facts
 - Name: Daksh Verma
 - Role: Applied AI Solutions Engineer (current)
