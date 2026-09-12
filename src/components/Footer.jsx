@@ -1,4 +1,5 @@
-import { ArrowUpRight, EnvelopeSimple, DownloadSimple, GithubLogo, LinkedinLogo, Phone } from "@phosphor-icons/react";
+import { useEffect, useRef, useState } from "react";
+import { ArrowUpRight, Check, CopySimple, EnvelopeSimple, DownloadSimple, GithubLogo, LinkedinLogo, Phone } from "@phosphor-icons/react";
 import { PROFILE } from "../data.js";
 import { useReveal } from "../hooks/useReveal.js";
 import "./Footer.css";
@@ -6,6 +7,24 @@ import "./Footer.css";
 export default function Footer() {
   const ref = useReveal();
   const year = new Date().getFullYear();
+  const [copied, setCopied] = useState(false);
+  const timer = useRef(null);
+
+  useEffect(() => () => clearTimeout(timer.current), []);
+
+  /* Copy-email micro-delight: the stamp motif acknowledges the action.
+     Clipboard failure falls back to the mailto the visitor already has. */
+  const copyEmail = async () => {
+    try {
+      await navigator.clipboard.writeText(PROFILE.email);
+    } catch {
+      window.location.href = `mailto:${PROFILE.email}`;
+      return;
+    }
+    setCopied(true);
+    clearTimeout(timer.current);
+    timer.current = setTimeout(() => setCopied(false), 2000);
+  };
 
   return (
     <footer className="footer" id="contact" ref={ref} aria-label="Contact">
@@ -32,6 +51,24 @@ export default function Footer() {
                 <Phone size={16} weight="regular" aria-hidden="true" />
                 {PROFILE.phone}
               </a>
+              <button
+                type="button"
+                className={`footer__link footer__copy ${copied ? "is-copied" : ""}`}
+                onClick={copyEmail}
+                aria-live="polite"
+              >
+                {copied ? (
+                  <span key="on" className="footer__copy-inner">
+                    <Check size={16} weight="bold" aria-hidden="true" />
+                    Copied to clipboard
+                  </span>
+                ) : (
+                  <span key="off" className="footer__copy-inner">
+                    <CopySimple size={16} weight="regular" aria-hidden="true" />
+                    Copy email
+                  </span>
+                )}
+              </button>
             </dd>
           </div>
 

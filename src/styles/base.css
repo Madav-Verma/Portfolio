@@ -306,6 +306,55 @@ html.js [data-reveal] {
 html.js [data-revealed] {
   opacity: 1;
   transform: none;
+  clip-path: none;
+  filter: none;
+}
+
+/* ---------- Reveal families: one grammar, varied drafting moves ----------
+   Plate heads wipe in like a rule being drawn; ledger rows slide from the
+   margin; note cards resolve from a soft construction blur. Same tokens,
+   same stagger clock — variety without a new language. */
+html.js .plate-head[data-reveal] {
+  transform: none;
+  clip-path: inset(-2px 100% -2px 0);
+  transition:
+    opacity var(--t-reveal) var(--ease-out),
+    clip-path var(--t-reveal) var(--ease-out);
+  transition-delay: calc(var(--d, 0) * 70ms);
+}
+
+html.js .work__item[data-reveal],
+html.js .faq__item[data-reveal] {
+  transform: translateX(-14px);
+}
+
+html.js .notes__card[data-reveal] {
+  transform: translateY(10px);
+  filter: blur(4px);
+  transition:
+    opacity var(--t-reveal) var(--ease-out),
+    transform var(--t-reveal) var(--ease-out),
+    filter var(--t-reveal) var(--ease-out);
+  transition-delay: calc(var(--d, 0) * 70ms);
+}
+
+/* Tabular figures where numbers are the content */
+.work__metrics dd,
+.process__step-no,
+.hero__dim-label {
+  font-variant-numeric: tabular-nums;
+}
+
+/* ---------- Soft 404 plate ---------- */
+.notfound__copy {
+  color: var(--ink-2);
+  margin-bottom: var(--s-4);
+}
+
+.notfound__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-3);
 }
 
 /* ---------- Skip link ---------- */
@@ -326,9 +375,13 @@ html.js [data-revealed] {
 
 /* ---------- Reduced motion: gentler, not zero ---------- */
 @media (prefers-reduced-motion: reduce) {
-  html.js [data-reveal] {
+  html.js [data-reveal],
+  html.js .plate-head[data-reveal],
+  html.js .notes__card[data-reveal] {
     opacity: 1;
     transform: none;
+    clip-path: none;
+    filter: none;
     transition: opacity 160ms ease;
   }
 
@@ -340,4 +393,6 @@ html.js [data-revealed] {
 html.reveal-safety [data-reveal] {
   opacity: 1 !important;
   transform: none !important;
+  clip-path: none !important;
+  filter: none !important;
 }

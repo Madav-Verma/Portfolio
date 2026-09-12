@@ -6,6 +6,7 @@ import archivoWoff from "@fontsource-variable/archivo/files/archivo-latin-wght-n
 import fragWoff from "@fontsource/fragment-mono/files/fragment-mono-latin-400-normal.woff2?url";
 import "./styles/tokens.css";
 import "./styles/base.css";
+import "./styles/print.css";
 import App from "./App.jsx";
 
 // Gate the reveal engine: without JS, everything stays visible.

@@ -87,6 +87,28 @@ Hard rule honored: NO cursor-following preview plate (removed); motion is the wo
 not a tracking gimmick. Voice tier softened (no "AI crew"): headline "Production software, shipped
 end to end.", status "Open to new roles" — factual project/role language retained as evidence.
 
+### Second peak — "The loop draws itself" (wow pass, 2026-09-12)
+One language, two moves, both the plotter drawing:
+1. Process trace — section scroll progress (rAF, one style write, zero deps) draws the accent
+   hairline over the base rule and travels a square plotter head diamond through 01→05
+   (vertical on mobile). No-JS renders the original hairline; reduced motion hides both.
+2. Credential vault scrub — GSAP ScrollTrigger pins the rail on desktop while vertical
+   scroll drives the 14 plates sideways (ease none, scrub 1, invalidateOnRefresh).
+   GSAP arrives by dynamic import so first paint never pays; touch, small screens,
+   reduced motion and no-JS keep native swipe/snap. Every card stays Tab-reachable.
+GSAP justification (PRODUCT.md runtime-dep rule): continuous pinned scrub cannot be built
+from IO (discrete) or rAF hairlines; scoped to CertRail with matchMedia cleanup.
+
+### Reveal families (same tokens, same 70ms stagger clock)
+Plate heads wipe in (clip-path draw), work/FAQ rows slide from the margin (-14px X),
+note cards resolve from construction blur (4px). Reduced motion and the reveal safety
+override collapse all three to plain fades.
+
+### Micro-delight + paper
+Footer copy-email button stamps a "Copied" confirmation (copy-pop, clipboard fallback
+to mailto, aria-live). Print stylesheet (`styles/print.css`): light ground, expanded
+case studies, resolved reveals, no chrome — the sheet survives the recruiter's printer.
+
 ## Browser surfaces (themed)
 
 Selection (accent/paper swap, inverted inside footer), scrollbar-color, focus-visible 2px outline

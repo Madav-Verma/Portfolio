@@ -7,6 +7,24 @@
   scrollbar-width: thin;
 }
 
+/* Track carries the cards so the scrub tween has one transform target.
+   Native path: track is transparent, the outer .certs scrolls as before. */
+.certs__track {
+  display: flex;
+  gap: var(--s-4);
+}
+
+/* Scrub path (desktop, JS, no reduced motion): the viewport locks and
+   vertical scroll drives the track. Every card stays Tab-reachable. */
+.has-scrub .certs {
+  overflow: hidden;
+  scroll-snap-type: none;
+}
+
+.has-scrub .certs__track {
+  will-change: transform;
+}
+
 .certs__card {
   flex: 0 0 min(300px, 74vw);
   scroll-snap-align: start;

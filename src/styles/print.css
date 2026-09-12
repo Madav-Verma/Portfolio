@@ -1,0 +1,88 @@
+/* ============================================================
+   PRINT — the recruiter journey. PRODUCT.md notes reviewers print
+   or PDF the page, so the sheet must survive paper: light ground,
+   expanded case studies, no chrome or motion residue.
+   ============================================================ */
+
+@page {
+  margin: 14mm;
+}
+
+@media print {
+  :root {
+    --paper: #ffffff;
+    --paper-raised: #ffffff;
+    --paper-sunk: #f4f3ee;
+    --ink: #111110;
+    --ink-2: #33322e;
+    --ink-3: #44433c;
+    --line: rgb(17 17 16 / 18%);
+    --line-strong: rgb(17 17 16 / 40%);
+    --accent: #1f3ac2;
+    --accent-ink: #1f3ac2;
+    --on-accent: #ffffff;
+    --live: #14693d;
+  }
+
+  /* Chrome and motion leave the sheet */
+  .nav,
+  .nav__overlay,
+  .ticker,
+  .hero__sweep,
+  .hero__dim,
+  .certs__hint,
+  .notfound__actions,
+  .faq__caret,
+  .work__caret {
+    display: none !important;
+  }
+
+  body::before {
+    display: none;
+  }
+
+  .section {
+    content-visibility: visible;
+    padding-top: 28px;
+  }
+
+  .hero {
+    min-height: auto;
+    padding-top: 0;
+  }
+
+  /* Every staged entrance resolves; case studies print expanded */
+  html.js [data-reveal],
+  html.js [data-load] {
+    opacity: 1 !important;
+    transform: none !important;
+    clip-path: none !important;
+    filter: none !important;
+    animation: none !important;
+  }
+
+  .work__panel,
+  .faq__panel {
+    grid-template-rows: 1fr !important;
+  }
+
+  .work__detail,
+  .faq__a {
+    opacity: 1 !important;
+    translate: none !important;
+  }
+
+  .certs {
+    overflow: visible;
+    flex-wrap: wrap;
+  }
+
+  .btn,
+  .work__filter {
+    border-color: var(--ink);
+  }
+
+  a {
+    text-decoration-thickness: from-font;
+  }
+}

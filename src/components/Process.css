@@ -24,6 +24,48 @@
   background: var(--line-strong);
 }
 
+/* Plotter trace: accent progress drawn over the base hairline as the
+   section scrolls. --p is written by a rAF scroll listener (0→1). */
+.process__loop::after {
+  content: "";
+  position: absolute;
+  top: 17px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  margin-top: -0.5px;
+  background: var(--accent);
+  transform: scaleX(var(--p, 0));
+  transform-origin: left;
+  will-change: transform;
+}
+
+/* Square plotter head travelling the trace. Hidden until JS starts
+   tracing so no-JS renders exactly the original hairline. */
+.process__head {
+  display: none;
+  position: absolute;
+  z-index: 2;
+  top: 17px;
+  left: calc(var(--p, 0) * 100%);
+  width: 9px;
+  height: 9px;
+  background: var(--accent);
+  transform: translate(-50%, -50%) rotate(45deg);
+  will-change: left;
+}
+
+section[data-tracing] .process__head {
+  display: block;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .process__loop::after,
+  .process__head {
+    display: none;
+  }
+}
+
 .process__step {
   position: relative;
   display: grid;
@@ -101,5 +143,23 @@
     right: auto;
     width: 1px;
     height: auto;
+  }
+
+  .process__loop::after {
+    top: 0;
+    bottom: 34px;
+    left: 17px;
+    right: auto;
+    width: 2px;
+    height: auto;
+    margin-top: 0;
+    margin-left: -0.5px;
+    transform: scaleY(var(--p, 0));
+    transform-origin: top;
+  }
+
+  .process__head {
+    top: calc(var(--p, 0) * 100%);
+    left: 17px;
   }
 }
