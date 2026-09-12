@@ -30,7 +30,6 @@
   .ticker,
   .hero__sweep,
   .hero__dim,
-  .certs__hint,
   .notfound__actions,
   .faq__caret,
   .work__caret {
@@ -74,7 +73,11 @@
 
   .certs {
     overflow: visible;
-    flex-wrap: wrap;
+  }
+
+  .certs__card {
+    transform: none !important;
+    rotate: 0 !important;
   }
 
   .btn,

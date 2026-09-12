@@ -162,6 +162,20 @@ footer[id] {
   white-space: nowrap;
 }
 
+/* Narrow: stack the title block so meta lines sit cleanly under the head. */
+@media (max-width: 600px) {
+  .plate-head {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--s-2);
+  }
+
+  .plate-meta {
+    gap: var(--s-2) var(--s-4);
+    padding-bottom: 0;
+  }
+}
+
 /* Ruler graduations framing a section (VU raise) */
 .ruler {
   height: var(--tick-h);

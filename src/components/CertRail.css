@@ -1,33 +1,22 @@
+/* Pinned wall: 14 plates hung salon-style. The sunk panel is the gallery
+   wall; frames sit at natural height (aligned tops, organic bottoms —
+   symmetry yet clutter). Heroes (1st + 8th) span wide so rows run
+   6+3+3 / 3+3+3+3 / 6+3+3 / 3+3+3+3 with dense flow and no orphans. */
 .certs {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-auto-flow: dense;
+  align-items: start;
   gap: var(--s-4);
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  padding-bottom: var(--s-3);
-  scrollbar-width: thin;
-}
-
-/* Track carries the cards so the scrub tween has one transform target.
-   Native path: track is transparent, the outer .certs scrolls as before. */
-.certs__track {
-  display: flex;
-  gap: var(--s-4);
-}
-
-/* Scrub path (desktop, JS, no reduced motion): the viewport locks and
-   vertical scroll drives the track. Every card stays Tab-reachable. */
-.has-scrub .certs {
-  overflow: hidden;
-  scroll-snap-type: none;
-}
-
-.has-scrub .certs__track {
-  will-change: transform;
+  background: var(--paper-sunk);
+  border: 1px solid var(--line);
+  padding: var(--s-5);
 }
 
 .certs__card {
-  flex: 0 0 min(300px, 74vw);
-  scroll-snap-align: start;
+  position: relative;
+  grid-column: span 3;
+  overflow: hidden;
   border: 1px solid var(--line-strong);
   background: var(--paper-raised);
   box-shadow: var(--shadow-lift);
@@ -35,26 +24,78 @@
   color: inherit;
   transition:
     transform var(--t-ui) var(--ease-out),
+    rotate var(--t-ui) var(--ease-out),
     box-shadow var(--t-ui) var(--ease-out);
 }
 
-.certs__card:hover {
-  transform: translateY(-3px);
+.certs__card:nth-child(1),
+.certs__card:nth-child(8) {
+  grid-column: span 6;
+}
+
+/* Hand-hung tilt — each frame leans its own way, never more than a degree. */
+.certs__card:nth-child(1) { rotate: 0.8deg; }
+.certs__card:nth-child(2) { rotate: -0.6deg; }
+.certs__card:nth-child(3) { rotate: 0.4deg; }
+.certs__card:nth-child(4) { rotate: -0.9deg; }
+.certs__card:nth-child(5) { rotate: 0.6deg; }
+.certs__card:nth-child(6) { rotate: -0.4deg; }
+.certs__card:nth-child(7) { rotate: 1deg; }
+.certs__card:nth-child(8) { rotate: -0.7deg; }
+.certs__card:nth-child(9) { rotate: 0.5deg; }
+.certs__card:nth-child(10) { rotate: -0.8deg; }
+.certs__card:nth-child(11) { rotate: 0.7deg; }
+.certs__card:nth-child(12) { rotate: -0.5deg; }
+.certs__card:nth-child(13) { rotate: 0.9deg; }
+.certs__card:nth-child(14) { rotate: -0.6deg; }
+
+/* Hover magic: the frame straightens, lifts, candlelight sweeps once. */
+.certs__card:is(:hover, :focus-visible) {
+  rotate: 0deg;
+  transform: translateY(-4px);
   box-shadow: var(--shadow-float);
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .certs__card:hover { transform: none; }
+.certs__card:is(:hover, :focus-visible) .certs__no {
+  color: var(--accent);
+  border-color: var(--accent);
 }
 
-@media (hover: none) {
-  .certs__card:hover { transform: none; }
+.certs__card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(105deg, transparent 42%, rgb(255 255 255 / 22%) 50%, transparent 58%);
+  transform: translateX(-130%);
+  pointer-events: none;
+}
+
+.certs__card:is(:hover, :focus-visible)::after {
+  transform: translateX(130%);
+  transition: transform 700ms var(--ease-out);
+}
+
+/* Museum tag — exhibit number pinned to the frame corner. */
+.certs__no {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 1;
+  padding: 3px 7px 2px;
+  background: var(--paper-raised);
+  border: 1px solid var(--line-strong);
+  font-family: var(--font-mono);
+  font-size: var(--text-micro);
+  letter-spacing: var(--track-mono);
+  color: var(--ink-2);
 }
 
 .certs__card img {
   width: 100%;
   height: auto;
   border-bottom: 1px solid var(--line);
+  outline: 1px solid var(--line);
+  outline-offset: -9px;
 }
 
 .certs__caption {
@@ -78,6 +119,57 @@
   color: var(--accent);
 }
 
-.certs__hint {
-  margin-top: var(--s-2);
+@media (max-width: 1100px) {
+  .certs {
+    grid-template-columns: repeat(6, 1fr);
+    padding: var(--s-4);
+  }
+
+  .certs__card {
+    grid-column: span 3;
+  }
+
+  .certs__card:nth-child(1),
+  .certs__card:nth-child(8) {
+    grid-column: span 6;
+  }
+}
+
+@media (max-width: 600px) {
+  .certs {
+    grid-template-columns: 1fr;
+    padding: var(--s-4);
+  }
+
+  .certs__card,
+  .certs__card:nth-child(1),
+  .certs__card:nth-child(8) {
+    grid-column: auto;
+  }
+}
+
+/* Revealed frames return to UI timing: the engine's 640ms reveal transition
+   must not govern hover lift (or its per-frame delay would lag every hover).
+   Motion-safe only — reduced motion keeps the engine's calm fade. */
+@media (prefers-reduced-motion: no-preference) {
+  html.js .certs__card[data-revealed] {
+    transition:
+      transform var(--t-ui) var(--ease-out),
+      rotate var(--t-ui) var(--ease-out),
+      box-shadow var(--t-ui) var(--ease-out);
+    transition-delay: 0ms;
+  }
+}
+
+/* Touch: keep the tilt, skip lift and shimmer (no sticky hover states). */
+@media (hover: none) {
+  .certs__card:hover { transform: none; }
+  .certs__card::after { display: none; }
+}
+
+/* Reduced motion: the calm wall — straight frames, no sweep, no lift. */
+@media (prefers-reduced-motion: reduce) {
+  .certs__card { rotate: 0deg; }
+  .certs__card:is(:hover, :focus-visible) { transform: none; }
+  .certs__card::after { display: none; }
 }

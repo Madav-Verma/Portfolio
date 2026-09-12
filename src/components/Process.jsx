@@ -13,6 +13,7 @@ export default function Process() {
   useEffect(() => {
     const el = ref.current;
     if (!el) return undefined;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return undefined;
     let raf = 0;
     const update = () => {
       cancelAnimationFrame(raf);
