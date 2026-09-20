@@ -2,6 +2,7 @@ export const PROFILE = {
   name: "Daksh Verma",
   initials: "DV",
   role: "Applied AI Solutions Engineer",
+  positioning: "Applied AI Solutions Engineer · Forward-Deployed Delivery",
   location: "Faridabad, India",
   email: "vermadaksh120@gmail.com",
   phone: "+91 95990 68010",
@@ -10,12 +11,13 @@ export const PROFILE = {
   resume: "/resume/Daksh_Verma_Resume_2026.pdf",
   headline: "Production software, shipped end to end.",
   subline:
-    "I orchestrate agentic workflows — OpenCode, Claude, DeepSeek, Gemini — to ship complete products: offline-first, tested, live.",
+    "I orchestrate agentic workflows — OpenCode, Claude, DeepSeek, Gemini — to ship complete products: offline-first, tested, live. And I deploy forward: embedded with the operators who use them.",
   status: "Open to new roles",
 }
 
 export const NAV_LINKS = [
   { href: "#work", label: "Work" },
+  { href: "#now", label: "Now" },
   { href: "#capabilities", label: "Capabilities" },
   { href: "#process", label: "Process" },
   { href: "#journey", label: "Journey" },
@@ -26,23 +28,24 @@ export const NAV_LINKS = [
 
 export const HERO_META = [
   { k: "Base", v: "Faridabad, IN" },
-  { k: "Focus", v: "Agentic · Full-stack" },
+  { k: "Focus", v: "Applied AI · Forward-Deployed" },
   { k: "BCA (AI)", v: "9.0 CGPA" },
 ]
 
 export const MARQUEE = [
   "OpenCode", "Claude", "DeepSeek", "Gemini", "Multi-Model Routing",
-  "Agent Workflows", "Automated Review Loops", "React", "Vite", "Python",
-  "SQL · T-SQL", "Supabase", "Vercel", "Prompt Engineering",
-  "Offline-First", "REST APIs", "Power BI", "Git & GitHub",
+  "Agentic Review Loops", "RAG Pipelines", "TypeScript", "Next.js",
+  "TanStack Start", "React", "Tailwind CSS", "Python",
+  "SQL · T-SQL", "PostgreSQL", "Supabase", "Vercel", "Netlify",
+  "Prompt Engineering", "Offline-First", "REST APIs", "Power BI", "Git & GitHub",
 ]
 
 export const ABOUT = {
   title: "From data analyst to applied AI engineer.",
   paragraphs: [
     "I started as a data analyst, learning how spreadsheets become decisions — building BI platforms that saved teams 15–20 hours a month. Then I found a bigger lever: AI as an engineering multiplier.",
-    "Today I build end-to-end products with agentic workflows — orchestrating multiple models, running autonomous review loops, shipping whole systems at speed. The models aren't toys; they're my engineering team.",
-    "The proof is in production: two live offline-first apps and a leadership BI platform, all built this way.",
+    "Today I work two ways. As an applied AI engineer I orchestrate agentic workflows — OpenCode, Claude, DeepSeek, Gemini — with independent review loops on every diff. As a forward-deployed builder I sit with the operators, from jewellery-store counters to factory gates, and ship into their constraints instead of a clean spec.",
+    "The proof is in production: two live offline-first apps, a leadership BI platform — and at Prokon Hi-Tech, a company website launching now and an ERP/CRM that 10 staff run every day.",
   ],
 }
 
@@ -55,8 +58,86 @@ export const FILTERS = [
 
 export const PROJECTS = [
   {
+    id: "prokon-website",
+    sheet: "WEB-01",
+    title: "Prokon Hi-Tech Website",
+    domain: "Marketing site + catalogue",
+    status: "wip",
+    statusLabel: "In development — hosting in progress",
+    link: null,
+    repo: null,
+    screenshot: "/screenshots/prokon-website-home.png",
+    shots: [
+      { src: "/screenshots/prokon-website-home.png", label: "Homepage — hero, trust badges, product card" },
+      { src: "/screenshots/prokon-website-catalogue.png", label: "Catalogue — faceted search over 96 models" },
+      { src: "/screenshots/prokon-website-product.png", label: "Product page — gallery, price box, 60+ spec rows" },
+      { src: "/screenshots/prokon-website-chatbot.png", label: "Prokon Assistant — grounded answers, lead capture" },
+      { src: "/screenshots/prokon-website-calculator.png", label: "Backup-load calculator — instant recommendation" },
+    ],
+    year: "2026",
+    metric: "96-model catalogue · RAG assistant",
+    tagline: "Company site rebuild — a catalogue that sells, an assistant that answers, tools that recommend.",
+    bullets: [
+      "96-model APC catalogue with faceted search, side-by-side compare and full spec pages, fed by a structured SQLite product database",
+      "Prokon Assistant — RAG chatbot (Gemini 2.0 Flash / GPT-4o-mini) grounded in the product knowledge base, with a rule-engine fallback so it never dead-ends; quick replies plus lead capture",
+      "Interactive backup-load calculator and IO-spec chart that recommend the right UPS on the page",
+      "SEO/GEO-ready: sitemap, JSON-LD structured data, llms.txt — built to be found by search and answer engines",
+    ],
+    metrics: [
+      { v: "24", l: "routes" },
+      { v: "96", l: "catalogue models" },
+      { v: "60+", l: "spec rows, flagship page" },
+    ],
+    stack: ["Next.js 16", "React 19", "TypeScript", "Tailwind CSS", "Gemini 2.0 Flash", "GPT-4o-mini", "SQLite"],
+    caseStudy: {
+      challenge:
+        "The live company site doesn't sell — thin product information, no way to compare models, no self-serve answers, and inbound questions all land on the phone.",
+      approach:
+        "Full rebuild on Next.js 16 with TypeScript: a modelled product catalogue (search, facets, compare, 60+ spec rows per flagship page), a retrieval-grounded assistant that answers from the knowledge base and falls back to deterministic rules instead of hallucinating, and interactive tools that recommend hardware on the page.",
+      outcome:
+        "Launching — the catalogue, assistant and tools are built and verified; hosting is in progress.",
+    },
+    tags: ["Next.js", "TypeScript", "RAG", "Catalogue", "SEO/GEO"],
+  },
+  {
+    id: "prokon-erp",
+    sheet: "ERP-02",
+    title: "Prokon ERP / CRM",
+    domain: "Operations platform",
+    status: "shipped",
+    statusLabel: "In daily use · Prokon Hi-Tech",
+    link: null,
+    repo: null,
+    screenshot: null,
+    year: "2026",
+    metric: "8 modules · used daily by 10 staff",
+    tagline: "Company-wide operations platform — CRM, sales, inventory and field service in one system.",
+    bullets: [
+      "Own the build end-to-end (TypeScript, React, TanStack Start, Supabase) — 8 modules: CRM, sales, inventory, purchase, service/AMC, finance, HR & payroll, admin; 145 routes, 189 components, 113 migrations, 75 tests",
+      "CRM runs the full arc: leads → quotations → orders → invoices, with incentives and AI-assisted recommendations",
+      "Tickets carry P1 (most urgent) to P5 priority — the admin list and each engineer's queue sort P1 first; overdue-beyond-24h tickets, expiring AMCs and overdue PM visits surface on the dashboard",
+      "Field-engineer portal: Today / Carry-forward / Waiting-for-parts queue, and a 3-step ticket flow with compulsory serial photo + GPS, field-service report and photo upload",
+      "Ticket and AMC dashboard counts update live over database subscriptions as the team works",
+    ],
+    metrics: [
+      { v: "10", l: "staff daily" },
+      { v: "8", l: "modules" },
+      { v: "145", l: "routes" },
+    ],
+    stack: ["TanStack Start", "TypeScript", "Supabase", "PostgreSQL + RLS", "Radix UI", "Tailwind CSS"],
+    caseStudy: {
+      challenge:
+        "Sales, inventory and field service ran on spreadsheets and memory — error-prone records, end-of-day consolidation, urgent jobs buried in arrival order, and at-risk service accounts invisible until they churned.",
+      approach:
+        "One system as the single source of truth: a modelled Postgres schema with row-level security, priority-based ticket triage (P1–P5), a field portal built around serial-photo + GPS proof, and live ticket/AMC dashboards over database subscriptions — ≈154k lines of TypeScript across 113 migrations.",
+      outcome:
+        "10 staff run it daily. Manual record errors are gone with the system as the single source of truth, managers read real-time reports instead of end-of-day consolidation, urgent jobs surface first, and service-quality signals flag at-risk accounts before they churn.",
+    },
+    tags: ["ERP/CRM", "TypeScript", "Supabase", "Field Service", "Realtime"],
+  },
+  {
     id: "sjs",
-    sheet: "SJS-01",
+    sheet: "SJS-03",
     title: "SJS Retail Jewellery Suite",
     domain: "Production system",
     status: "live",
@@ -90,7 +171,7 @@ export const PROJECTS = [
   },
   {
     id: "attendance",
-    sheet: "ATT-02",
+    sheet: "ATT-04",
     title: "Employee Attendance System",
     domain: "Field operations",
     status: "live",
@@ -124,7 +205,7 @@ export const PROJECTS = [
   },
   {
     id: "dataflow",
-    sheet: "BI-03",
+    sheet: "BI-05",
     title: "DataFlow Pro — BI Platform",
     domain: "Data & analytics",
     status: "shipped",
@@ -157,7 +238,7 @@ export const PROJECTS = [
   },
   {
     id: "prokon",
-    sheet: "WF-04",
+    sheet: "WF-06",
     title: "Prokon Digital Workflows",
     domain: "Process automation",
     status: "shipped",
@@ -188,27 +269,24 @@ export const PROJECTS = [
     },
     tags: ["Python", "MySQL", "Workflow Automation"],
   },
+]
+
+export const NOW = [
   {
-    id: "website",
-    sheet: "WEB-05",
-    title: "Company Website Rebuild",
-    domain: "Web platform",
+    id: "now-website",
+    title: "Prokon Hi-Tech Website",
     status: "wip",
-    statusLabel: "In production — live soon",
+    statusLabel: "In development — hosting in progress",
+    desc: "24 routes, 96-model catalogue, RAG assistant, interactive tools. Launching.",
     link: null,
-    repo: null,
-    screenshot: null,
-    year: "2026",
-    metric: "Full agentic pipeline — review on every commit",
-    tagline: "End-to-end build under full agentic orchestration.",
-    bullets: [
-      "Full agentic pipeline: multi-agent review loops on every commit",
-      "Modern stack — Vercel deployment, Supabase backend",
-    ],
-    metrics: [{ v: "WIP", l: "design + build" }],
-    stack: ["OpenCode", "Claude review agent", "React", "Vercel", "Supabase"],
-    caseStudy: null,
-    tags: ["React", "AI-Assisted", "Agentic"],
+  },
+  {
+    id: "now-erp",
+    title: "Prokon ERP / CRM",
+    status: "shipped",
+    statusLabel: "In daily use · 10 staff",
+    desc: "CRM, sales, inventory, field service — priority triage, live dashboards, real-time reporting.",
+    link: null,
   },
 ]
 
@@ -219,9 +297,29 @@ export const CAPABILITIES = [
     tools: ["OpenCode", "Claude", "DeepSeek", "Gemini", "Sub-agent loops", "Prompt engineering"],
   },
   {
+    domain: "Forward-Deployed Engineering",
+    focus: "Embedded delivery — discovery with operators, solution design under real-world constraints, rollout and adoption.",
+    tools: ["On-site discovery", "Solution design", "Offline-first delivery", "Stakeholder communication", "Adoption & support"],
+  },
+  {
     domain: "Engineering & Product",
     focus: "Complete product delivery: database design to UI to deployment, tested and documented.",
-    tools: ["React", "Vite", "JavaScript", "Python", "Supabase", "REST APIs", "Git", "Vercel", "Netlify"],
+    tools: ["TypeScript", "Next.js", "TanStack Start", "React", "Vite", "JavaScript", "Python", "Supabase", "PostgreSQL", "REST APIs", "Git", "Vercel", "Netlify"],
+  },
+  {
+    domain: "Catalogue & Commerce Systems",
+    focus: "Product data modelling to faceted search, compare and spec pages that sell.",
+    tools: ["Faceted search", "Model compare", "Spec data modelling", "SQLite / Postgres catalogues", "SEO & GEO"],
+  },
+  {
+    domain: "AI Assistants (RAG)",
+    focus: "Grounded assistants that answer from your data — and admit when they can't.",
+    tools: ["Retrieval grounding", "KB indexing", "LLM routing (Gemini, GPT)", "Rule-engine fallback", "SSE streaming", "Lead capture"],
+  },
+  {
+    domain: "Hosting & Deployment",
+    focus: "Build to live URL — domains, TLS, CI deploys, cache and security headers.",
+    tools: ["Vercel", "Netlify", "DNS & domains", "SSL/TLS", "Cache-control & security headers", "CI build pipelines"],
   },
   {
     domain: "Data & BI",
@@ -255,9 +353,9 @@ export const EXPERIENCE = [
     period: "2025 — Present",
     current: true,
     points: [
-      "Building end-to-end AI-powered solutions with agentic workflows — multi-model orchestration and autonomous review loops",
-      "Shipping a full company website rebuild through the agentic pipeline, architecture to production",
-      "Routing OpenCode, Claude, DeepSeek and Gemini per phase — the right model for the right task",
+      "Own the company's web platform and internal ERP/CRM end-to-end — architecture, Postgres schema and row-level security, UI, deployment — for a system 10 staff run daily",
+      "Shipping the company website rebuild (Next.js 16, TypeScript): 96-model catalogue, retrieval-grounded assistant, interactive tools; in development with hosting in progress",
+      "Replaced spreadsheet-run operations with priority-based ticket triage (P1–P5), live ticket/AMC dashboards and real-time reporting — record errors down, urgent jobs first, at-risk service issues visible before they churn",
     ],
   },
   {
@@ -302,6 +400,20 @@ export const EDUCATION = [
 
 export const NOTES = [
   {
+    title: "Shipping a catalogue that sells",
+    date: "Sep 2026",
+    tag: "Product Engineering",
+    excerpt:
+      "A catalogue is a conversion engine, not a list. Faceted search narrows, side-by-side compare decides, and 60+ spec rows answer the question before the phone rings. The assistant on top only works because the data underneath is modelled — RAG over a mess is just faster confusion.",
+  },
+  {
+    title: "What an ERP teaches about data integrity",
+    date: "Sep 2026",
+    tag: "Engineering Notes",
+    excerpt:
+      "Ten people share one truth or ten people keep ten truths. Row-level security, a single source of record, and dashboards that update as colleagues work — integrity is architecture, not discipline. Priority triage only works when the queue itself is trustworthy.",
+  },
+  {
     title: "Building with agentic loops",
     date: "Aug 2026",
     tag: "AI Engineering",
@@ -327,11 +439,23 @@ export const NOTES = [
 export const FAQS = [
   {
     q: "What does Daksh Verma do?",
-    a: "Applied AI Solutions Engineer in Faridabad, India. I ship complete production products with agentic workflows, orchestrating OpenCode, Claude, DeepSeek and Gemini from scope to deploy. Currently at Prokon Hi-Tech and open to new roles.",
+    a: "Applied AI Solutions Engineer in Faridabad, India, working in a forward-deployed way — embedded with the operators who use the software. I ship complete production products with agentic workflows, orchestrating OpenCode, Claude, DeepSeek and Gemini from scope to deploy. Currently at Prokon Hi-Tech and open to new roles.",
+  },
+  {
+    q: "What is a forward-deployed engineer, and how does that fit you?",
+    a: "Someone who ships software inside the customer's reality instead of a clean spec — discovery on site, design under real constraints, rollout and adoption. My jewellery-store suite is offline-first because the shop's internet is unreliable; the gate attendance system assumes connectivity drops at check-in; the Prokon ERP replaced spreadsheets 10 staff touch daily. That is forward-deployed work.",
   },
   {
     q: "Which products are live right now?",
     a: "Two. SJS Retail Jewellery Suite at retailjewellery.netlify.app covers billing, stock, HUID tracking and PDF invoices with 20+ automated tests and full offline support. Employee Attendance System at employeeattedance.netlify.app does camera QR and barcode check-in in about a second with zero records lost offline.",
+  },
+  {
+    q: "What is the Prokon website rebuild?",
+    a: "A full Next.js 16 + TypeScript rebuild of the company site: a 96-model APC catalogue with faceted search and side-by-side compare, a retrieval-grounded assistant (Gemini / GPT) that answers from the product knowledge base, and interactive tools like a backup-load calculator. In development now, hosting in progress.",
+  },
+  {
+    q: "What does the Prokon ERP/CRM do?",
+    a: "A company-wide operations platform in daily use by 10 staff: CRM from leads to invoices with incentives, sales and purchase flows, serial-tracked inventory, and field service with P1-to-P5 ticket triage plus an engineer portal (photo + GPS proof, field-service reports). Ticket and AMC dashboards update live as the team works.",
   },
   {
     q: "How does the agentic build loop work?",
@@ -339,7 +463,7 @@ export const FAQS = [
   },
   {
     q: "What is the proof behind the speed claims?",
-    a: "DataFlow Pro at Trossachs saved leadership 15 to 20 hours a month of manual reporting. Prokon digitised 2 paper workflows to zero paper. Both live products run offline-first because shop and gate connectivity drops in the real world.",
+    a: "DataFlow Pro at Trossachs saved leadership 15 to 20 hours a month of manual reporting. Prokon digitised 2 paper workflows to zero paper. The ERP replaced spreadsheet operations for 10 daily staff. Both live products run offline-first because shop and gate connectivity drops in the real world.",
   },
   {
     q: "What is the background?",
@@ -372,7 +496,7 @@ export const CERTIFICATIONS = [
    from the source of truth (live apps and certifications are computed). */
 export const PROOF_POINTS = [
   { k: "Live production apps", v: String(PROJECTS.filter((p) => p.status === "live").length) },
-  { k: "Automated tests — SJS", v: "20+" },
+  { k: "Staff on the ERP daily", v: "10" },
   { k: "Reporting hrs saved / month", v: "15–20h" },
   { k: "Verifiable certifications", v: String(CERTIFICATIONS.length) },
 ]
