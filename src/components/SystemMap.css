@@ -1,0 +1,118 @@
+/* ============================================================
+   SYSTEMMAP — "the system map draws itself"
+   Cool instrument zone: hairline frame + corner ticks on
+   --paper-cool. Nodes are sharp plates; the one accent lives
+   only in the traces. Motion: SVG stroke draw only.
+   ============================================================ */
+
+.sysmap {
+  position: relative;
+  background: var(--paper-cool);
+  border: 1px solid var(--line-strong);
+  padding: clamp(20px, 3vw, 40px);
+}
+
+/* Corner ticks — drafting registration marks, ink only. */
+.sysmap__tick {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  pointer-events: none;
+}
+
+.sysmap__tick--tl { top: -1px; left: -1px; border-top: 2px solid var(--ink); border-left: 2px solid var(--ink); }
+.sysmap__tick--tr { top: -1px; right: -1px; border-top: 2px solid var(--ink); border-right: 2px solid var(--ink); }
+.sysmap__tick--bl { bottom: -1px; left: -1px; border-bottom: 2px solid var(--ink); border-left: 2px solid var(--ink); }
+.sysmap__tick--br { bottom: -1px; right: -1px; border-bottom: 2px solid var(--ink); border-right: 2px solid var(--ink); }
+
+.sysmap__svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.sysmap__svg--narrow { display: none; }
+
+/* Nodes: sharp plates on the cool ground. */
+.sysmap__plate {
+  fill: var(--paper-raised);
+  stroke: var(--line-strong);
+  stroke-width: 1;
+}
+
+.sysmap__idx {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  fill: var(--ink-3);
+}
+
+.sysmap__title {
+  font-family: var(--font-sans);
+  font-size: 17px;
+  font-weight: 620;
+  letter-spacing: -0.015em;
+  fill: var(--ink);
+}
+
+.sysmap__row {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  fill: var(--ink-2);
+}
+
+/* Traces: the one accent. Labels ride on a cool halo. */
+.sysmap__trace {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 2;
+}
+
+.sysmap__tag {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  fill: var(--ink-2);
+  paint-order: stroke;
+  stroke: var(--paper-cool);
+  stroke-width: 5px;
+}
+
+.sysmap__dot {
+  fill: var(--accent);
+  stroke: none;
+}
+
+.sysmap__caption {
+  margin-top: var(--s-4);
+  padding-top: var(--s-3);
+  border-top: 1px solid var(--line);
+  text-transform: none;
+  letter-spacing: 0.02em;
+  line-height: 1.6;
+  max-width: 62ch;
+}
+
+/* Local visually-hidden: diagram is decorative, the text alternative carries it. */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* Mobile: vertical stack, traces vertical. */
+@media (max-width: 760px) {
+  .sysmap__svg--wide { display: none; }
+  .sysmap__svg--narrow { display: block; }
+}
+
+/* Reduced motion + no-JS: the SVG ships fully drawn, so there is
+   nothing to undo — this only guards against a half-applied JS state. */
+@media (prefers-reduced-motion: reduce) {
+  .sysmap__trace {
+    stroke-dasharray: none;
+    stroke-dashoffset: 0;
+  }
+}
