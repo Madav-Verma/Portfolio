@@ -18,7 +18,7 @@ function ShotsFigure({ project }) {
 
   return (
     <div className="work__shots-wrap">
-      <figure className="work__figure">
+      <figure className="work__figure work__figure--large">
         <img
           src={current.src}
           alt={`${project.title} — ${current.label}`}
@@ -29,7 +29,11 @@ function ShotsFigure({ project }) {
         />
         <figcaption className="caption">Fig. — {current.label}</figcaption>
       </figure>
-      <div className="work__shots" role="group" aria-label={`${project.title} views`}>
+      <div
+        className="work__shots"
+        role="group"
+        aria-label={`${project.title} views`}
+      >
         {shots.map((s, idx) => (
           <button
             key={s.src}
@@ -53,10 +57,10 @@ function WorkFigure({ project }) {
   }
   if (project.screenshot) {
     return (
-      <figure className="work__figure">
+      <figure className="work__figure work__figure--large">
         <img
           src={project.screenshot}
-          alt={`${project.title} interface`}
+          alt={`${project.title} — ${project.tagline ?? "production interface"}`}
           width="900"
           height="562"
           loading="lazy"
@@ -66,7 +70,11 @@ function WorkFigure({ project }) {
       </figure>
     );
   }
-  return <Cover project={project} large />;
+  return (
+    <div className="work__cover-stage">
+      <Cover project={project} large />
+    </div>
+  );
 }
 
 export default function Work() {
@@ -177,7 +185,11 @@ export default function Work() {
 
                 <div id={`panel-${p.id}`} className="work__panel" role="region" aria-label={`${p.title} case study`}>
                   <div className="work__panel-inner">
-                    <div className="work__detail">
+                    <div className="work__stage">
+                      <WorkFigure project={p} />
+                    </div>
+
+                    <div className="work__body">
                       <div className="work__prose">
                         {p.metric && <p className="work__metric">{p.metric}</p>}
                         {p.tagline && <p className="work__tagline">{p.tagline}</p>}
@@ -202,14 +214,12 @@ export default function Work() {
                         </ul>
                       </div>
 
-                      <div className="work__side">
-                        <WorkFigure project={p} />
-
-                        <dl className="work__metrics caption">
+                      <div className="work__rail">
+                        <dl className="work__metrics">
                           {p.metrics.map((m) => (
                             <div key={m.l}>
                               <dd>{m.v}</dd>
-                              <dt>{m.l}</dt>
+                              <dt className="caption">{m.l}</dt>
                             </div>
                           ))}
                         </dl>

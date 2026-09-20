@@ -1,7 +1,8 @@
 /* ============================================================
-   WORK — visual-first index. Every row shows its artifact:
-   a 160px thumbnail, then sheet id + title + domain, year,
-   status stamp, caret. Expanded panel is prose | side.
+   WORK — visual-first index. Rows stay as-is: 160px thumbnail,
+   sheet id + title + domain, year, status stamp, caret.
+   Open panel is a takeover: full-width figure FIRST (up to 900px,
+   --shadow-plate), then prose grid (main | rail).
    Tokens only. Radius 0. Transform/opacity motion only
    (accordion height is the one structural exception).
    ============================================================ */
@@ -53,7 +54,7 @@
   text-align: center;
 }
 
-/* ---------- Index rows ---------- */
+/* ---------- Index rows (untouched) ---------- */
 .work__list {
   border-top: 1px solid var(--line-strong);
 }
@@ -133,7 +134,7 @@
 .is-open .work__caret { transform: rotate(180deg); }
 .is-open .work__row { background: var(--paper-raised); }
 
-/* ---------- Expandable case-study panel ---------- */
+/* ---------- Expandable takeover panel ---------- */
 .work__panel {
   display: grid;
   grid-template-rows: 0fr;
@@ -145,12 +146,8 @@
 .work__panel-inner {
   overflow: hidden;
   min-height: 0;
-}
-
-.work__detail {
   display: grid;
-  grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
-  gap: clamp(28px, 4vw, 64px);
+  gap: clamp(24px, 3.5vw, 48px);
   padding: var(--s-5) 0 var(--s-6);
   opacity: 0;
   translate: 0 6px;
@@ -159,29 +156,130 @@
     translate 320ms var(--ease-out) 120ms;
 }
 
-.is-open .work__detail {
+.is-open .work__panel-inner {
   opacity: 1;
   translate: 0 0;
+}
+
+/* ---------- Stage: figure first, full width ---------- */
+.work__stage {
+  min-width: 0;
+  width: 100%;
+}
+
+.work__figure {
+  width: min(900px, 100%);
+  border: 1px solid var(--line-strong);
+  background: var(--paper-sunk);
+  box-shadow: var(--shadow-plate);
+}
+
+.work__figure img {
+  width: 100%;
+  height: auto;
+}
+
+.work__figure figcaption {
+  padding: 8px 12px;
+  border-top: 1px solid var(--line);
+  background: var(--paper-raised);
+}
+
+@media (min-width: 1024px) {
+  .work__figure--large {
+    min-width: min(700px, 100%);
+  }
+}
+
+/* Selectable thumbnail strip under the primary shot. */
+.work__shots-wrap {
+  display: grid;
+  gap: var(--s-3);
+  min-width: 0;
+}
+
+.work__shots {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s-2);
+  width: min(900px, 100%);
+}
+
+.work__shot {
+  width: 120px;
+  height: 75px;
+  min-height: 44px;
+  padding: 0;
+  border: 1px solid var(--line-strong);
+  background: var(--paper-sunk);
+  cursor: pointer;
+  opacity: 0.72;
+  transition:
+    opacity var(--t-fast) var(--ease-out),
+    border-color var(--t-fast) var(--ease-out),
+    transform var(--t-fast) var(--ease-out);
+}
+
+.work__shot img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.work__shot:hover {
+  opacity: 1;
+  border-color: var(--ink);
+}
+
+.work__shot:active { transform: translateY(1px); }
+
+.work__shot.is-active {
+  opacity: 1;
+  border-color: var(--accent);
+}
+
+/* Imageless stage: instrument plate at large size. */
+.work__cover-stage {
+  width: min(900px, 100%);
+}
+
+@media (min-width: 1024px) {
+  .work__cover-stage {
+    min-width: min(700px, 100%);
+  }
+}
+
+/* ---------- Body: prose grid + side rail ---------- */
+.work__body {
+  display: grid;
+  grid-template-columns: minmax(0, 7fr) minmax(240px, 4fr);
+  gap: clamp(28px, 4vw, 64px);
+  align-items: start;
+}
+
+.work__prose {
+  display: grid;
+  gap: 0;
+  align-content: start;
+  min-width: 0;
+}
+
+/* Metric lede: the one large figure-led line. */
+.work__metric {
+  font-size: var(--text-lede);
+  line-height: var(--leading-snug);
+  letter-spacing: -0.01em;
+  font-variant-numeric: tabular-nums;
+  max-width: 28ch;
+  margin-bottom: var(--s-2);
 }
 
 .work__tagline {
   font-size: clamp(1.0625rem, 1rem + 0.6vw, 1.25rem);
   font-weight: 540;
+  color: var(--ink-2);
   margin-bottom: var(--s-4);
   max-width: 34em;
-}
-
-/* Punchy one-line outcome, drawn as a drafting stamp */
-.work__metric {
-  display: inline-block;
-  margin-bottom: var(--s-3);
-  padding: 4px 9px 3px;
-  border: 1px solid currentColor;
-  font-family: var(--font-mono);
-  font-size: var(--text-micro);
-  letter-spacing: var(--track-mono);
-  text-transform: uppercase;
-  color: var(--accent);
 }
 
 .work__case { display: grid; }
@@ -222,81 +320,19 @@
   background: var(--accent);
 }
 
-/* ---------- Side column ---------- */
-.work__side {
+/* ---------- Side rail ---------- */
+.work__rail {
   display: grid;
   gap: var(--s-4);
   align-content: start;
   min-width: 0;
 }
 
-.work__figure {
-  border: 1px solid var(--line-strong);
-  background: var(--paper-sunk);
-  box-shadow: var(--shadow-plate);
-}
-
-.work__figure img {
-  width: 100%;
-  height: auto;
-}
-
-.work__figure figcaption {
-  padding: 8px 12px;
-  border-top: 1px solid var(--line);
-  background: var(--paper-raised);
-}
-
-/* Selectable thumbnail strip under the primary shot. */
-.work__shots-wrap {
-  display: grid;
-  gap: var(--s-2);
-  min-width: 0;
-}
-
-.work__shots {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--s-2);
-}
-
-.work__shot {
-  width: 72px;
-  height: 48px;
-  min-height: 44px;
-  padding: 0;
-  border: 1px solid var(--line-strong);
-  background: var(--paper-sunk);
-  cursor: pointer;
-  opacity: 0.72;
-  transition:
-    opacity var(--t-fast) var(--ease-out),
-    border-color var(--t-fast) var(--ease-out),
-    transform var(--t-fast) var(--ease-out);
-}
-
-.work__shot img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.work__shot:hover {
-  opacity: 1;
-  border-color: var(--ink);
-}
-
-.work__shot:active { transform: translateY(1px); }
-
-.work__shot.is-active {
-  opacity: 1;
-  border-color: var(--accent);
-}
-
 .work__metrics {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
   border: 1px solid var(--line);
+  background: var(--paper-raised);
 }
 
 .work__metrics > div {
@@ -309,10 +345,11 @@
 .work__metrics > div:last-child { border-right: none; }
 
 .work__metrics dd {
-  font-family: var(--font-sans);
-  font-size: 1.375rem;
-  font-weight: 640;
-  letter-spacing: -0.02em;
+  font-family: var(--font-mono);
+  font-size: clamp(1.5rem, 1.3rem + 0.8vw, 1.9rem);
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  font-variant-numeric: tabular-nums;
 }
 
 .work__metrics dt {
@@ -355,7 +392,25 @@
     font-size: clamp(1.15rem, 1rem + 1vw, 1.4rem);
   }
 
-  .work__detail {
+  .work__figure,
+  .work__shots,
+  .work__cover-stage {
+    width: 100%;
+  }
+
+  .work__shots {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding-bottom: var(--s-2);
+  }
+
+  .work__shot {
+    flex: 0 0 120px;
+    scroll-snap-align: start;
+  }
+
+  .work__body {
     grid-template-columns: 1fr;
   }
 }
@@ -364,7 +419,7 @@
 @media (prefers-reduced-motion: reduce) {
   .work__panel { transition: none; }
 
-  .work__detail {
+  .work__panel-inner {
     transition: opacity 160ms ease;
     translate: none;
   }
