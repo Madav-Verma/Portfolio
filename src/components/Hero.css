@@ -4,7 +4,7 @@
   gap: clamp(40px, 6vw, 96px);
   align-items: end;
   padding-top: calc(var(--nav-h) + clamp(64px, 10vh, 120px));
-  padding-bottom: var(--s-6);
+  padding-bottom: var(--s-5);
   position: relative;
 }
 

@@ -23,6 +23,60 @@ export default function PlotterSpine() {
     setReady(true);
   }, []);
 
+  /* Ink-surface detection: hide the spine when the viewport center is over
+     a .statement or .footer (both ink-colored surfaces where the spine's
+     accent-on-ink contrast is only 2.03:1). Uses IntersectionObserver with
+     threshold array to track visibility; when any ink surface intersects the
+     viewport center, apply .plotter-spine--on-ink to hide the spine. */
+  useEffect(() => {
+    if (!ready) return undefined;
+    const spine = document.querySelector(".plotter-spine");
+    if (!spine) return undefined;
+
+    const inkSurfaces = document.querySelectorAll(".statement, .footer");
+    if (inkSurfaces.length === 0) return undefined;
+
+    let onInk = false;
+
+    const updateClass = () => {
+      spine.classList.toggle("plotter-spine--on-ink", onInk);
+    };
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const vh = window.innerHeight;
+        const center = vh / 2;
+        // Check if any ink surface contains the viewport center
+        onInk = Array.from(inkSurfaces).some((surface) => {
+          const rect = surface.getBoundingClientRect();
+          return rect.top <= center && rect.bottom >= center;
+        });
+        updateClass();
+      },
+      { threshold: [0, 0.25, 0.5, 0.75, 1] },
+    );
+
+    inkSurfaces.forEach((s) => observer.observe(s));
+
+    // Also update on scroll (in case observer fires late)
+    const onScroll = () => {
+      const vh = window.innerHeight;
+      const center = vh / 2;
+      onInk = Array.from(inkSurfaces).some((surface) => {
+        const rect = surface.getBoundingClientRect();
+        return rect.top <= center && rect.bottom >= center;
+      });
+      updateClass();
+    };
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+
+    return () => {
+      observer.disconnect();
+      window.removeEventListener("scroll", onScroll);
+    };
+  }, [ready]);
+
   /* Scroll loop: one passive listener (wake signal) + continuous rAF
      that recomputes from live values each frame, so resizes and dynamic
      content stay correct with zero extra listeners. At most one paired

@@ -24,6 +24,14 @@ html.js .plotter-spine {
   display: block;
 }
 
+/* Hide the spine when the viewport is over an ink surface (StatementBand
+   or Footer), where the accent-on-ink contrast is only 2.03:1. Applied
+   by IntersectionObserver in PlotterSpine.jsx. */
+html.js .plotter-spine--on-ink {
+  opacity: 0;
+  pointer-events: none;
+}
+
 .plotter-spine__track {
   position: absolute;
   inset: 0;
