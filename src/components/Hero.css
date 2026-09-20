@@ -97,6 +97,8 @@ html.js .hero__line:nth-child(2) .hero__line-inner { animation-delay: 360ms; }
 
   .hero__dim-line { animation: none !important; transform: none !important; }
   .hero__dim-tick, .hero__dim-label { animation: none !important; opacity: 1 !important; }
+
+  .hero__sheet { transform: none !important; }
 }
 
 /* ---------- Load-in for the rest (existing system) ----------
@@ -255,52 +257,99 @@ html.js [data-load] { opacity: 0; }
   from { opacity: 0; }
 }
 
-/* ---------- Figure plate ---------- */
-.hero__plate {
+/* ---------- Workbench (drafting table, right column) ----------
+   Layered plates, no rotation — depth comes from offset overlap only.
+   Back chatbot plate peeks above the main catalogue anchor (20px
+   overlap into spare padding); the portrait inset straddles the main
+   plate's lower-left. Parallax transforms land inline via rAF. */
+.hero__bench {
   justify-self: end;
-  width: min(100%, 380px);
-  border: 1px solid var(--line-strong);
-  background: var(--paper-raised);
-  box-shadow: var(--shadow-lift);
-  padding: var(--s-3);
+  width: min(100%, 440px);
   display: grid;
   gap: var(--s-3);
   position: relative;
+  margin: 0;
 }
 
-.hero__plate-frame {
+.hero__bench-stage {
+  position: relative;
+  padding-bottom: 34px; /* room for the inset straddling the main base */
+}
+
+.hero__sheet {
+  margin: 0;
+  display: grid;
+  gap: var(--s-2);
+  align-content: start;
+  padding: var(--s-2);
+  border: 1px solid var(--line);
+  background: var(--paper-raised);
+  box-shadow: var(--shadow-plate);
+  will-change: transform;
+}
+
+.hero__sheet--back {
+  width: 62%;
+  margin-left: auto;
+  position: relative;
+  z-index: 1;
+  background: var(--paper-cool);
+  padding-bottom: calc(var(--s-2) + 20px); /* spare paper the main overlaps */
+}
+
+.hero__sheet--main {
+  position: relative;
+  z-index: 2;
+  margin-top: -20px; /* 20px overlap onto the back plate's spare paper */
+}
+
+.hero__sheet--inset {
+  position: absolute;
+  z-index: 3;
+  left: -14px;
+  bottom: 0;
+  width: 160px;
+}
+
+.hero__sheet-frame {
   position: relative;
   border: 1px solid var(--line);
   overflow: hidden;
 }
 
-.hero__plate-ruler {
+.hero__sheet-ruler {
   position: absolute;
   inset-inline: 0;
   bottom: 0;
   z-index: 1;
 }
 
-.hero__plate-frame img {
+.hero__sheet-frame img {
   width: 100%;
   height: auto;
+}
+
+.hero__sheet--main .hero__sheet-frame img {
+  aspect-ratio: 900 / 562;
+  object-fit: cover;
+}
+
+.hero__sheet--inset .hero__sheet-frame img {
   filter: saturate(1.06) brightness(1.04) contrast(1.03);
 }
 
-.hero__plate-caption {
-  display: flex;
-  justify-content: space-between;
-  gap: var(--s-2);
-  font-family: var(--font-mono);
+.hero__sheet-caption {
+  display: grid;
+  gap: 2px;
   font-size: var(--text-micro);
-  letter-spacing: var(--track-mono);
-  text-transform: uppercase;
   color: var(--ink-2);
+  font-variant-numeric: tabular-nums;
 }
 
 .hero__meta {
   display: grid;
   border-top: 1px solid var(--line);
+  margin: 0;
 }
 
 .hero__meta-row {
@@ -312,16 +361,18 @@ html.js [data-load] { opacity: 0; }
 }
 
 .hero__meta-row dt { color: var(--ink-3); }
-.hero__meta-row dd { color: var(--ink); text-align: right; }
+.hero__meta-row dd { color: var(--ink); text-align: right; margin: 0; }
 
 /* ---------- Proof strip + availability (factual, drawn from data.js) ---------- */
 .hero__proof {
   width: 100%;
   max-width: 680px;
   display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
   border-top: 2px solid var(--ink);
   margin-top: var(--s-3);
+  margin-bottom: 0;
+  padding-left: 0;
 }
 
 .hero__proof-item {
@@ -347,6 +398,7 @@ html.js [data-load] { opacity: 0; }
   letter-spacing: 0.01em;
   color: var(--ink);
   font-variant-numeric: tabular-nums;
+  margin: 0;
 }
 
 .hero__avail {
@@ -365,48 +417,6 @@ html.js [data-load] { opacity: 0; }
   background: var(--accent);
 }
 
-/* ---------- Proof rail (product evidence, viewport 1) ----------
-   3-col grid under the copy column, full copy width. Plates carry a
-   1px line border + plate shadow; hover is translateY only. */
-.hero__rail {
-  width: 100%;
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: var(--s-3);
-  margin-top: var(--s-2);
-}
-
-.hero__rail-item {
-  display: grid;
-  gap: var(--s-2);
-  align-content: start;
-  min-height: 44px;
-  padding: var(--s-2);
-  border: 1px solid var(--line);
-  background: var(--paper-raised);
-  box-shadow: var(--shadow-plate);
-  text-decoration: none;
-  transition: transform var(--t-ui) var(--ease-out);
-}
-
-.hero__rail-item:hover {
-  transform: translateY(-2px);
-}
-
-.hero__rail-item img {
-  width: 100%;
-  height: auto;
-  aspect-ratio: 900 / 562;
-  border: 1px solid var(--line);
-  object-fit: cover;
-}
-
-.hero__rail-caption {
-  font-size: var(--text-micro);
-  color: var(--ink-2);
-  font-variant-numeric: tabular-nums;
-}
-
 /* ---------- Responsive ---------- */
 @media (max-width: 900px) {
   .hero {
@@ -415,9 +425,9 @@ html.js [data-load] { opacity: 0; }
     padding-bottom: var(--s-7);
   }
 
-  .hero__plate {
+  .hero__bench {
     justify-self: start;
-    width: min(100%, 340px);
+    width: min(100%, 440px);
   }
 
   .hero__dim--v { display: none; }
@@ -438,24 +448,121 @@ html.js [data-load] { opacity: 0; }
   }
 }
 
+/* Mobile workbench: static vertical stack — main full width, chatbot
+   beneath it, portrait inset as a 140px row card. No overlap, and no
+   parallax (the JS gate already refuses touch pointers). */
+@media (max-width: 760px) {
+  .hero__bench-stage {
+    display: grid;
+    gap: var(--s-3);
+    padding-bottom: 0;
+  }
+
+  .hero__sheet--back {
+    width: 100%;
+    margin-left: 0;
+    padding-bottom: var(--s-2);
+  }
+
+  .hero__sheet--main {
+    margin-top: 0;
+  }
+
+  .hero__sheet--inset {
+    position: static;
+    width: 140px;
+  }
+
+  .hero__sheet {
+    will-change: auto;
+  }
+}
+
 @media (max-width: 600px) {
   .hero__dim--h { display: none; }
 }
 
-/* Rail collapses to a single column under ~720px. */
-@media (max-width: 720px) {
-  .hero__rail {
-    grid-template-columns: 1fr;
-  }
+/* ---------- Portrait annotations (W5): hover/focus leader-line callouts
+   on the inset. Absolutely-positioned mono labels with 1px leader lines,
+   top-anchored so they never cover the inset captions. Opacity only. */
+.hero__sheet--inset .hero__note {
+  position: absolute;
+  z-index: 4;
+  max-width: 172px;
+  padding: 3px 7px 2px;
+  background: var(--paper-raised);
+  border: 1px solid var(--line-strong);
+  color: var(--ink-2);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  line-height: 1.5;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity var(--t-ui) var(--ease-out);
 }
 
-/* Reduced motion: rail joins the standard fade — no lift. */
-@media (prefers-reduced-motion: reduce) {
-  .hero__rail-item {
-    transition: opacity 160ms ease;
-  }
+.hero__sheet--inset .hero__note::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  height: 1px;
+  width: 12px;
+  background: var(--line-strong);
+}
 
-  .hero__rail-item:hover {
+@media (min-width: 761px) {
+  .hero__note--a { top: 16px; right: calc(100% + 12px); }
+  .hero__note--b { top: 62px; right: calc(100% + 12px); }
+  .hero__note--a::after,
+  .hero__note--b::after { left: 100%; }
+}
+
+.hero__sheet--inset:hover .hero__note,
+.hero__sheet--inset:focus .hero__note,
+.hero__sheet--inset:focus-within .hero__note { opacity: 1; }
+
+/* Touch / coarse pointers: visible statically, no hover dependency. */
+@media (hover: none) {
+  .hero__sheet--inset .hero__note { opacity: 1; }
+}
+
+/* Reduced motion: static, always visible. */
+@media (prefers-reduced-motion: reduce) {
+  .hero__sheet--inset .hero__note { opacity: 1; transition: none; }
+}
+
+/* Mobile: the inset is a static row card, so re-anchor the notes to it
+   (position:relative keeps the static layout) and park them in the free
+   space to its right, clear of the captions below the frame. */
+@media (max-width: 760px) {
+  .hero__sheet--inset { position: relative; }
+  .hero__sheet--inset .hero__note { max-width: 150px; }
+  .hero__note--a { top: 14px; left: calc(100% + 12px); }
+  .hero__note--b { top: 64px; left: calc(100% + 12px); }
+  .hero__note--a::after,
+  .hero__note--b::after { right: 100%; left: auto; }
+}
+
+/* ---------- Kinetic headline (W6b): word-level stagger inside the
+   existing line-rise masks. Applies only when JS splits the words
+   (.is-words, no-preference motion only) — no-JS and reduced-motion
+   render the headline exactly as today. */
+html.js .hero__title.is-words .hero__line-inner {
+  animation: none;
+  transform: none;
+}
+
+html.js .hero__word {
+  display: inline-block;
+  transform: translateY(115%);
+  animation: line-rise 640ms var(--ease-out) both;
+  animation-delay: calc(240ms + var(--wi, 0) * 40ms);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html.js .hero__word {
     transform: none;
+    animation: stamp-fade 160ms ease both;
   }
 }
