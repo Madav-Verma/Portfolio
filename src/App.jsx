@@ -21,7 +21,7 @@ export default function App() {
       <a className="skip-link" href="#main">Skip to content</a>
       <Nav />
       <PlotterSpine />
-      <main id="main">
+      <main id="main" tabIndex={-1}>
         <NotFound />
         <Hero />
         <Ticker />
