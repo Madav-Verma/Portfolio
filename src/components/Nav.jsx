@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { List, X } from "@phosphor-icons/react";
 import { NAV_LINKS, PROFILE } from "../data.js";
 import { useScrollLock } from "../hooks/useReveal.js";
@@ -6,29 +6,53 @@ import "./Nav.css";
 
 export default function Nav() {
   const [open, setOpen] = useState(false);
-  const [progress, setProgress] = useState(0);
+  const barRef = useRef(null);
+  const [showBar, setShowBar] = useState(false);
   useScrollLock(open);
 
   const close = () => setOpen(false);
 
-  // Scroll-progress hairline at the nav edge (rAF-throttled, passive).
+  // Mount gate: the ruler only exists with JS and under no-preference motion.
   useEffect(() => {
+    if (window.matchMedia("(prefers-reduced-motion: no-preference)").matches) {
+      setShowBar(true);
+    }
+  }, []);
+
+  /* Nav ruler (W6a): 2px accent bar pinned under the nav, scaleX 0→1
+     with scroll progress. Own rAF loop — passive scroll listener, one
+     transform write per frame, cleanup on unmount. No React state in
+     the loop. */
+  useEffect(() => {
+    if (!showBar) return;
+    const bar = barRef.current;
+    if (!bar) return;
     let raf = 0;
-    const onScroll = () => {
-      cancelAnimationFrame(raf);
-      raf = requestAnimationFrame(() => {
-        const el = document.documentElement;
-        const max = el.scrollHeight - el.clientHeight;
-        setProgress(max > 0 ? (el.scrollTop / max) * 100 : 0);
-      });
+    let queued = false;
+    const update = () => {
+      queued = false;
+      raf = 0;
+      const el = document.documentElement;
+      const max = el.scrollHeight - el.clientHeight;
+      const pos = window.scrollY || el.scrollTop || 0;
+      const p = max > 0 ? Math.min(1, Math.max(0, pos / max)) : 0;
+      bar.style.transform = `scaleX(${p.toFixed(4)})`;
     };
+    const onScroll = () => {
+      if (queued) return;
+      queued = true;
+      raf = requestAnimationFrame(update);
+    };
+    update();
     window.addEventListener("scroll", onScroll, { passive: true });
-    onScroll();
+    window.addEventListener("resize", onScroll);
     return () => {
       window.removeEventListener("scroll", onScroll);
-      cancelAnimationFrame(raf);
+      window.removeEventListener("resize", onScroll);
+      if (raf) cancelAnimationFrame(raf);
+      queued = false;
     };
-  }, []);
+  }, [showBar]);
 
   // Escape closes the mobile overlay and returns focus to the toggle.
   useEffect(() => {
@@ -45,11 +69,9 @@ export default function Nav() {
 
   return (
     <header className="nav">
-      <div
-        className="nav__progress"
-        style={{ width: `${progress}%` }}
-        aria-hidden="true"
-      />
+      {showBar && (
+        <div className="nav__progress" ref={barRef} aria-hidden="true" />
+      )}
       <div className="sheet nav__inner">
         <a className="nav__brand" href="#top" onClick={close} aria-label={`${PROFILE.name} — back to top`}>
           <span className="nav__mark" aria-hidden="true">{PROFILE.initials}</span>
