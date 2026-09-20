@@ -1,10 +1,6 @@
 import { useEffect } from "react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useReveal } from "../hooks/useReveal.js";
 import "./SystemMap.css";
-
-gsap.registerPlugin(ScrollTrigger);
 
 /* Desktop plates: [x, y] top-left in the 1200×420 viewBox. */
 const WIDE = [
@@ -34,6 +30,16 @@ const NODES = [
 
 const NODE_W = 220;
 const NODE_H = 128;
+
+/* Scrub schedule matching the retired timeline (ease "none"): each
+   trace draws over 1s at a 0.7s stride; the tag/dot fade runs 0.4s
+   with a 0.15s stagger starting at 0.5s. The scrubbed duration is the
+   last trace's end — (N-1) * 0.7 + 1 — the fade finishes earlier. */
+const TRACE_STEP = 0.7;
+const TRACE_DRAW = 1;
+const TAG_START = 0.5;
+const TAG_FADE = 0.4;
+const TAG_STAGGER = 0.15;
 
 function NodePlates({ positions }) {
   return (
@@ -88,34 +94,82 @@ export default function SystemMap() {
     const traces = el.querySelectorAll(".sysmap__trace");
     if (traces.length === 0) return undefined;
 
+    const trigger = el.querySelector(".sysmap");
+    if (!trigger) return undefined;
+
+    const lens = [];
     traces.forEach((p) => {
       const len = p.getTotalLength();
+      lens.push(len);
       p.style.strokeDasharray = `${len}`;
       p.style.strokeDashoffset = `${len}`;
     });
 
     const tags = el.querySelectorAll(".sysmap__tag, .sysmap__dot");
-    gsap.set(tags, { opacity: 0 });
-
-    const tl = gsap.timeline({
-      defaults: { ease: "none" },
-      scrollTrigger: {
-        trigger: el.querySelector(".sysmap"),
-        start: "top 78%",
-        end: "bottom 45%",
-        scrub: 1,
-      },
+    tags.forEach((t) => {
+      t.style.opacity = "0";
     });
 
-    traces.forEach((p, i) => {
-      tl.to(p, { strokeDashoffset: 0, duration: 1 }, i * 0.7);
-    });
-    tl.to(tags, { opacity: 1, duration: 0.4, stagger: 0.15 }, 0.5);
+    /* Scrubbed duration = the last trace's end; fade finishes earlier. */
+    const total = (traces.length - 1) * TRACE_STEP + TRACE_DRAW;
+
+    /* Dependency-free mirror of the retired scrubbed line-draw: one
+       passive scroll listener wakes a rAF loop that maps scroll
+       progress between the trigger's top at 78% of the viewport and
+       its bottom at 45% onto the same draw/fade schedule (see the
+       module constants). Geometry is re-read live each frame; the loop
+       idles — and style writes stop — whenever progress is unchanged. */
+    const clamp01 = (v) => Math.min(1, Math.max(0, v));
+
+    let raf = 0;
+    let running = false;
+    let dirty = true;
+    let last = -1;
+
+    const frame = () => {
+      running = false;
+      if (!dirty) return;
+      dirty = false;
+
+      /* p = 0 when the trigger's top meets 78% of the viewport height,
+         p = 1 when its bottom meets 45%; linear in between. */
+      const vh = window.innerHeight;
+      const rect = trigger.getBoundingClientRect();
+      const span = rect.height + vh * (0.78 - 0.45);
+      const p =
+        span > 0 ? clamp01((vh * 0.78 - rect.top) / span) : 1;
+      if (p === last) return;
+      last = p;
+
+      const t = p * total;
+      for (let i = 0; i < traces.length; i++) {
+        const draw = clamp01((t - i * TRACE_STEP) / TRACE_DRAW);
+        traces[i].style.strokeDashoffset = `${lens[i] * (1 - draw)}`;
+      }
+      tags.forEach((tag, j) => {
+        const fade = clamp01((t - (TAG_START + j * TAG_STAGGER)) / TAG_FADE);
+        tag.style.opacity = `${fade}`;
+      });
+    };
+
+    const onScroll = () => {
+      dirty = true;
+      if (!running) {
+        running = true;
+        raf = requestAnimationFrame(frame);
+      }
+    };
+
+    /* The initial frame applies the state for the current scroll
+       position (a deep link may already sit mid-scrub), then the loop
+       only runs while scroll events keep arriving. */
+    window.addEventListener("scroll", onScroll, { passive: true });
+    raf = requestAnimationFrame(frame);
 
     return () => {
-      tl.scrollTrigger?.kill();
-      tl.kill();
-      gsap.set(tags, { clearProps: "opacity" });
+      cancelAnimationFrame(raf);
+      window.removeEventListener("scroll", onScroll);
+      tags.forEach((t) => t.style.removeProperty("opacity"));
       traces.forEach((p) => {
         p.style.strokeDasharray = "";
         p.style.strokeDashoffset = "";

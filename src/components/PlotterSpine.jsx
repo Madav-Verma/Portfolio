@@ -3,11 +3,12 @@ import "./PlotterSpine.css";
 
 /* Page-wide plotter spine: one persistent scroll-driven hairline in the
    left sheet gutter with an accent diamond plotter head riding the fill
-   tip. Dependency-free on purpose — SystemMap already owns the page's
-   single gsap ScrollTrigger, so this uses one passive scroll listener +
-   a rAF loop with GPU-only writes (scaleY on the fill, translateY on
-   the head). Renders null until mounted so no-JS / SSR never shows a
-   stuck bar; returns null on reduced-motion or narrow viewports. */
+   tip. Dependency-free on purpose — same pattern SystemMap uses for its
+   trace draw — one passive scroll listener + a rAF loop with GPU-only
+   writes (scaleY on the fill, translateY on the head). Nothing on this
+   page imports an animation library any more. Renders null until mounted
+   so no-JS / SSR never shows a stuck bar; returns null on reduced-motion
+   or narrow viewports. */
 
 export default function PlotterSpine() {
   const [ready, setReady] = useState(false);
