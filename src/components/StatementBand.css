@@ -8,6 +8,8 @@
   --sdim: rgb(236 235 228 / 64%);
   --sline: rgb(236 235 228 / 22%);
   --saccent: #96a8ff;                        /* cobalt lifted for ink ground — figures + ticks only */
+  position: relative;
+  z-index: 95;
   background: #191916;
   color: var(--sfg);
   padding-block: var(--section-gap);         /* clamp(96px, 14vh, 160px); own padding, never .section */

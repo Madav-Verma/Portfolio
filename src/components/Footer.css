@@ -5,6 +5,8 @@
   --ffg: #ecebe4;                              /* footer foreground, both themes */
   --fdim: rgb(236 235 228 / 64%);
   --fline: rgb(236 235 228 / 22%);
+  position: relative;
+  z-index: 95;
   background: #191916;
   color: var(--ffg);
 }
