@@ -74,10 +74,12 @@ export default function Work() {
   const [openId, setOpenId] = useState(null);
   const sectionRef = useReveal([filter]);
 
-  const visible = useMemo(
-    () => (filter === "all" ? PROJECTS : PROJECTS.filter((p) => p.status === filter)),
-    [filter],
-  );
+  const visible = useMemo(() => {
+    if (filter === "all") return PROJECTS;
+    if (filter === "production")
+      return PROJECTS.filter((p) => p.status === "live" || p.status === "shipped");
+    return PROJECTS.filter((p) => p.status === filter);
+  }, [filter]);
 
   // Escape collapses the open case study and returns focus to its trigger.
   useEffect(() => {
@@ -120,6 +122,11 @@ export default function Work() {
         </div>
 
         <div className="work__list">
+          {visible.length === 0 && (
+            <p className="work__empty" role="status">
+              Nothing filed under this status yet — try another filter.
+            </p>
+          )}
           {visible.map((p, i) => {
             const open = openId === p.id;
             return (

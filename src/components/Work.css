@@ -45,6 +45,14 @@
   color: var(--paper);
 }
 
+.work__empty {
+  padding: var(--s-6) var(--s-4);
+  border-bottom: 1px solid var(--line-strong);
+  color: var(--ink-2);
+  font-size: var(--text-body);
+  text-align: center;
+}
+
 /* ---------- Index rows ---------- */
 .work__list {
   border-top: 1px solid var(--line-strong);

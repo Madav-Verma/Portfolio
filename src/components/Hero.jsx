@@ -149,8 +149,8 @@ export default function Hero() {
              alt={`Portrait of ${PROFILE.name}`}
              width="320"
              height="320"
-             loading="eager"
-             fetchPriority="high"
+              loading="eager"
+              fetchpriority="high"
              decoding="async"
            />
         </div>
