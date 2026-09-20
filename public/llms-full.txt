@@ -1,11 +1,11 @@
-# Daksh Verma — Applied AI Solutions Engineer (full record)
+# Daksh Verma — Applied AI Solutions Engineer · Forward-Deployed Delivery (full record)
 
-> Applied AI Solutions Engineer building production-grade, end-to-end AI-powered products — agentic workflows, multi-model orchestration, and a full-stack mindset. BCA (AI), 9.0 CGPA, Lingaya's Vidyapeeth (2023-2026). Currently AI-Native Solutions Engineer at Prokon Hi-Tech. Contact mailto-first: vermadaksh120@gmail.com.
+> Applied AI Solutions Engineer building production-grade, end-to-end AI-powered products — agentic workflows, multi-model orchestration, RAG assistants — and deploying them forward: embedded with the operators who use them. BCA (AI), 9.0 CGPA, Lingaya's Vidyapeeth (2023-2026). Currently at Prokon Hi-Tech. Contact mailto-first: vermadaksh120@gmail.com.
 > Canonical: https://portfolio-desibox.vercel.app/ · Sitemap: https://portfolio-desibox.vercel.app/sitemap.xml · Resume: /resume/Daksh_Verma_Resume_2026.pdf
 
 ## Identity
 - Name: Daksh Verma
-- Role: Applied AI Solutions Engineer
+- Role: Applied AI Solutions Engineer · Forward-Deployed Delivery
 - Location: Faridabad, India
 - Email: vermadaksh120@gmail.com
 - Phone: +91 95990 68010
@@ -22,20 +22,29 @@
 - Employee Attendance System — https://employeeattedance.netlify.app/ — Camera-based QR and barcode check-in for gate entry via barcode-detector polyfill (no native SDK). Three role tiers (employee, admin, super admin). Offline-first with online/offline detection and queued sync; reports with Excel export. Evidence: ~1s scan check-in; 0 records lost offline.
 - DataFlow Pro, BI Platform (shipped at Trossachs) — https://github.com/Madav-Verma/DataFlow-Pro — Real-time analytics on Power BI with AI-orchestrated SQL pipelines (Claude refactored SQL, OpenCode orchestrated). Revenue trends, compliance risk and operational KPIs in one view. Evidence: 15-20 hours/month of manual data processing saved.
 - Prokon Digital Workflows (shipped at Prokon Hi-Tech, 2024) — Inventory tracking and AMC management on Python/MySQL with HTML forms and Google Suite integration. Evidence: 2 workflows digitised; paper eliminated.
-- Company Website Rebuild (in production, live soon) — Full agentic pipeline with multi-agent review loops on every commit; React + Vercel + Supabase.
+
+## Building now
+- Prokon Hi-Tech Website (in development, hosting in progress) — Next.js 16 + TypeScript rebuild: 24 routes, 96-model APC catalogue with faceted search and side-by-side compare, retrieval-grounded Prokon Assistant (Gemini 2.0 Flash / GPT-4o-mini, rule-engine fallback, lead capture), backup-load calculator and IO-spec chart, sitemap + JSON-LD + llms.txt (SEO/GEO).
+- Prokon ERP / CRM (in daily use by 10 staff) — 8 modules (CRM, sales, inventory, purchase, service/AMC, finance, HR & payroll, admin) on TanStack Start + TypeScript + Supabase (Postgres + RLS). 145 routes, 189 components, 113 migrations, 75 tests, ~154k lines. CRM runs leads to invoices with incentives; tickets carry P1-P5 priority with P1-first queues; field-engineer portal with serial-photo + GPS proof; ticket/AMC dashboards update live over database subscriptions.
 
 ## Experience
-- AI-Native Solutions Engineer, Prokon Hi-Tech Systems (2025-Present): end-to-end AI-powered solutions with agentic workflows; company website rebuild through the agentic pipeline.
+- Applied AI Solutions Engineer, Prokon Hi-Tech Systems (2025-Present): own the company web platform and internal ERP/CRM end-to-end — architecture, Postgres schema and RLS, UI, deployment — for a system 10 staff run daily; shipping a Next.js 16 website rebuild (96-model catalogue, RAG assistant); agentic workflows with autonomous review loops.
 - Data & Business Analyst Intern, Trossachs Corporate Advisors (Jan-May 2026): DataFlow Pro delivery; 15-20 hours/month saved.
 - Software Developer Intern, Prokon Hi-Tech Systems (Jun-Jul 2024): digitised inventory and AMC into Python/MySQL; HTML forms + Google Suite.
 
 ## Capabilities
 - Agentic orchestration: OpenCode, Claude, DeepSeek, Gemini, sub-agent loops, prompt engineering.
-- Engineering and product: React, Vite, JavaScript, Python, Supabase, REST APIs, Git, Vercel, Netlify, offline-first.
+- Forward-deployed engineering: on-site discovery, solution design under constraints, offline-first delivery, stakeholder communication, adoption and support.
+- Engineering and product: TypeScript, Next.js, TanStack Start, React, Tailwind CSS, Vite, Python, Supabase, PostgreSQL, REST APIs, Git, Vercel, Netlify, offline-first.
+- Catalogue and commerce systems: faceted search, model compare, spec data modelling, SEO and GEO.
+- AI assistants (RAG): retrieval grounding, KB indexing, LLM routing (Gemini, GPT), rule-engine fallback, SSE streaming.
+- Hosting and deployment: DNS and domains, SSL/TLS, cache-control and security headers, CI build pipelines.
 - Data and BI: SQL (T-SQL), Power BI, Pandas and NumPy, database design, dashboarding.
 - Delivery: rapid prototyping, offline-first, workflow digitisation, stakeholder communication.
 
 ## Engineering notes (authored)
+- Shipping a catalogue that sells (Sep 2026): faceted search narrows, compare decides, 60+ spec rows answer before the phone rings; RAG over unmodelled data is faster confusion.
+- What an ERP teaches about data integrity (Sep 2026): one shared truth via RLS and a single source of record; priority triage only works when the queue is trustworthy.
 - Building with agentic loops (Aug 2026): scope, delegate to a coding agent, independent reviewer on a different model family before done.
 - Multi-model routing (Jul 2026): code generation is not code review is not architecture planning; route per phase.
 - Offline-first lessons (Jun 2026): queue writes locally, sync on return; design for the network drop, not the happy path.

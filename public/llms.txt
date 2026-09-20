@@ -1,6 +1,6 @@
-# Daksh Verma — Applied AI Solutions Engineer
+# Daksh Verma — Applied AI Solutions Engineer · Forward-Deployed Delivery
 
-> Applied AI Solutions Engineer building production-grade, end-to-end AI-powered products — agentic workflows, multi-model orchestration, and a full-stack mindset. BCA (AI) student, 9.0 CGPA. Currently @ Prokon Hi-Tech.
+> Applied AI Solutions Engineer building production-grade, end-to-end AI-powered products — agentic workflows, multi-model orchestration, RAG assistants — and deploying them forward: embedded with the operators who use them. BCA (AI), 9.0 CGPA. Currently @ Prokon Hi-Tech.
 
 Canonical: https://portfolio-desibox.vercel.app/
 Sitemap: https://portfolio-desibox.vercel.app/sitemap.xml
@@ -8,7 +8,7 @@ Full record: https://portfolio-desibox.vercel.app/llms-full.txt
 
 ## Key facts
 - Name: Daksh Verma
-- Role: Applied AI Solutions Engineer (current)
+- Role: Applied AI Solutions Engineer (current) · Forward-Deployed Delivery
 - Location: Faridabad, India
 - Education: BCA Artificial Intelligence (2023–2026), Lingaya's Vidyapeeth, 9.0 CGPA
 - Email: vermadaksh120@gmail.com
@@ -17,9 +17,13 @@ Full record: https://portfolio-desibox.vercel.app/llms-full.txt
 - Resume: /resume/Daksh_Verma_Resume_2026.pdf
 
 ## Experience
-- Applied AI Solutions Engineer @ Prokon Hi-Tech (present): building end-to-end AI-powered solutions using agentic workflows — multi-model orchestration (OpenCode, Claude, DeepSeek, Gemini), autonomous review loops, rapid prototyping.
+- Applied AI Solutions Engineer @ Prokon Hi-Tech (present): own the company web platform and internal ERP/CRM end-to-end — architecture, Postgres schema and RLS, UI, deployment — for a system 10 staff run daily. Shipping a Next.js 16 website rebuild (96-model catalogue, RAG assistant). Agentic workflows with multi-model orchestration and autonomous review loops.
 - Data & Business Analyst Intern @ Trossachs (Jan–May 2026): delivered DataFlow Pro BI platform; saved 15–20 hours/month of manual processing.
 - Software Development Intern @ Prokon Hi-Tech (Jun–Jul 2024): digitised manual workflows into a Python/MySQL system.
+
+## Building now
+- Prokon Hi-Tech Website (in development, hosting in progress): Next.js 16 + TypeScript rebuild — 96-model APC catalogue with faceted search and compare, retrieval-grounded assistant (Gemini / GPT), backup-load calculator, SEO/GEO-ready.
+- Prokon ERP / CRM (in daily use by 10 staff): 8 modules — CRM leads-to-invoices, sales, serial-tracked inventory, P1–P5 ticket triage, engineer field portal, live ticket/AMC dashboards.
 
 ## Live projects
 - SJS Retail Jewellery Suite (https://retailjewellery.netlify.app): offline-first retail management platform for a jewellery business — billing, inventory, HUID tracking, PDF invoices, 20+ automated tests.
@@ -27,11 +31,15 @@ Full record: https://portfolio-desibox.vercel.app/llms-full.txt
 
 ## Core skills
 - Agentic orchestration: OpenCode, Claude, DeepSeek, Gemini, multi-model routing, agent workflows, automated code review, prompt engineering
-- Full-stack: React, Vite, JavaScript, Python, MySQL, Supabase, REST APIs, Git & GitHub, Vercel, Netlify, offline-first architecture
+- Forward-deployed delivery: on-site discovery, solution design under constraints, offline-first delivery, stakeholder communication, adoption and support
+- Full-stack: TypeScript, Next.js, TanStack Start, React, Tailwind CSS, Vite, JavaScript, Python, Supabase, PostgreSQL, REST APIs, Git & GitHub, Vercel, Netlify, offline-first architecture
+- AI assistants (RAG): retrieval grounding, KB indexing, LLM routing (Gemini, GPT), rule-engine fallback, SSE streaming
+- Catalogue systems: faceted search, model compare, spec data modelling, SEO & GEO
+- Hosting & deployment: DNS & domains, SSL/TLS, cache-control & security headers, CI build pipelines
 - Data & BI: SQL (T-SQL), Power BI, Pandas & NumPy, predictive modeling, dashboarding, database design
 - Delivery: rapid prototyping, end-to-end delivery, requirements gathering, workflow digitisation, process automation
 
-## Certifications (15+)
+## Certifications (14)
 - Business Analysis Foundations: Strategy Analysis (LinkedIn Learning · IIBA-endorsed, 2026)
 - Business Analysis: Essential Tools & Techniques (LinkedIn Learning, 2026)
 - SQL Server 2022 Administration (LinkedIn Learning · Microsoft Press, 2025)
