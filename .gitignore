@@ -16,3 +16,7 @@ npm-debug.log*
 .idea/
 .opencode/
 .impeccable/
+
+# Local audit + browser-verification artifacts
+audit/
+.playwright-mcp/
