@@ -146,9 +146,11 @@ export default function Hero() {
           <span className="ruler hero__plate-ruler" aria-hidden="true" />
            <img
              src="/photo.jpg"
+             srcSet="/photo.webp 380w, /photo@2x.webp 760w"
+             sizes="(max-width: 760px) 308px, 348px"
              alt={`Portrait of ${PROFILE.name}`}
-             width="320"
-             height="320"
+             width="380"
+             height="380"
               loading="eager"
               fetchpriority="high"
              decoding="async"
