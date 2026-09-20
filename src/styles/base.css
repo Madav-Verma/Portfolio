@@ -368,8 +368,7 @@ html.js .notes__card[data-reveal] {
 
 /* Tabular figures where numbers are the content */
 .work__metrics dd,
-.process__step-no,
-.hero__dim-label {
+.process__step-no {
   font-variant-numeric: tabular-nums;
 }
 
