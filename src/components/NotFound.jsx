@@ -2,9 +2,9 @@ import { ArrowUpRight, EnvelopeSimple } from "@phosphor-icons/react";
 import { PROFILE } from "../data.js";
 
 /**
- * Soft 404 for a single-sheet SPA. Netlify serves this bundle for every
- * path, so a mistyped URL would otherwise render home with no explanation.
- * Visible immediately (no reveal attrs) and says exactly what happened.
+ * Soft 404 for a single-sheet SPA. The host rewrites unknown paths to this
+ * bundle (see vercel.json), so a mistyped URL would otherwise render home
+ * with no explanation. Visible immediately (no reveal attrs).
  */
 export default function NotFound() {
   const path = typeof window !== "undefined" ? window.location.pathname : "/";

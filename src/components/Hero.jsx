@@ -65,11 +65,18 @@ export default function Hero() {
           {PROFILE.status}
         </p>
 
-        <h1 className="hero__title" ref={titleRef}>
-          <span className="hero__line">
+        {/* The two .hero__line spans concatenate with no separator, so the
+            computed accessible name would read "software,shipped". Label the
+            heading explicitly instead of relying on the visual line break. */}
+        <h1
+          className="hero__title"
+          ref={titleRef}
+          aria-label="Production software, shipped end to end."
+        >
+          <span className="hero__line" aria-hidden="true">
             <span className="hero__line-inner">Production software,</span>
           </span>
-          <span className="hero__line">
+          <span className="hero__line" aria-hidden="true">
             <span className="hero__line-inner">
               shipped <em className="hero__em">end&nbsp;to&nbsp;end.</em>
             </span>

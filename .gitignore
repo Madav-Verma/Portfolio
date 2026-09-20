@@ -20,3 +20,10 @@ npm-debug.log*
 # Local audit + browser-verification artifacts
 audit/
 .playwright-mcp/
+
+# Python bytecode from scripts/
+__pycache__/
+*.pyc
+
+# Transient probe artifacts
+public/resume/_probe.pdf

@@ -40,6 +40,10 @@
   gap: 10px;
   text-decoration: none;
   margin-right: auto;
+  /* The mark is only 30px; grow the hit area to a comfortable target
+     while leaving the visual mark unchanged. */
+  min-height: 44px;
+  min-width: 44px;
 }
 
 .nav__mark {

@@ -1,6 +1,7 @@
 import Nav from "./components/Nav.jsx";
 import PlotterSpine from "./components/PlotterSpine.jsx";
 import NotFound from "./components/NotFound.jsx";
+import { useHashScroll } from "./hooks/useHashScroll.js";
 import Hero from "./components/Hero.jsx";
 import Ticker from "./components/Ticker.jsx";
 import Work from "./components/Work.jsx";
@@ -16,6 +17,9 @@ import CertRail from "./components/CertRail.jsx";
 import Footer from "./components/Footer.jsx";
 
 export default function App() {
+  // Re-resolve the URL hash once the tree exists (deep links / refresh).
+  useHashScroll();
+
   return (
     <>
       <a className="skip-link" href="#main">Skip to content</a>

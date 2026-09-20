@@ -137,8 +137,6 @@ p {
 .section {
   padding-top: var(--section-gap);
   position: relative;
-  content-visibility: auto;
-  contain-intrinsic-size: auto 900px;
 }
 
 /* Anchored sections clear the fixed 64px nav. */
@@ -271,6 +269,13 @@ footer[id] {
 .stamp--live { color: var(--live); }
 .stamp--shipped { color: var(--ink-2); }
 .stamp--wip { color: var(--accent); }
+
+/* Long status labels ("In development — hosting in progress") are wider than a
+   small phone once nowrap is applied, which forces its grid track open and
+   scrolls the page sideways. Let them wrap only where they must. */
+@media (max-width: 420px) {
+  .stamp { white-space: normal; }
+}
 
 .live-dot {
   width: 7px;

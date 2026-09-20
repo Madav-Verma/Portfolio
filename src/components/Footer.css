@@ -138,6 +138,10 @@
   padding-block: var(--s-4);
   border-top: 1px solid var(--fline);
   padding-bottom: max(var(--s-4), env(safe-area-inset-bottom));
+  /* The .caption class supplies color: var(--ink-2), a light-ground token.
+     On this fixed dark plate that lands at ~2.3:1, so use the footer's own
+     dim foreground (≈6.6:1) like every other caption in here. */
+  color: var(--fdim);
 }
 
 @media (max-width: 760px) {

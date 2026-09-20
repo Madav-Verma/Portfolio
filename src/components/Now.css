@@ -47,9 +47,27 @@
   text-decoration: none;
 }
 
+/* This standalone link renders ~14px tall. On touch, give the element ITSELF a
+   44px hit area rather than overlaying a pseudo-element, so the real clickable
+   box matches what a thumb can reach. The underline is re-anchored so it stays
+   under the text instead of dropping to the bottom of the padding box. */
+@media (pointer: coarse) {
+  .now__meta a {
+    display: inline-block;
+    padding-block: 15px;
+  }
+
+  .now__meta a::after {
+    bottom: 15px;
+  }
+}
+
 @media (max-width: 760px) {
+  /* minmax(0, 1fr), not bare 1fr: `1fr` means minmax(auto, 1fr), so the track
+     cannot shrink below the cards' min-content width — the page then scrolls
+     sideways on a phone. */
   .now__grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
 
   .now__card {
