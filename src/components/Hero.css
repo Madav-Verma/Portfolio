@@ -317,9 +317,9 @@ html.js [data-load] { opacity: 0; }
 /* ---------- Proof strip + availability (factual, drawn from data.js) ---------- */
 .hero__proof {
   width: 100%;
-  max-width: 620px;
+  max-width: 680px;
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(5, minmax(0, 1fr));
   border-top: 2px solid var(--ink);
   margin-top: var(--s-3);
 }
@@ -365,6 +365,48 @@ html.js [data-load] { opacity: 0; }
   background: var(--accent);
 }
 
+/* ---------- Proof rail (product evidence, viewport 1) ----------
+   3-col grid under the copy column, full copy width. Plates carry a
+   1px line border + plate shadow; hover is translateY only. */
+.hero__rail {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--s-3);
+  margin-top: var(--s-2);
+}
+
+.hero__rail-item {
+  display: grid;
+  gap: var(--s-2);
+  align-content: start;
+  min-height: 44px;
+  padding: var(--s-2);
+  border: 1px solid var(--line);
+  background: var(--paper-raised);
+  box-shadow: var(--shadow-plate);
+  text-decoration: none;
+  transition: transform var(--t-ui) var(--ease-out);
+}
+
+.hero__rail-item:hover {
+  transform: translateY(-2px);
+}
+
+.hero__rail-item img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 900 / 562;
+  border: 1px solid var(--line);
+  object-fit: cover;
+}
+
+.hero__rail-caption {
+  font-size: var(--text-micro);
+  color: var(--ink-2);
+  font-variant-numeric: tabular-nums;
+}
+
 /* ---------- Responsive ---------- */
 @media (max-width: 900px) {
   .hero {
@@ -398,4 +440,22 @@ html.js [data-load] { opacity: 0; }
 
 @media (max-width: 600px) {
   .hero__dim--h { display: none; }
+}
+
+/* Rail collapses to a single column under ~720px. */
+@media (max-width: 720px) {
+  .hero__rail {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Reduced motion: rail joins the standard fade — no lift. */
+@media (prefers-reduced-motion: reduce) {
+  .hero__rail-item {
+    transition: opacity 160ms ease;
+  }
+
+  .hero__rail-item:hover {
+    transform: none;
+  }
 }

@@ -103,6 +103,42 @@ export default function Hero() {
         <p className="hero__avail caption" data-load style={{ "--d": 8 }}>
           {PROFILE.location} · IST (UTC+5:30) · {PROFILE.status}
         </p>
+
+        <div className="hero__rail" data-load style={{ "--d": 9 }} aria-label="Product evidence">
+          <a className="hero__rail-item" href="#work">
+            <img
+              src="/screenshots/prokon-website-catalogue.png"
+              alt="Prokon Hi-Tech product catalogue interface with filter sidebar and model grid"
+              width="900"
+              height="562"
+              loading="lazy"
+              decoding="async"
+            />
+            <span className="caption hero__rail-caption">Catalogue — 96 models, faceted search</span>
+          </a>
+          <a className="hero__rail-item" href="#work">
+            <img
+              src="/screenshots/prokon-website-product.png"
+              alt="Prokon Hi-Tech product detail page with gallery, price box and specification table"
+              width="900"
+              height="562"
+              loading="lazy"
+              decoding="async"
+            />
+            <span className="caption hero__rail-caption">Product page — 60+ spec rows</span>
+          </a>
+          <a className="hero__rail-item" href="#work">
+            <img
+              src="/screenshots/prokon-website-chatbot.png"
+              alt="Prokon Assistant chat panel with grounded product answers and quick replies"
+              width="900"
+              height="562"
+              loading="lazy"
+              decoding="async"
+            />
+            <span className="caption hero__rail-caption">Assistant — grounded answers</span>
+          </a>
+        </div>
       </div>
 
       <figure className="hero__plate" data-load style={{ "--d": 7 }} ref={plateRef}>
@@ -120,7 +156,7 @@ export default function Hero() {
         </div>
         <figcaption className="hero__plate-caption">
           <span>Fig. A — {PROFILE.name}</span>
-          <span>{PROFILE.role}</span>
+          <span>{PROFILE.positioning}</span>
         </figcaption>
         <dl className="hero__meta caption">
           {HERO_META.map((m) => (
