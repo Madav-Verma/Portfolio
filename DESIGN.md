@@ -23,7 +23,7 @@ Restrained strategy: neutrals + one accent (drafting cobalt).
 | --ink-2 | #54534b (7.0:1) | #aeac9f (7.4:1) |
 | --ink-3 | #6b695e (≥4.5:1) | #7c7a6f |
 | --accent | #1f3ac2 (8+:1) | #96a8ff |
-| --live | #1b7f4b | #4cc38a |
+| --live | #14693d | #4cc38a |
 
 Rules: one accent page-wide; green (`--live`) only on status flags; footer is theme-stable
 ink (#191916 light / #0d0d0b dark) with fixed foreground #ecebe4. No pure black/white anywhere.

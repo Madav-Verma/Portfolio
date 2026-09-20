@@ -18,6 +18,10 @@ html {
   scrollbar-color: var(--line-strong) var(--paper);
 }
 
+@media (prefers-reduced-motion: no-preference) {
+  html { scroll-behavior: smooth; }
+}
+
 body {
   background: var(--paper);
   color: var(--ink);
@@ -99,6 +103,16 @@ h1, h2, h3 {
 
 p {
   max-width: var(--measure);
+  text-wrap: pretty;
+}
+
+/* Lede: the one paragraph allowed to be bigger. Sentence case, ≤58ch. */
+.lede {
+  font-size: var(--text-lede);
+  line-height: var(--leading-snug);
+  letter-spacing: -0.01em;
+  max-width: 58ch;
+  color: var(--ink);
 }
 
 ::selection {

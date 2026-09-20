@@ -1,11 +1,15 @@
 /* ============================================================
-   DESIGN TOKENS — "Engineering Drawing Sheet"
-   Direction contract seed: fca87317 · mode: experience
+   DESIGN TOKENS — "The Engineering Record" (refactor, 2026-09)
    World: technical-drawing grammar on paper. Ink lines, graph-paper
    underlay, title blocks, stamps, provenance captions. One accent
-   (drafting cobalt). Radius 0 everywhere — sharp sheet edges.
+   (drafting cobalt) with a strict accent budget. Radius 0 everywhere
+   — sharp sheet edges are the brand, not a default.
    Light is primary (recruiter at a desk, printable). Dark = drafting
    film (inverted graphite ground, paper-white ink).
+   Second temperature: --paper-cool plates carry technical artifacts
+   (spec plates, system map) so they read as instruments, not paper.
+   Slop guardrails: no gradients-as-decoration, no glow shadows,
+   11px micro floor raised to 12px, tabular numerals for figures.
    ============================================================ */
 
 :root {
@@ -13,15 +17,17 @@
   --paper: #f6f5f1;            /* sheet ground */
   --paper-raised: #fbfaf7;     /* plates sitting on the sheet */
   --paper-sunk: #efeee8;       /* recessed fields */
+  --paper-cool: #e9ebe7;       /* instrument plate — technical artifacts (verified: ink holds AA) */
   --ink: #1a1a17;              /* working ink */
-  --ink-2: #54534b;            /* annotation ink  (7.0:1 on paper) */
-  --ink-3: #6b695e;            /* faint marks — ≥4.5:1 on paper */
+  --ink-2: #54534b;            /* annotation ink  (7.1:1 on paper) */
+  --ink-3: #6b695e;            /* faint marks — 5.1:1 on paper */
   --line: rgb(26 26 23 / 14%);
   --line-strong: rgb(26 26 23 / 34%);
-  --accent: #1f3ac2;           /* drafting cobalt — the one accent */
+  --accent: #1f3ac2;           /* drafting cobalt — the one accent (7.9:1) */
   --accent-ink: #172fb8;       /* pressed/hover accent */
+  --accent-wash: rgb(31 58 194 / 7%);  /* accent tint for fills — never text */
   --on-accent: #ffffff;
-  --live: #14693d;             /* status green — flags only (AA on paper) */
+  --live: #14693d;             /* status green — flags only (6.2:1 on paper) */
 
 }
 
@@ -31,13 +37,15 @@
     --paper: #161613;
     --paper-raised: #1d1d19;
     --paper-sunk: #101010;
+    --paper-cool: #1a1e22;     /* instrument plate on film */
     --ink: #eceae2;
-    --ink-2: #aeac9f;          /* 7.4:1 on film */
+    --ink-2: #aeac9f;          /* 7.9:1 on film */
     --ink-3: #7c7a6f;
     --line: rgb(236 234 226 / 15%);
     --line-strong: rgb(236 234 226 / 36%);
     --accent: #96a8ff;         /* cobalt lifted for film */
     --accent-ink: #b7c3ff;
+    --accent-wash: rgb(150 168 255 / 12%);
     --on-accent: #12121a;
     --live: #4cc38a;
   }
@@ -52,12 +60,14 @@
   --text-hero: clamp(2.9rem, 1.2rem + 6.2vw, 6rem);      /* display cap 6rem */
   --text-h2: clamp(1.85rem, 1.2rem + 2.4vw, 2.75rem);
   --text-h3: clamp(1.25rem, 1.05rem + 0.75vw, 1.55rem);
+  --text-lede: clamp(1.15rem, 1.05rem + 0.5vw, 1.35rem);  /* lede paragraphs */
   --text-body: 1.0625rem;
   --text-small: 0.875rem;
-  --text-micro: 0.6875rem;     /* mono captions / title-block meta */
+  --text-micro: 0.75rem;       /* mono captions / title-block meta — 12px floor */
 
   --leading-display: 0.98;
   --leading-tight: 1.12;
+  --leading-snug: 1.35;        /* ledes, card titles */
   --leading-body: 1.62;
   --track-display: -0.035em;
   --track-mono: 0.14em;        /* uppercase mono labels */
@@ -77,18 +87,20 @@
   --measure: 66ch;
   --sheet-max: 1440px;
 
-  /* ---- Motion (Emil-grade curves; transform/opacity only) ---- */
+  /* ---- Motion (curves; transform/opacity only) ---- */
   --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
   --ease-inout: cubic-bezier(0.77, 0, 0.175, 1);
   --ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);
+  --ease-spring: cubic-bezier(0.3, 1.25, 0.5, 1);  /* micro-interactions only, never layout */
   --t-fast: 140ms;   /* press feedback */
   --t-ui: 220ms;     /* hovers, small reveals */
-  --t-reveal: 640ms; /* staged scroll reveals (marketing tier) */
+  --t-reveal: 640ms; /* staged scroll reveals */
   --t-drawer: 440ms; /* case-study expansion */
 
   /* ---- Depth: paper layers (offset + blur, tinted to ground) ---- */
   --shadow-lift: 0 1px 0 var(--line), 0 14px 40px rgb(26 26 23 / 9%);
   --shadow-float: 0 2px 0 var(--line), 0 24px 64px rgb(26 26 23 / 14%);
+  --shadow-plate: 0 1px 0 var(--line), 0 20px 55px rgb(26 26 23 / 12%);  /* screenshot plates */
 
   /* ---- Chrome geometry ---- */
   --nav-h: 64px;
