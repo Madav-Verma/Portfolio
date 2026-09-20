@@ -1,0 +1,111 @@
+/* ============================================================
+   COVER — designed spec plate for projects without photography.
+   Cool instrument plate (not paper), thin rule frame, inline
+   schematic. Decorative only — the row already names the project.
+   Radius 0. Sentence case; uppercase lives in mono meta only.
+   ============================================================ */
+
+.cover {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: var(--s-2);
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 16 / 10;
+  padding: 10px 12px;
+  background: var(--paper-cool);
+  color: var(--ink-2);
+  border: 1px solid var(--line-strong);
+}
+
+.cover--lg {
+  aspect-ratio: 16 / 10;
+  padding: clamp(14px, 2vw, 22px);
+}
+
+.cover__top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--s-2);
+}
+
+.cover__sheet {
+  font-family: var(--font-mono);
+  font-size: var(--text-micro);
+  letter-spacing: var(--track-mono);
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+
+.cover__schema {
+  width: 64px;
+  height: auto;
+  flex-shrink: 0;
+  color: var(--ink-3);
+}
+
+.cover--lg .cover__schema {
+  width: clamp(120px, 30%, 180px);
+}
+
+.cover__foot {
+  display: grid;
+  gap: 4px;
+  min-width: 0;
+}
+
+.cover__title {
+  display: block;
+  font-size: clamp(1.1rem, 0.95rem + 1vw, 1.6rem);
+  font-weight: 620;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+  color: var(--ink);
+  max-width: 16ch;
+}
+
+.cover--lg .cover__title {
+  max-width: 22ch;
+}
+
+.cover__meta {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: var(--text-micro);
+  letter-spacing: var(--track-mono);
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+
+/* Thumbnail context: the row thumb owns the frame, the plate fills it. */
+.work__thumb .cover {
+  aspect-ratio: auto;
+  border: none;
+  padding: 8px 10px;
+}
+
+.work__thumb .cover__title {
+  font-size: 0.8125rem;
+  max-width: none;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.work__thumb .cover__schema {
+  width: 52px;
+}
+
+.work__thumb .cover__meta {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@media (max-width: 860px) {
+  .work__thumb .cover__schema {
+    display: none;
+  }
+}

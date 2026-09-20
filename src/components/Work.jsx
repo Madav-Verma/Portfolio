@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 import { ArrowUpRight, CaretDown, GithubLogo } from "@phosphor-icons/react";
 import { FILTERS, PROJECTS } from "../data.js";
 import { useReveal } from "../hooks/useReveal.js";
+import Cover from "./Cover.jsx";
 import "./Work.css";
 
 const STATUS_CLASS = {
@@ -10,16 +11,62 @@ const STATUS_CLASS = {
   wip: "stamp--wip",
 };
 
-function Cover({ project, large = false }) {
+function ShotsFigure({ project }) {
+  const [active, setActive] = useState(0);
+  const shots = project.shots ?? [];
+  const current = shots[Math.min(active, shots.length - 1)];
+
   return (
-    <div className={`cover ${large ? "cover--lg" : ""}`} aria-hidden="true">
-      <span className="cover__sheet">{project.sheet}</span>
-      <span className="cover__title">{project.title}</span>
-      <span className="cover__meta">
-        {project.domain} · {project.year}
-      </span>
+    <div className="work__shots-wrap">
+      <figure className="work__figure">
+        <img
+          src={current.src}
+          alt={`${project.title} — ${current.label}`}
+          width="900"
+          height="562"
+          loading="lazy"
+          decoding="async"
+        />
+        <figcaption className="caption">Fig. — {current.label}</figcaption>
+      </figure>
+      <div className="work__shots" role="group" aria-label={`${project.title} views`}>
+        {shots.map((s, idx) => (
+          <button
+            key={s.src}
+            type="button"
+            className={`work__shot${idx === active ? " is-active" : ""}`}
+            aria-pressed={idx === active}
+            aria-label={`View ${s.label}`}
+            onClick={() => setActive(idx)}
+          >
+            <img src={s.src} alt="" loading="lazy" decoding="async" />
+          </button>
+        ))}
+      </div>
     </div>
   );
+}
+
+function WorkFigure({ project }) {
+  if (project.shots && project.shots.length > 0) {
+    return <ShotsFigure project={project} />;
+  }
+  if (project.screenshot) {
+    return (
+      <figure className="work__figure">
+        <img
+          src={project.screenshot}
+          alt={`${project.title} interface`}
+          width="900"
+          height="562"
+          loading="lazy"
+          decoding="async"
+        />
+        <figcaption className="caption">Fig. — Production interface</figcaption>
+      </figure>
+    );
+  }
+  return <Cover project={project} large />;
 }
 
 export default function Work() {
@@ -90,9 +137,23 @@ export default function Work() {
                     aria-controls={`panel-${p.id}`}
                     onClick={() => setOpenId(open ? null : p.id)}
                   >
-                    <span className="work__sheet-id caption">{p.sheet}</span>
-                    <span className="work__title">{p.title}</span>
-                    <span className="work__domain">{p.domain}</span>
+                    <span className="work__thumb" aria-hidden="true">
+                      {p.screenshot ? (
+                        <img
+                          src={p.screenshot}
+                          alt=""
+                          loading="lazy"
+                          decoding="async"
+                        />
+                      ) : (
+                        <Cover project={p} />
+                      )}
+                    </span>
+                    <span className="work__row-main">
+                      <span className="work__sheet-id caption">{p.sheet}</span>
+                      <span className="work__title">{p.title}</span>
+                      <span className="work__domain">{p.domain}</span>
+                    </span>
                     <span className="caption work__year">{p.year}</span>
                     <span className={`stamp ${STATUS_CLASS[p.status]}`}>
                       {p.status === "live" && <span className="live-dot" aria-hidden="true" />}
@@ -135,25 +196,7 @@ export default function Work() {
                       </div>
 
                       <div className="work__side">
-                        <figure className="work__figure">
-                          {p.screenshot ? (
-                            <>
-                               <img
-                                 src={p.screenshot}
-                                 alt={`${p.title} interface`}
-                                 width="900"
-                                 height="562"
-                                 loading="lazy"
-                                 decoding="async"
-                               />
-                              <figcaption className="caption">
-                                Fig. — Production interface
-                              </figcaption>
-                            </>
-                          ) : (
-                            <Cover project={p} large />
-                          )}
-                        </figure>
+                        <WorkFigure project={p} />
 
                         <dl className="work__metrics caption">
                           {p.metrics.map((m) => (
