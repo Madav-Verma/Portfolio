@@ -4,8 +4,7 @@
   gap: clamp(40px, 6vw, 96px);
   align-items: end;
   padding-top: calc(var(--nav-h) + clamp(64px, 10vh, 120px));
-  padding-bottom: var(--s-8);
-  min-height: 100dvh;
+  padding-bottom: var(--s-6);
   position: relative;
 }
 
@@ -80,7 +79,7 @@ html.js .hero__line:nth-child(2) .hero__line-inner { animation-delay: 360ms; }
   to { transform: translateY(0); }
 }
 
-/* ---------- Reduced motion: gentler, not zero ---------- */
+/* ---------- Reduced motion: static ---------- */
 @media (prefers-reduced-motion: reduce) {
   html.js .hero__sweep::before { display: none; }
   html.js body::before { animation: grid-in 160ms ease both; }
@@ -94,11 +93,6 @@ html.js .hero__line:nth-child(2) .hero__line-inner { animation-delay: 360ms; }
   @keyframes stamp-fade {
     from { opacity: 0; }
   }
-
-  .hero__dim-line { animation: none !important; transform: none !important; }
-  .hero__dim-tick, .hero__dim-label { animation: none !important; opacity: 1 !important; }
-
-  .hero__sheet { transform: none !important; }
 }
 
 /* ---------- Load-in for the rest (existing system) ----------
@@ -173,107 +167,16 @@ html.js [data-load] { opacity: 0; }
   margin-top: var(--s-2);
 }
 
-/* ---------- Dimension annotations (real measured values) ---------- */
-.hero__dim {
-  color: var(--accent);
-  pointer-events: none;
-  user-select: none;
-}
-
-.hero__dim--h {
-  position: absolute;
-  top: calc(100% + 14px);
-  left: 0;
-  width: var(--w, 100%);
-  max-width: 100%;
-  display: flex;
-  align-items: center;
-  height: 14px;
-}
-
-.hero__dim--h .hero__dim-line {
-  flex: 1;
-  height: 1px;
-  background: currentColor;
-  transform-origin: left;
-  animation: dim-h 480ms var(--ease-out) 120ms both;
-}
-
-@keyframes dim-h {
-  from { transform: scaleX(0); }
-}
-
-.hero__dim--v {
-  position: absolute;
-  top: 0;
-  right: -30px;
-  bottom: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 14px;
-}
-
-.hero__dim--v .hero__dim-line {
-  flex: 1;
-  width: 1px;
-  background: currentColor;
-  transform-origin: top;
-  animation: dim-v 480ms var(--ease-out) 120ms both;
-}
-
-@keyframes dim-v {
-  from { transform: scaleY(0); }
-}
-
-.hero__dim-tick {
-  width: 1px;
-  height: 7px;
-  background: currentColor;
-  transform: rotate(32deg);
-  animation: dim-fade 200ms ease 480ms both;
-}
-
-.hero__dim--v .hero__dim-tick {
-  width: 7px;
-  height: 1px;
-}
-
-.hero__dim-label {
-  font-family: var(--font-mono);
-  font-size: 10px;
-  letter-spacing: 0.12em;
-  white-space: nowrap;
-  animation: dim-fade 200ms ease 460ms both;
-}
-
-.hero__dim--h .hero__dim-label { padding-left: 10px; }
-.hero__dim--v .hero__dim-label {
-  padding-top: 10px;
-  writing-mode: vertical-rl;
-}
-
-@keyframes dim-fade {
-  from { opacity: 0; }
-}
-
 /* ---------- Workbench (drafting table, right column) ----------
-   Layered plates, no rotation — depth comes from offset overlap only.
-   Back chatbot plate peeks above the main catalogue anchor (20px
-   overlap into spare padding); the portrait inset straddles the main
-   plate's lower-left. Parallax transforms land inline via rAF. */
+   Plain 2-row grid: catalogue plate full bench width, portrait plate
+   as a clean 180px square below. No overlap, no absolute positioning,
+   no negative margins, no will-change. */
 .hero__bench {
   justify-self: end;
   width: min(100%, 440px);
   display: grid;
-  gap: var(--s-3);
-  position: relative;
+  gap: var(--s-4);
   margin: 0;
-}
-
-.hero__bench-stage {
-  position: relative;
-  padding-bottom: 34px; /* room for the inset straddling the main base */
 }
 
 .hero__sheet {
@@ -281,47 +184,15 @@ html.js [data-load] { opacity: 0; }
   display: grid;
   gap: var(--s-2);
   align-content: start;
-  padding: var(--s-2);
+  padding: var(--s-3);
   border: 1px solid var(--line);
   background: var(--paper-raised);
-  box-shadow: var(--shadow-plate);
-  will-change: transform;
-}
-
-.hero__sheet--back {
-  width: 62%;
-  margin-left: auto;
-  position: relative;
-  z-index: 1;
-  background: var(--paper-cool);
-  padding-bottom: calc(var(--s-2) + 20px); /* spare paper the main overlaps */
-}
-
-.hero__sheet--main {
-  position: relative;
-  z-index: 2;
-  margin-top: -20px; /* 20px overlap onto the back plate's spare paper */
-}
-
-.hero__sheet--inset {
-  position: absolute;
-  z-index: 3;
-  left: -14px;
-  bottom: 0;
-  width: 160px;
+  box-shadow: var(--shadow-lift);
 }
 
 .hero__sheet-frame {
-  position: relative;
   border: 1px solid var(--line);
   overflow: hidden;
-}
-
-.hero__sheet-ruler {
-  position: absolute;
-  inset-inline: 0;
-  bottom: 0;
-  z-index: 1;
 }
 
 .hero__sheet-frame img {
@@ -334,8 +205,14 @@ html.js [data-load] { opacity: 0; }
   object-fit: cover;
 }
 
-.hero__sheet--inset .hero__sheet-frame img {
-  filter: saturate(1.06) brightness(1.04) contrast(1.03);
+.hero__sheet--portrait {
+  width: 180px;
+  justify-self: start;
+}
+
+.hero__sheet--portrait .hero__sheet-frame img {
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
 }
 
 .hero__sheet-caption {
@@ -346,29 +223,12 @@ html.js [data-load] { opacity: 0; }
   font-variant-numeric: tabular-nums;
 }
 
-.hero__meta {
-  display: grid;
-  border-top: 1px solid var(--line);
-  margin: 0;
-}
-
-.hero__meta-row {
-  display: flex;
-  justify-content: space-between;
-  gap: var(--s-3);
-  padding-block: 8px;
-  border-bottom: 1px solid var(--line);
-}
-
-.hero__meta-row dt { color: var(--ink-3); }
-.hero__meta-row dd { color: var(--ink); text-align: right; margin: 0; }
-
-/* ---------- Proof strip + availability (factual, drawn from data.js) ---------- */
+/* ---------- Proof strip (factual, drawn from data.js) ---------- */
 .hero__proof {
   width: 100%;
   max-width: 680px;
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   border-top: 2px solid var(--ink);
   margin-top: var(--s-3);
   margin-bottom: 0;
@@ -401,22 +261,6 @@ html.js [data-load] { opacity: 0; }
   margin: 0;
 }
 
-.hero__avail {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  color: var(--ink-2);
-  margin-top: var(--s-2);
-}
-
-.hero__avail::before {
-  content: "";
-  flex: none;
-  width: 16px;
-  height: 2px;
-  background: var(--accent);
-}
-
 /* ---------- Responsive ---------- */
 @media (max-width: 900px) {
   .hero {
@@ -429,8 +273,6 @@ html.js [data-load] { opacity: 0; }
     justify-self: start;
     width: min(100%, 440px);
   }
-
-  .hero__dim--v { display: none; }
 
   .hero__proof {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -448,100 +290,10 @@ html.js [data-load] { opacity: 0; }
   }
 }
 
-/* Mobile workbench: static vertical stack — main full width, chatbot
-   beneath it, portrait inset as a 140px row card. No overlap, and no
-   parallax (the JS gate already refuses touch pointers). */
 @media (max-width: 760px) {
-  .hero__bench-stage {
-    display: grid;
-    gap: var(--s-3);
-    padding-bottom: 0;
-  }
-
-  .hero__sheet--back {
-    width: 100%;
-    margin-left: 0;
-    padding-bottom: var(--s-2);
-  }
-
-  .hero__sheet--main {
-    margin-top: 0;
-  }
-
-  .hero__sheet--inset {
-    position: static;
+  .hero__sheet--portrait {
     width: 140px;
   }
-
-  .hero__sheet {
-    will-change: auto;
-  }
-}
-
-@media (max-width: 600px) {
-  .hero__dim--h { display: none; }
-}
-
-/* ---------- Portrait annotations (W5): hover/focus leader-line callouts
-   on the inset. Absolutely-positioned mono labels with 1px leader lines,
-   top-anchored so they never cover the inset captions. Opacity only. */
-.hero__sheet--inset .hero__note {
-  position: absolute;
-  z-index: 4;
-  max-width: 172px;
-  padding: 3px 7px 2px;
-  background: var(--paper-raised);
-  border: 1px solid var(--line-strong);
-  color: var(--ink-2);
-  font-family: var(--font-mono);
-  font-size: 11px;
-  letter-spacing: 0.04em;
-  line-height: 1.5;
-  pointer-events: none;
-  opacity: 0;
-  transition: opacity var(--t-ui) var(--ease-out);
-}
-
-.hero__sheet--inset .hero__note::after {
-  content: "";
-  position: absolute;
-  top: 50%;
-  height: 1px;
-  width: 12px;
-  background: var(--line-strong);
-}
-
-@media (min-width: 761px) {
-  .hero__note--a { top: 16px; right: calc(100% + 12px); }
-  .hero__note--b { top: 62px; right: calc(100% + 12px); }
-  .hero__note--a::after,
-  .hero__note--b::after { left: 100%; }
-}
-
-.hero__sheet--inset:hover .hero__note,
-.hero__sheet--inset:focus .hero__note,
-.hero__sheet--inset:focus-within .hero__note { opacity: 1; }
-
-/* Touch / coarse pointers: visible statically, no hover dependency. */
-@media (hover: none) {
-  .hero__sheet--inset .hero__note { opacity: 1; }
-}
-
-/* Reduced motion: static, always visible. */
-@media (prefers-reduced-motion: reduce) {
-  .hero__sheet--inset .hero__note { opacity: 1; transition: none; }
-}
-
-/* Mobile: the inset is a static row card, so re-anchor the notes to it
-   (position:relative keeps the static layout) and park them in the free
-   space to its right, clear of the captions below the frame. */
-@media (max-width: 760px) {
-  .hero__sheet--inset { position: relative; }
-  .hero__sheet--inset .hero__note { max-width: 150px; }
-  .hero__note--a { top: 14px; left: calc(100% + 12px); }
-  .hero__note--b { top: 64px; left: calc(100% + 12px); }
-  .hero__note--a::after,
-  .hero__note--b::after { right: 100%; left: auto; }
 }
 
 /* ---------- Kinetic headline (W6b): word-level stagger inside the
