@@ -306,14 +306,9 @@ export const CAPABILITIES = [
     tools: ["On-site discovery", "Solution design", "Offline-first delivery", "Stakeholder communication", "Adoption & support"],
   },
   {
-    domain: "Engineering & Product",
+    domain: "Product Engineering",
     focus: "Complete product delivery: database design to UI to deployment, tested and documented.",
-    tools: ["TypeScript", "Next.js", "TanStack Start", "React", "Vite", "JavaScript", "Python", "Supabase", "PostgreSQL", "REST APIs", "Git", "Vercel", "Netlify"],
-  },
-  {
-    domain: "Catalogue & Commerce Systems",
-    focus: "Product data modelling to faceted search, compare and spec pages that sell.",
-    tools: ["Faceted search", "Model compare", "Spec data modelling", "SQLite / Postgres catalogues", "SEO & GEO"],
+    tools: ["TypeScript", "Next.js", "TanStack Start", "React", "Vite", "JavaScript", "Python", "Supabase", "PostgreSQL", "REST APIs", "Git"],
   },
   {
     domain: "AI Assistants (RAG)",
@@ -321,19 +316,14 @@ export const CAPABILITIES = [
     tools: ["Retrieval grounding", "KB indexing", "LLM routing (Gemini, GPT)", "Rule-engine fallback", "SSE streaming", "Lead capture"],
   },
   {
-    domain: "Hosting & Deployment",
-    focus: "Build to live URL — domains, TLS, CI deploys, cache and security headers.",
-    tools: ["Vercel", "Netlify", "DNS & domains", "SSL/TLS", "Cache-control & security headers", "CI build pipelines"],
-  },
-  {
     domain: "Data & BI",
     focus: "Raw operational data to leadership-ready dashboards, pipelines and predictive models.",
     tools: ["SQL (T-SQL)", "Power BI", "Pandas & NumPy", "Database design", "Dashboarding"],
   },
   {
-    domain: "Delivery & Process",
-    focus: "Requirements to rollout at startup speed — offline-first architecture for real-world conditions.",
-    tools: ["Rapid prototyping", "Offline-first", "Workflow digitisation", "Stakeholder communication"],
+    domain: "Delivery & Deployment",
+    focus: "Build to live URL, then keep it running where the network doesn't cooperate.",
+    tools: ["Vercel", "Netlify", "DNS & domains", "SSL/TLS", "Cache-control & security headers", "CI build pipelines", "Offline-first & queued sync", "Workflow digitisation"],
   },
 ]
 
@@ -433,14 +423,10 @@ export const EDUCATION = [
   },
 ]
 
+// Three notes, not five: the plate carries the strongest signals and the rest stay
+// archived below so nothing is lost. Selection favours the applied-AI positioning —
+// two notes on how the work actually gets built, one on production engineering depth.
 export const NOTES = [
-  {
-    title: "Shipping a catalogue that sells",
-    date: "Sep 2026",
-    tag: "Product Engineering",
-    excerpt:
-      "A catalogue is a conversion engine, not a list. Faceted search narrows, side-by-side compare decides, and 60+ spec rows answer the question before the phone rings. The assistant on top only works because the data underneath is modelled — RAG over a mess is just faster confusion.",
-  },
   {
     title: "What an ERP teaches about data integrity",
     date: "Sep 2026",
@@ -461,6 +447,17 @@ export const NOTES = [
     tag: "Architecture",
     excerpt:
       "Code generation ≠ code review ≠ architecture planning. Claude reasons and reviews, DeepSeek generates fast, Gemini handles multimodal analysis. Routing tasks across model families is not a nice-to-have — it's the competitive advantage.",
+  },
+]
+
+// Kept, not deleted. Available to the FAQ or a future notes page without a rewrite.
+export const NOTES_ARCHIVE = [
+  {
+    title: "Shipping a catalogue that sells",
+    date: "Sep 2026",
+    tag: "Product Engineering",
+    excerpt:
+      "A catalogue is a conversion engine, not a list. Faceted search narrows, side-by-side compare decides, and 60+ spec rows answer the question before the phone rings. The assistant on top only works because the data underneath is modelled — RAG over a mess is just faster confusion.",
   },
   {
     title: "What offline-first taught me about real software",
@@ -529,9 +526,20 @@ export const CERTIFICATIONS = [
 
 /* Hero proof strip — derived from the data above so counts can never drift
    from the source of truth (live apps and certifications are computed). */
+// Derived, never hand-counted — the credentials plate leads with the certificates that
+// carry a real verification URL and demotes the rest to a compact typographic list.
+// Currently 6 of 14. If a `verify` URL is added or removed, both lists and every count
+// rendered from them follow automatically.
+export const CERTS_VERIFIED = CERTIFICATIONS.filter((c) => Boolean(c.verify))
+export const CERTS_OTHER = CERTIFICATIONS.filter((c) => !c.verify)
+
 export const PROOF_POINTS = [
   { k: "Live production apps", v: String(PROJECTS.filter((p) => p.status === "live").length) },
   { k: "Staff on the ERP daily", v: "10" },
   { k: "Reporting hrs saved / month", v: "15–20h" },
-  { k: "Verifiable certifications", v: String(CERTIFICATIONS.length) },
+  // Counts the VERIFIED subset, never all 14. Only 6 certificates carry a real
+  // verification URL, so "14 verifiable" was an overclaim that the credentials
+  // plate directly contradicts (it honestly reads "6 verifiable · 14 total").
+  // Derived from CERTS_VERIFIED so this number cannot drift from `verify` again.
+  { k: "Verifiable certifications", v: String(CERTS_VERIFIED.length) },
 ]

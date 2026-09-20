@@ -144,46 +144,77 @@ export default function Work() {
                 data-reveal
                 style={{ "--d": Math.min(i, 4) }}
               >
-                <h3 className="work__row-h">
-                  <button
-                    type="button"
-                    className="work__row"
-                    aria-expanded={open}
-                    aria-controls={`panel-${p.id}`}
-                    onClick={() => setOpenId(open ? null : p.id)}
-                  >
-                    <span className="work__thumb" aria-hidden="true">
-                      {p.screenshot ? (
-                        <img
-                          src={p.screenshot}
-                          alt=""
-                          loading="lazy"
-                          decoding="async"
-                        />
-                      ) : (
-                        <Cover project={p} />
+                <div className="work__row-wrap">
+                  <h3 className="work__row-h">
+                    <button
+                      type="button"
+                      className="work__row"
+                      aria-expanded={open}
+                      aria-controls={`panel-${p.id}`}
+                      onClick={() => setOpenId(open ? null : p.id)}
+                    >
+                      <span className="work__thumb" aria-hidden="true">
+                        {p.screenshot ? (
+                          <img
+                            src={p.screenshot}
+                            alt=""
+                            loading="lazy"
+                            decoding="async"
+                          />
+                        ) : (
+                          <Cover project={p} />
+                        )}
+                      </span>
+                      <span className="work__row-main">
+                        <span className="work__sheet-id caption">{p.sheet}</span>
+                        <span className="work__title">{p.title}</span>
+                        <span className="work__domain">{p.domain}</span>
+                      </span>
+                      <span className="caption work__year">{p.year}</span>
+                      {p.metrics?.[0] && (
+                        <span className="work__row-metric">
+                          <span className="work__row-metric-v">{p.metrics[0].v}</span>
+                          <span className="caption">{p.metrics[0].l}</span>
+                        </span>
                       )}
-                    </span>
-                    <span className="work__row-main">
-                      <span className="work__sheet-id caption">{p.sheet}</span>
-                      <span className="work__title">{p.title}</span>
-                      <span className="work__domain">{p.domain}</span>
-                    </span>
-                    <span className="caption work__year">{p.year}</span>
-                    <span className={`stamp ${STATUS_CLASS[p.status]}`}>
-                      {p.status === "live" && <span className="live-dot" aria-hidden="true" />}
-                      {p.statusLabel}
-                    </span>
-                    <CaretDown
-                      size={18}
-                      weight="bold"
-                      aria-hidden="true"
-                      className="work__caret"
-                    />
-                  </button>
-                </h3>
+                      <span className={`stamp ${STATUS_CLASS[p.status]}`}>
+                        {p.status === "live" && <span className="live-dot" aria-hidden="true" />}
+                        {p.statusLabel}
+                      </span>
+                      <CaretDown
+                        size={18}
+                        weight="bold"
+                        aria-hidden="true"
+                        className="work__caret"
+                      />
+                    </button>
+                  </h3>
 
-                <div id={`panel-${p.id}`} className="work__panel" role="region" aria-label={`${p.title} case study`}>
+                  {(p.link || p.repo) && (
+                    <div className="work__row-actions">
+                      {p.link && (
+                        <a className="btn btn--ghost" href={p.link} target="_blank" rel="noopener noreferrer">
+                          Visit live site
+                          <ArrowUpRight size={16} weight="bold" aria-hidden="true" />
+                        </a>
+                      )}
+                      {p.repo && (
+                        <a className="btn btn--ghost" href={p.repo} target="_blank" rel="noopener noreferrer">
+                          View repository
+                          <GithubLogo size={16} weight="bold" aria-hidden="true" />
+                        </a>
+                      )}
+                    </div>
+                  )}
+                </div>
+
+                <div
+                  id={`panel-${p.id}`}
+                  className="work__panel"
+                  role="region"
+                  aria-label={`${p.title} case study`}
+                  inert={open ? undefined : ""}
+                >
                   <div className="work__panel-inner">
                     <div className="work__stage">
                       <WorkFigure project={p} />

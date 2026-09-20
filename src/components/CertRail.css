@@ -1,7 +1,9 @@
-/* Pinned wall: 14 plates hung salon-style. The sunk panel is the gallery
-   wall; frames sit at natural height (aligned tops, organic bottoms —
-   symmetry yet clutter). Heroes (1st + 8th) span wide so rows run
-   6+3+3 / 3+3+3+3 / 6+3+3 / 3+3+3+3 with dense flow and no orphans. */
+/* Pinned wall: the 6 verifiable plates hung salon-style. The sunk panel is
+   the gallery wall; frames sit at natural height (aligned tops, organic
+   bottoms — symmetry yet clutter). The two verifiable heroes span wide so
+   rows run 6+3+3 / 3+3+6 with dense flow and no orphans. The 8 remaining
+   scans (no verify URL) are demoted to the typographic ledger below the
+   panel — no imagery, no fake links. */
 .certs {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
@@ -24,35 +26,32 @@
   color: inherit;
   transition:
     transform var(--t-ui) var(--ease-out),
+    translate var(--t-ui) var(--ease-out),
     rotate var(--t-ui) var(--ease-out),
     box-shadow var(--t-ui) var(--ease-out);
 }
 
 .certs__card:nth-child(1),
-.certs__card:nth-child(8) {
+.certs__card:nth-child(6) {
   grid-column: span 6;
 }
 
-/* Hand-hung tilt — each frame leans its own way, never more than a degree. */
-.certs__card:nth-child(1) { rotate: 0.8deg; }
+/* Hand-hung tilt — each frame leans its own way, never more than a degree.
+   The two wide heroes hang straight (their 640px scan already fills the
+   track; rotating a plate that wide would push its bounding box past the
+   intrinsic size). */
 .certs__card:nth-child(2) { rotate: -0.6deg; }
 .certs__card:nth-child(3) { rotate: 0.4deg; }
 .certs__card:nth-child(4) { rotate: -0.9deg; }
 .certs__card:nth-child(5) { rotate: 0.6deg; }
-.certs__card:nth-child(6) { rotate: -0.4deg; }
-.certs__card:nth-child(7) { rotate: 1deg; }
-.certs__card:nth-child(8) { rotate: -0.7deg; }
-.certs__card:nth-child(9) { rotate: 0.5deg; }
-.certs__card:nth-child(10) { rotate: -0.8deg; }
-.certs__card:nth-child(11) { rotate: 0.7deg; }
-.certs__card:nth-child(12) { rotate: -0.5deg; }
-.certs__card:nth-child(13) { rotate: 0.9deg; }
-.certs__card:nth-child(14) { rotate: -0.6deg; }
 
-/* Hover magic: the frame straightens, lifts, candlelight sweeps once. */
+/* Hover magic: the frame straightens, lifts, candlelight sweeps once.
+   The lift lives on the `translate` property, not `transform`: the reveal
+   engine pins `transform: none` on revealed cards, which outranks any
+   transform-based lift. */
 .certs__card:is(:hover, :focus-visible) {
   rotate: 0deg;
-  transform: translateY(-4px);
+  translate: 0 -4px;
   box-shadow: var(--shadow-float);
 }
 
@@ -90,9 +89,14 @@
   color: var(--ink-2);
 }
 
+/* Source scans are 640×494 (DESIGN.md provenance) — cap the rendered width
+   at the intrinsic size so wide hero plates never upscale into blur. When a
+   plate track runs wider than the scan (hero rows), the scan centres. */
 .certs__card img {
   width: 100%;
+  max-width: 640px;
   height: auto;
+  margin-inline: auto;
   border-bottom: 1px solid var(--line);
   outline: 1px solid var(--line);
   outline-offset: -9px;
@@ -119,6 +123,58 @@
   color: var(--accent);
 }
 
+/* ---- Quiet appendix: the unverified remainder as a typographic ledger.
+   Subordinate to the wall — no imagery, no links, hairline rules only. ---- */
+.certs__appendix {
+  max-width: 52em;
+  margin-top: var(--s-5);
+  padding-top: var(--s-4);
+  border-top: 1px solid var(--line-strong);
+}
+
+.certs__appendix-k {
+  margin-bottom: var(--s-3);
+}
+
+.certs__list {
+  display: grid;
+}
+
+.certs__entry {
+  display: grid;
+  grid-template-columns: 2.5rem minmax(0, 1fr) auto;
+  gap: var(--s-3);
+  align-items: baseline;
+  padding-block: var(--s-2);
+  border-bottom: 1px solid var(--line);
+}
+
+.certs__entry:last-child {
+  border-bottom: 0;
+}
+
+.certs__entry-no {
+  font-family: var(--font-mono);
+  font-size: var(--text-micro);
+  letter-spacing: var(--track-mono);
+  color: var(--ink-3);
+}
+
+.certs__entry-main {
+  display: grid;
+  gap: var(--s-1);
+}
+
+.certs__entry-title {
+  font-size: var(--text-small);
+  font-weight: 540;
+  line-height: 1.4;
+}
+
+.certs__entry-year {
+  color: var(--ink-3);
+}
+
 @media (max-width: 1100px) {
   .certs {
     grid-template-columns: repeat(6, 1fr);
@@ -130,21 +186,73 @@
   }
 
   .certs__card:nth-child(1),
-  .certs__card:nth-child(8) {
+  .certs__card:nth-child(6) {
     grid-column: span 6;
   }
 }
 
+/* Narrow: the wall compacts to uniform 2-up tiles so six scans plus the
+   ledger stay short on a phone — no full-width plates stacked six deep.
+   Captions tighten and the verify chip becomes icon-only. */
 @media (max-width: 600px) {
   .certs {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--s-3);
     padding: var(--s-4);
   }
 
   .certs__card,
   .certs__card:nth-child(1),
-  .certs__card:nth-child(8) {
+  .certs__card:nth-child(6) {
     grid-column: auto;
+  }
+
+  .certs__caption {
+    gap: 3px;
+    padding: 7px 9px 9px;
+  }
+
+  .certs__title {
+    font-size: 0.75rem;
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+  }
+
+  /* The tracked-uppercase caption wraps to five lines in a 2-up tile —
+     on phones the meta collapses to one normal-case, ellipsized line. */
+  .certs__caption .caption {
+    letter-spacing: 0;
+    text-transform: none;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .certs__verify {
+    gap: 4px;
+    margin: 0 9px 9px;
+  }
+
+  .certs__verify-label { display: none; }
+
+  .certs__appendix {
+    margin-top: var(--s-4);
+    padding-top: var(--s-3);
+  }
+
+  .certs__appendix-k {
+    margin-bottom: var(--s-2);
+  }
+
+  .certs__entry {
+    grid-template-columns: 2rem minmax(0, 1fr) auto;
+    gap: var(--s-2);
+    padding-block: 4px;
+  }
+
+  .certs__entry-title {
+    font-size: 0.75rem;
+    line-height: 1.3;
   }
 }
 
@@ -155,6 +263,7 @@
   html.js .certs__card[data-revealed] {
     transition:
       transform var(--t-ui) var(--ease-out),
+      translate var(--t-ui) var(--ease-out),
       rotate var(--t-ui) var(--ease-out),
       box-shadow var(--t-ui) var(--ease-out);
     transition-delay: 0ms;
@@ -163,13 +272,15 @@
 
 /* Touch: keep the tilt, skip lift and shimmer (no sticky hover states). */
 @media (hover: none) {
-  .certs__card:hover { transform: none; }
+  .certs__card:hover { translate: none; }
   .certs__card::after { display: none; }
 }
 
-/* Reduced motion: the calm wall — straight frames, no sweep, no lift. */
+/* Reduced motion: the calm wall — straight frames, no sweep, no lift.
+   `.certs > .certs__card` outranks the nth-child tilt rules, which
+   otherwise keep their lean under reduced motion. */
 @media (prefers-reduced-motion: reduce) {
-  .certs__card { rotate: 0deg; }
-  .certs__card:is(:hover, :focus-visible) { transform: none; }
+  .certs > .certs__card { rotate: 0deg; }
+  .certs__card:is(:hover, :focus-visible) { translate: none; }
   .certs__card::after { display: none; }
 }

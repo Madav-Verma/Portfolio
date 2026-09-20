@@ -1,6 +1,8 @@
 /* ============================================================
-   WORK — visual-first index. Rows stay as-is: 160px thumbnail,
-   sheet id + title + domain, year, status stamp, caret.
+   WORK — visual-first index. Rows: 160px thumbnail, sheet id +
+   title + domain, year, top metric, status stamp, caret. The
+   live/repo action sits beside the toggle as a SIBLING (see
+   .work__row-wrap) so no link ever nests inside the button.
    Open panel is a takeover: full-width figure FIRST (up to 900px,
    --shadow-plate), then prose grid (main | rail).
    Tokens only. Radius 0. Transform/opacity motion only
@@ -54,7 +56,7 @@
   text-align: center;
 }
 
-/* ---------- Index rows (untouched) ---------- */
+/* ---------- Index rows ---------- */
 .work__list {
   border-top: 1px solid var(--line-strong);
 }
@@ -65,9 +67,51 @@
 
 .work__row-h { margin: 0; }
 
+/* Row wrapper: the toggle button and the row-level action are SIBLINGS
+   inside this grid — the link never nests inside the button, so clicking
+   or keyboard-activating the link can never double-fire the accordion.
+   The second (auto) column collapses when a row has no action. */
+.work__row-wrap {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: var(--s-3);
+  transition: background-color var(--t-ui) var(--ease-out);
+}
+
+.work__row-wrap:hover { background: var(--paper-raised); }
+.is-open .work__row-wrap { background: var(--paper-raised); }
+
+/* Row-level live/repo action — compact ghost button, same grammar as the
+   panel actions, sized to sit on the row. */
+.work__row-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: var(--s-2);
+}
+
+.work__row-actions .btn { min-height: 44px; padding: 9px 16px; }
+
+/* Top outcome metric in the closed row: figure in ink, label as caption. */
+.work__row-metric {
+  display: inline-flex;
+  align-items: baseline;
+  gap: var(--s-2);
+  white-space: nowrap;
+  font-family: var(--font-mono);
+}
+
+.work__row-metric-v {
+  font-size: var(--text-small);
+  letter-spacing: 0;
+  color: var(--ink);
+  font-variant-numeric: tabular-nums;
+}
+
 .work__row {
   display: grid;
-  grid-template-columns: 160px minmax(0, 1fr) auto auto 24px;
+  grid-template-columns: 160px minmax(0, 1fr) auto auto auto 24px;
   align-items: center;
   gap: clamp(12px, 2vw, 28px);
   width: 100%;
@@ -369,7 +413,43 @@
 .work__actions .btn { min-height: 44px; padding: 9px 16px; }
 
 /* ---------- Responsive ---------- */
+/* Medium sheets: the metric column plus a wide status stamp would starve
+   the title, so year + metric tuck under the title and the action stacks
+   under the toggle — the same pattern the ≤860 sheet uses. The ledger
+   (metric beside the stamp) returns above 1120px. */
+@media (min-width: 861px) and (max-width: 1120px) {
+  .work__row-wrap {
+    grid-template-columns: minmax(0, 1fr);
+    align-items: start;
+    row-gap: var(--s-1);
+  }
+
+  .work__row {
+    grid-template-columns: 160px minmax(0, 1fr) auto 24px;
+    row-gap: var(--s-1);
+    align-items: start;
+  }
+
+  .work__thumb { grid-column: 1; grid-row: 1 / span 3; }
+  .work__row-main { grid-column: 2; grid-row: 1; }
+  .work__year { grid-column: 2; grid-row: 2; justify-self: start; }
+  .work__row > .work__row-metric { grid-column: 2; grid-row: 3; justify-self: start; }
+  .work__row > .stamp { grid-column: 3; grid-row: 1; }
+
+  .work__row-actions {
+    justify-self: start;
+    margin-left: 176px; /* under the text column: 160px thumb + 16px gap */
+    padding-bottom: var(--s-1);
+  }
+}
+
 @media (max-width: 860px) {
+  .work__row-wrap {
+    grid-template-columns: minmax(0, 1fr);
+    align-items: start;
+    gap: var(--s-1) 0;
+  }
+
   .work__row {
     grid-template-columns: 96px minmax(0, 1fr) 24px;
     column-gap: 12px;
@@ -380,13 +460,22 @@
   .work__thumb {
     width: 96px;
     height: 60px;
-    grid-row: 1 / span 3;
+    grid-row: 1 / span 4;
   }
 
   .work__row-main { grid-column: 2; }
   .work__year { grid-column: 2; }
+  .work__row > .work__row-metric { grid-column: 2; justify-self: start; }
   .work__row > .stamp { grid-column: 2; justify-self: start; }
   .work__caret { grid-column: 3; grid-row: 1; margin-top: 8px; }
+
+  /* Stack the action under the toggle, aligned to the text column
+     (96px thumb + 12px gap), off the row's left edge. */
+  .work__row-actions {
+    justify-self: start;
+    margin-left: 108px;
+    padding-bottom: var(--s-2);
+  }
 
   .work__title {
     font-size: clamp(1.15rem, 1rem + 1vw, 1.4rem);

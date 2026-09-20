@@ -118,7 +118,11 @@ html.js [data-load] { opacity: 0; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  [data-load] {
+  /* html.js prefix needed: plain [data-load] opacity:1 loses to
+     `html.js [data-load] { opacity: 0 }` above, so hero-fade (which
+     fades towards the computed value) held reduced-motion users at
+     opacity 0 — sub/CTA/proof/bench stayed invisible. */
+  html.js [data-load] {
     opacity: 1;
     animation: hero-fade 160ms ease both;
   }
@@ -290,9 +294,62 @@ html.js [data-load] { opacity: 0; }
   }
 }
 
+/* ---------- Small screens (≤760px): work above the fold ----------
+   Drop the portrait plate and its "Fig. A" caption — the catalogue
+   screenshot stays as the hero's single evidence plate. Tighten the
+   vertical rhythm so the CTA and proof strip land above the fold.
+   Desktop (and 761–900px) keeps the portrait and its size. */
 @media (max-width: 760px) {
   .hero__sheet--portrait {
-    width: 140px;
+    display: none;
+  }
+
+  .hero {
+    padding-top: calc(var(--nav-h) + 16px);
+    padding-bottom: var(--s-5);
+    gap: var(--s-4);
+  }
+
+  .hero__copy {
+    gap: 20px;
+  }
+
+  .hero__title {
+    /* One visual line per mask; stops the two-line-per-mask wrap
+       that bloated the headline at 390px. */
+    font-size: 2rem;
+  }
+
+  .hero__sub {
+    font-size: 0.9375rem;
+    line-height: 1.55;
+  }
+
+  .hero__cta {
+    gap: 8px;
+    margin-top: 0;
+  }
+
+  .hero__cta .btn {
+    gap: 6px;
+    padding-inline: 18px;
+    min-height: 48px;
+  }
+
+  .hero__proof {
+    margin-top: var(--s-2);
+  }
+
+  .hero__proof-item {
+    padding: 8px 10px 4px 0;
+  }
+
+  .hero__proof-item + .hero__proof-item {
+    padding-left: 10px;
+  }
+
+  .hero__proof-value {
+    font-size: 1rem;
   }
 }
 
