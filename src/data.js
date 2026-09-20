@@ -211,7 +211,11 @@ export const PROJECTS = [
     status: "shipped",
     statusLabel: "Shipped at Trossachs",
     link: null,
-    repo: "https://github.com/Madav-Verma/DataFlow-Pro",
+    // No public reference exists: github.com/Madav-Verma/DataFlow-Pro returns HTTP 404
+    // (verified twice, and the repo is absent from the account's 9 public repos). The
+    // work shipped internally at Trossachs and was never published, so there is nothing
+    // honest to link. This project renders typographically, never as a fake screenshot.
+    repo: null,
     screenshot: null,
     year: "2026",
     metric: "15–20 hrs/month of reporting saved",

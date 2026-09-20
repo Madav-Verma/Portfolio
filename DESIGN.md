@@ -103,8 +103,23 @@ One language, two moves — the trace draws, the wall hangs:
    once; pure CSS, so touch, small screens, reduced motion, print and no-JS resolve
    to the calm static wall. Every verifiable card stays a real link, Tab-reachable.
 Wall note (replaces GSAP justification): the vault scrub pin was retired for the pinned
-wall — same 14 plates, zero scroll trap, pure CSS. `gsap` stays in package.json unused;
-remove on the next dep pass.
+wall — same 14 plates, zero scroll trap, pure CSS.
+
+Correction (2026-09-21 bundle audit): the earlier claim here that "`gsap` stays in
+package.json unused" was **wrong**. `SystemMap.jsx` imports `gsap` and `ScrollTrigger`,
+registers the plugin, and runs a live scrubbed timeline (lines 98–118) that draws the
+`.sysmap__trace` paths and fades the tags. It is real, rendered code — `SystemMap` is
+mounted in `App.jsx`. Measured cost: 114,978 bytes raw / **45.3 kB gzip**, i.e. **39.7%
+of all JS gzip**, because importing two names pulls four modules (gsap-core,
+ScrollTrigger, CSSPlugin, Observer). That is more compressed weight than React and
+ReactDOM combined, for one SVG line-draw.
+
+So the dependency cannot be removed by deleting it from package.json — it requires
+migrating that one effect first. `PlotterSpine.jsx` already documents the target
+pattern ("Dependency-free on purpose — SystemMap already owns the page's single gsap
+ScrollTrigger, so this uses one passive scroll listener + a rAF loop"). Doing that is
+a ~25-line change confined to one component and takes the bundle from 348 kB/117 kB
+gzip to 232 kB/70 kB gzip. Tracked as a Phase 5 task.
 
 ### Reveal families (same tokens, same 70ms stagger clock)
 Plate heads wipe in (clip-path draw), work/FAQ rows slide from the margin (-14px X),

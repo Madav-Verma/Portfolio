@@ -20,7 +20,7 @@
 ## Live products (verifiable)
 - SJS Retail Jewellery Suite — https://retailjewellery.netlify.app/ — Complete retail management for a working jewellery store: billing, stock, purchases, customers, PDF invoices, live gold-rate price calculator, hallmark HUID splitting engine for GST compliance, role-based auth, audit trails, offline local database with queued sync. Evidence: 20+ automated unit tests (Vitest) covering billing, stock and CSV logic; 100% offline-capable.
 - Employee Attendance System — https://employeeattedance.netlify.app/ — Camera-based QR and barcode check-in for gate entry via barcode-detector polyfill (no native SDK). Three role tiers (employee, admin, super admin). Offline-first with online/offline detection and queued sync; reports with Excel export. Evidence: ~1s scan check-in; 0 records lost offline.
-- DataFlow Pro, BI Platform (shipped at Trossachs) — https://github.com/Madav-Verma/DataFlow-Pro — Real-time analytics on Power BI with AI-orchestrated SQL pipelines (Claude refactored SQL, OpenCode orchestrated). Revenue trends, compliance risk and operational KPIs in one view. Evidence: 15-20 hours/month of manual data processing saved.
+- DataFlow Pro, BI Platform (shipped at Trossachs; internal delivery, no public repository) — Real-time analytics on Power BI with AI-orchestrated SQL pipelines (Claude refactored SQL, OpenCode orchestrated). Revenue trends, compliance risk and operational KPIs in one view. Evidence: 15-20 hours/month of manual data processing saved.
 - Prokon Digital Workflows (shipped at Prokon Hi-Tech, 2024) — Inventory tracking and AMC management on Python/MySQL with HTML forms and Google Suite integration. Evidence: 2 workflows digitised; paper eliminated.
 
 ## Building now
