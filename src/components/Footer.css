@@ -27,9 +27,11 @@
 
 .footer__head {
   display: grid;
-  gap: var(--s-4);
+  gap: var(--s-3);
   padding-block: clamp(72px, 11vh, 128px) clamp(40px, 6vh, 64px);
 }
+
+.footer__positioning { color: var(--fdim); }
 
 .footer__mail {
   justify-self: start;
@@ -78,7 +80,7 @@
   display: inline-flex;
   align-items: center;
   gap: 9px;
-  min-height: 32px;
+  min-height: 44px;
   color: var(--ffg);
   text-decoration: none;
   opacity: 0.92;
@@ -96,7 +98,7 @@
   padding: 0;
   font: inherit;
   cursor: pointer;
-  min-height: 32px;
+  min-height: 44px;
 }
 
 .footer__copy-inner {

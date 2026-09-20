@@ -30,6 +30,7 @@ export default function Footer() {
     <footer className="footer" id="contact" ref={ref} aria-label="Contact">
       <div className="sheet">
         <div className="footer__head" data-reveal>
+          <p className="caption footer__positioning">{PROFILE.positioning}</p>
           <a className="footer__mail link-draw" href={`mailto:${PROFILE.email}`}>
             {PROFILE.email}
           </a>

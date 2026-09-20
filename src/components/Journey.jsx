@@ -17,7 +17,7 @@ export default function Journey() {
           </p>
         </header>
 
-        <p className="journey__story" data-reveal>
+        <p className="lede journey__story" data-reveal>
           {ABOUT.paragraphs[0]} {ABOUT.paragraphs[1]}
         </p>
 

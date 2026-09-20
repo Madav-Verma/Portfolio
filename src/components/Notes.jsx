@@ -12,7 +12,7 @@ export default function Notes() {
           <h2>Notes.</h2>
           <p className="plate-meta">
             <span>{NOTES.length} entries</span>
-            <span>Jun — Aug 2026</span>
+            <span>Jun — Sep 2026</span>
           </p>
         </header>
 

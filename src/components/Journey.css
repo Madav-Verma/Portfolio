@@ -1,9 +1,7 @@
 .journey__story {
   columns: 1;
-  color: var(--ink-2);
-  font-size: clamp(1.0625rem, 1rem + 0.55vw, 1.25rem);
   max-width: 52em;
-  margin-bottom: clamp(56px, 8vh, 96px);
+  margin-bottom: clamp(var(--s-6), 8vh, var(--s-8));
 }
 
 .journey__ledger {
@@ -62,7 +60,7 @@
 
 /* Education block */
 .journey__edu-head {
-  margin-top: clamp(56px, 8vh, 88px);
+  margin-top: clamp(var(--s-6), 8vh, var(--s-8));
 }
 
 .journey__edu-title {
