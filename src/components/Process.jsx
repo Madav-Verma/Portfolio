@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { PROCESS } from "../data.js";
+import { PROCESS, RECEIPTS } from "../data.js";
 import { useReveal } from "../hooks/useReveal.js";
 import "./Process.css";
 
@@ -75,6 +75,24 @@ export default function Process() {
             </li>
           ))}
         </ol>
+
+        <header className="receipts__head plate-head" data-reveal>
+          <h3 className="receipts__title">Receipts.</h3>
+          <p className="plate-meta"><span>{RECEIPTS.length} entries</span><span>From this build</span></p>
+        </header>
+        <dl className="receipts__ledger">
+          {RECEIPTS.map((r) => (
+            <div key={r.catch} className={`receipts__row receipts__row--${r.rank}`} data-reveal>
+              <dt className="receipts__catch">{r.catch}</dt>
+              <dd className="receipts__body">
+                <p className="caption receipts__by">{r.by}</p>
+                <p className="receipts__evidence">{r.evidence}</p>
+                <p className="caption receipts__commit">{r.commit}</p>
+              </dd>
+            </div>
+          ))}
+        </dl>
+        <p className="receipts__closing caption">This page was built by the loop it describes.</p>
       </div>
     </section>
   );

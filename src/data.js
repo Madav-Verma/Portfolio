@@ -346,6 +346,37 @@ export const PROCESS = {
   ],
 }
 
+export const RECEIPTS = [
+  {
+    rank: "signature",
+    catch: "Annotation overlap",
+    by: "Sub-agent handoff flag",
+    evidence: "Desktop labels extend left into the hero gutter and overlap the proof strip. Flagged at handoff; shipped anyway. This pass resolves it.",
+    commit: "(this pass)",
+  },
+  {
+    rank: "strong",
+    catch: "24-pages claim failed Jev verification",
+    by: "jev_verify",
+    evidence: "Copy said '24 pages shipped'. Recount proved 24 route files, not pages. Wording corrected before publishing.",
+    commit: "98f0b9c",
+  },
+  {
+    rank: "notable",
+    catch: "Dead filter matching zero rows",
+    by: "Automated verify pass",
+    evidence: "'In production' filter returned 0 projects — no status 'production' exists; live + shipped was the intended set.",
+    commit: "860a764",
+  },
+  {
+    rank: "background",
+    catch: "React DOM-prop warning in console",
+    by: "Playwright console capture",
+    evidence: "fetchPriority on <img> should be fetchpriority. DOM-prop warning reached the console until fixed.",
+    commit: "860a764",
+  },
+];
+
 export const EXPERIENCE = [
   {
     role: "Applied AI Solutions Engineer",
