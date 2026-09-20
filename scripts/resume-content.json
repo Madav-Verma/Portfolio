@@ -8,21 +8,15 @@
     "github": "github.com/Madav-Verma",
     "portfolio": "portfolio-desibox.vercel.app"
   },
-  "positioning": {
-    "ai": "Applied AI Solutions Engineer",
-    "fde": "Applied AI Solutions Engineer · Forward-Deployed Delivery"
-  },
-  "summaries": {
-    "ai": "Applied AI Solutions Engineer who designs and ships production software end to end — TypeScript/React web applications, retrieval-grounded AI assistants, and agentic engineering workflows with independent review loops. Owner of a company website rebuild and an ERP/CRM used daily by 10 staff. Two products live in production.",
-    "fde": "Forward-deployed engineer who ships software inside the customer's reality — on-site discovery, design under real-world constraints, rollout and adoption. Embedded with operators from retail counters to factory gates: offline-first systems for unreliable networks, and an ERP/CRM that replaced spreadsheets for 10 daily staff."
-  },
+  "positioning": "Applied AI Solutions Engineer",
+  "summary": "Applied AI Solutions Engineer who designs and ships production software end to end — TypeScript/React web applications, retrieval-grounded AI assistants, and agentic engineering workflows with independent review loops. Owner of a company website rebuild and an ERP/CRM used daily by 10 staff. Two products live in production.",
   "skill_groups": [
-    { "name": "AI & Agentic Engineering", "items": "OpenCode, Claude, DeepSeek, Gemini, multi-model task routing, agentic review loops, prompt engineering", "ai_order": 1, "fde_order": 4 },
-    { "name": "Full-Stack Engineering", "items": "TypeScript, Next.js 16, React 19, TanStack Start, Tailwind CSS, JavaScript, Python, REST APIs, Zod, React Hook Form", "ai_order": 2, "fde_order": 3 },
-    { "name": "Data & Platforms", "items": "Supabase, PostgreSQL (RLS), SQLite, SQL (T-SQL), Power BI, Pandas/NumPy, IndexedDB", "ai_order": 3, "fde_order": 5 },
-    { "name": "RAG & Assistants", "items": "Retrieval grounding, KB indexing, LLM routing (Gemini 2.0 Flash, GPT-4o-mini), rule-engine fallback, lead capture", "ai_order": 4, "fde_order": 6 },
-    { "name": "Delivery & Deployment", "items": "Vercel, Netlify, DNS & domains, SSL/TLS, CI pipelines, Git/GitHub, Vitest, offline-first architecture, SEO/GEO", "ai_order": 5, "fde_order": 2 },
-    { "name": "Forward Deployment", "items": "On-site discovery, solution design under constraints, stakeholder communication, rollout and adoption, operator support", "ai_order": 6, "fde_order": 1 }
+    { "name": "AI & Agentic Engineering", "items": "OpenCode, Claude, DeepSeek, Gemini, multi-model task routing, agentic review loops, prompt engineering", "order": 1 },
+    { "name": "Full-Stack Engineering", "items": "TypeScript, Next.js 16, React 19, TanStack Start, Tailwind CSS, JavaScript, Python, REST APIs, Zod, React Hook Form", "order": 2 },
+    { "name": "Data & Platforms", "items": "Supabase, PostgreSQL (RLS), SQLite, SQL (T-SQL), Power BI, Pandas/NumPy, IndexedDB", "order": 3 },
+    { "name": "RAG & Assistants", "items": "Retrieval grounding, KB indexing, LLM routing (Gemini 2.0 Flash, GPT-4o-mini), rule-engine fallback, lead capture", "order": 4 },
+    { "name": "Delivery & Deployment", "items": "Vercel, Netlify, DNS & domains, SSL/TLS, CI pipelines, Git/GitHub, Vitest, offline-first architecture, SEO/GEO", "order": 5 },
+    { "name": "Forward Deployment", "items": "On-site discovery, solution design under constraints, stakeholder communication, rollout and adoption, operator support", "order": 6 }
   ],
   "experience": [
     {
@@ -36,8 +30,7 @@
         "Shipping a Next.js 16 + TypeScript website rebuild: 96-model catalogue, retrieval-grounded assistant (Gemini 2.0 Flash / GPT-4o-mini) that answers from the knowledge base and captures leads; in development with hosting in progress.",
         "Run an agentic build pipeline — multi-model generation with an independent review agent on a different model family auditing every diff before merge."
       ],
-      "ai_order": [0, 2, 3, 1],
-      "fde_order": [0, 1, 2, 3]
+      "order": [0, 2, 3, 1]
     },
     {
       "role": "Data & Business Analyst Intern",
@@ -49,8 +42,7 @@
         "Saved leadership 15–20 hours/month of manual data processing and reporting.",
         "Accelerated delivery with AI-assisted SQL refactoring (Claude) and pipeline orchestration (OpenCode)."
       ],
-      "ai_order": [0, 1, 2],
-      "fde_order": [0, 1, 2]
+      "order": [0, 1, 2]
     },
     {
       "role": "Software Developer Intern",
@@ -61,47 +53,81 @@
         "Digitised inventory-tracking and AMC-management workflows into a Python/MySQL system with HTML forms and Google Suite, replacing paper processes.",
         "Cut administrative turnaround time and improved reporting accuracy for the operations team."
       ],
-      "ai_order": [0, 1],
-      "fde_order": [0, 1]
+      "order": [0, 1]
     }
   ],
   "projects": [
     {
       "name": "Prokon Hi-Tech Website",
+      "year": "2026",
       "meta": "Next.js 16 · TypeScript · In development, hosting in progress",
       "bullets": [
         "24 routes, 96-model catalogue (faceted search, compare, 60+ spec rows), RAG assistant, sizing tools; SEO/GEO-ready (sitemap, JSON-LD, llms.txt)."
       ],
-      "ai_pos": 1,
-      "fde_pos": 2
+      "pos": 1
     },
     {
       "name": "Prokon ERP / CRM",
+      "year": "2026",
       "meta": "TanStack Start · Supabase · In daily use by 10 staff",
       "bullets": [
         "8 modules (CRM, sales, inventory, purchase, service, finance, HR, admin); 145 routes, 113 migrations, 75 tests. P1–P5 triage with P1-first queues; field portal (serial photo + GPS, FSR); live ticket/AMC dashboards."
       ],
-      "ai_pos": 2,
-      "fde_pos": 1
+      "pos": 2
     },
     {
       "name": "SJS Retail Jewellery Suite",
+      "year": "2026",
       "meta": "React · Supabase · Live: retailjewellery.netlify.app",
       "line": "Offline-first retail suite: billing, HUID tracking, PDF invoices; 20+ Vitest tests; used daily with no internet required.",
-      "ai_pos": 3,
-      "fde_pos": 3
+      "pos": 3
     },
     {
       "name": "Employee Attendance System",
+      "year": "2026",
       "meta": "React · IndexedDB · Live: employeeattedance.netlify.app",
       "line": "Camera QR/barcode check-in (~1s scans), 3 role tiers, queued offline sync, Excel export; zero records lost offline.",
-      "ai_pos": 4,
-      "fde_pos": 4
+      "pos": 4
     }
   ],
   "education": [
-    { "degree": "Bachelor of Computer Applications — Artificial Intelligence", "school": "Lingaya's Vidyapeeth, Faridabad", "period": "2023 – 2026", "result": "CGPA 9.0" },
+    { "degree": "Bachelor of Computer Applications — AI", "school": "Lingaya's Vidyapeeth, Faridabad", "period": "2023 – 2026", "result": "CGPA 9.0" },
     { "degree": "Senior Secondary — Commerce", "school": "Grand Columbus International School, Faridabad", "period": "2021 – 2023", "result": "93%" }
   ],
-  "certifications": "2026: Business Analysis Foundations (IIBA), Business Analysis Tools & Techniques; 2025: SQL Server 2022 Admin (Microsoft Press), MS SQL Server Skills, Transact-SQL, Power BI Data Analysis + Reports & Dashboards, SOAR AI Awareness (NASSCOM), MongoDB Basics (Credly); 2024: Business Intelligence (Infosys), OS Fundamentals (NPTEL IIT-KGP), Data Science, NumPy/Pandas ML (Udemy)."
+  "certifications": [
+    {
+      "year": "2026",
+      "items": [
+        { "title": "Business Analysis Foundations: Strategy Analysis", "issuer": "LinkedIn Learning · IIBA-endorsed" },
+        { "title": "Business Analysis: Essential Tools & Techniques", "issuer": "LinkedIn Learning" }
+      ]
+    },
+    {
+      "year": "2025",
+      "items": [
+        { "title": "SQL Server 2022 Administration", "issuer": "LinkedIn Learning · Microsoft Press" },
+        { "title": "Advance Your MS SQL Server Skills", "issuer": "LinkedIn Learning" },
+        { "title": "Introduction to Transact-SQL", "issuer": "LinkedIn Learning" },
+        { "title": "Power BI for Data Analysis", "issuer": "Vodafone Idea Foundation" },
+        { "title": "Build Reports & Dashboards in Power BI", "issuer": "Vodafone Idea Foundation" },
+        { "title": "SOAR — AI to be Aware (NSQF Level 2)", "issuer": "NASSCOM / NCVET" },
+        { "title": "MongoDB Basics for Students", "issuer": "MongoDB · Credly" }
+      ]
+    },
+    {
+      "year": "2024",
+      "items": [
+        { "title": "Introduction to Business Intelligence", "issuer": "Infosys Springboard" },
+        { "title": "Operating System Fundamentals", "issuer": "NPTEL · IIT Kharagpur" },
+        { "title": "Data Science Completion Course", "issuer": "Data Science Program" },
+        { "title": "NumPy, SciPy, Matplotlib & Pandas A–Z: ML", "issuer": "Udemy" }
+      ]
+    },
+    {
+      "year": "2023",
+      "items": [
+        { "title": "Introduction to Microsoft Excel", "issuer": "Coursera" }
+      ]
+    }
+  ]
 }
