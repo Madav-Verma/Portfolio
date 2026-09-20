@@ -3,6 +3,8 @@ import NotFound from "./components/NotFound.jsx";
 import Hero from "./components/Hero.jsx";
 import Ticker from "./components/Ticker.jsx";
 import Work from "./components/Work.jsx";
+import Now from "./components/Now.jsx";
+import SystemMap from "./components/SystemMap.jsx";
 import Capabilities from "./components/Capabilities.jsx";
 import Process from "./components/Process.jsx";
 import Journey from "./components/Journey.jsx";
@@ -21,6 +23,8 @@ export default function App() {
         <Hero />
         <Ticker />
         <Work />
+        <Now />
+        <SystemMap />
         <Capabilities />
         <Process />
         <Journey />

@@ -1,0 +1,65 @@
+/* "Building now" — two status plates for the systems in flight. */
+
+.now__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--s-4);
+}
+
+.now__card {
+  background: var(--paper-raised);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow-lift);
+  padding: var(--s-5);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--s-3);
+}
+
+.now__card .stamp {
+  margin-bottom: var(--s-1);
+}
+
+.now__title {
+  font-size: var(--text-h3);
+  line-height: var(--leading-snug);
+  letter-spacing: var(--track-display);
+}
+
+.now__desc {
+  color: var(--ink-2);
+  font-size: var(--text-body);
+  max-width: 52ch;
+}
+
+.now__action {
+  margin-top: var(--s-2);
+}
+
+.now__meta {
+  margin-top: auto;
+  padding-top: var(--s-2);
+}
+
+.now__meta a {
+  color: var(--ink-2);
+  text-decoration: none;
+}
+
+@media (max-width: 760px) {
+  .now__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .now__card {
+    padding: var(--s-4);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .now__card {
+    box-shadow: none;
+    border-color: var(--line-strong);
+  }
+}
