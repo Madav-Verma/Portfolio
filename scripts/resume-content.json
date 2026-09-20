@@ -1,0 +1,107 @@
+{
+  "profile": {
+    "name": "Daksh Verma",
+    "location": "Faridabad, India",
+    "phone": "+91 95990 68010",
+    "email": "vermadaksh120@gmail.com",
+    "linkedin": "linkedin.com/in/daksh-verma-613774229",
+    "github": "github.com/Madav-Verma",
+    "portfolio": "portfolio-desibox.vercel.app"
+  },
+  "positioning": {
+    "ai": "Applied AI Solutions Engineer",
+    "fde": "Applied AI Solutions Engineer · Forward-Deployed Delivery"
+  },
+  "summaries": {
+    "ai": "Applied AI Solutions Engineer who designs and ships production software end to end — TypeScript/React web applications, retrieval-grounded AI assistants, and agentic engineering workflows with independent review loops. Owner of a company website rebuild and an ERP/CRM used daily by 10 staff. Two products live in production.",
+    "fde": "Forward-deployed engineer who ships software inside the customer's reality — on-site discovery, design under real-world constraints, rollout and adoption. Embedded with operators from retail counters to factory gates: offline-first systems for unreliable networks, and an ERP/CRM that replaced spreadsheets for 10 daily staff."
+  },
+  "skill_groups": [
+    { "name": "AI & Agentic Engineering", "items": "OpenCode, Claude, DeepSeek, Gemini, multi-model task routing, agentic review loops, prompt engineering", "ai_order": 1, "fde_order": 4 },
+    { "name": "Full-Stack Engineering", "items": "TypeScript, Next.js 16, React 19, TanStack Start, Tailwind CSS, JavaScript, Python, REST APIs, Zod, React Hook Form", "ai_order": 2, "fde_order": 3 },
+    { "name": "Data & Platforms", "items": "Supabase, PostgreSQL (RLS), SQLite, SQL (T-SQL), Power BI, Pandas/NumPy, IndexedDB", "ai_order": 3, "fde_order": 5 },
+    { "name": "RAG & Assistants", "items": "Retrieval grounding, KB indexing, LLM routing (Gemini 2.0 Flash, GPT-4o-mini), rule-engine fallback, lead capture", "ai_order": 4, "fde_order": 6 },
+    { "name": "Delivery & Deployment", "items": "Vercel, Netlify, DNS & domains, SSL/TLS, CI pipelines, Git/GitHub, Vitest, offline-first architecture, SEO/GEO", "ai_order": 5, "fde_order": 2 },
+    { "name": "Forward Deployment", "items": "On-site discovery, solution design under constraints, stakeholder communication, rollout and adoption, operator support", "ai_order": 6, "fde_order": 1 }
+  ],
+  "experience": [
+    {
+      "role": "Applied AI Solutions Engineer",
+      "company": "Prokon Hi-Tech Systems",
+      "location": "Faridabad, India",
+      "period": "2025 — Present",
+      "bullets": [
+        "Own the company web platform and internal ERP/CRM end to end — architecture, Postgres schema and row-level security, UI, deployment — for a system 10 staff run daily.",
+        "Replaced spreadsheet-run operations with priority-based ticket triage (P1–P5), live dashboards and real-time reporting — record errors down, urgent jobs first.",
+        "Shipping a Next.js 16 + TypeScript website rebuild: 96-model catalogue, retrieval-grounded assistant (Gemini 2.0 Flash / GPT-4o-mini) that answers from the knowledge base and captures leads; in development with hosting in progress.",
+        "Run an agentic build pipeline — multi-model generation with an independent review agent on a different model family auditing every diff before merge."
+      ],
+      "ai_order": [0, 2, 3, 1],
+      "fde_order": [0, 1, 2, 3]
+    },
+    {
+      "role": "Data & Business Analyst Intern",
+      "company": "Trossachs Corporate Advisors",
+      "location": "Faridabad, India",
+      "period": "Jan 2026 – May 2026",
+      "bullets": [
+        "Delivered DataFlow Pro, a BI platform unifying revenue, compliance risk and operational KPIs into one real-time dashboard (Power BI, SQL, Python).",
+        "Saved leadership 15–20 hours/month of manual data processing and reporting.",
+        "Accelerated delivery with AI-assisted SQL refactoring (Claude) and pipeline orchestration (OpenCode)."
+      ],
+      "ai_order": [0, 1, 2],
+      "fde_order": [0, 1, 2]
+    },
+    {
+      "role": "Software Developer Intern",
+      "company": "Prokon Hi-Tech Systems",
+      "location": "Faridabad, India",
+      "period": "Jun 2024 – Jul 2024",
+      "bullets": [
+        "Digitised inventory-tracking and AMC-management workflows into a Python/MySQL system with HTML forms and Google Suite, replacing paper processes.",
+        "Cut administrative turnaround time and improved reporting accuracy for the operations team."
+      ],
+      "ai_order": [0, 1],
+      "fde_order": [0, 1]
+    }
+  ],
+  "projects": [
+    {
+      "name": "Prokon Hi-Tech Website",
+      "meta": "Next.js 16 · TypeScript · In development, hosting in progress",
+      "bullets": [
+        "24 routes, 96-model catalogue (faceted search, compare, 60+ spec rows), RAG assistant, sizing tools; SEO/GEO-ready (sitemap, JSON-LD, llms.txt)."
+      ],
+      "ai_pos": 1,
+      "fde_pos": 2
+    },
+    {
+      "name": "Prokon ERP / CRM",
+      "meta": "TanStack Start · Supabase · In daily use by 10 staff",
+      "bullets": [
+        "8 modules (CRM, sales, inventory, purchase, service, finance, HR, admin); 145 routes, 113 migrations, 75 tests. P1–P5 triage with P1-first queues; field portal (serial photo + GPS, FSR); live ticket/AMC dashboards."
+      ],
+      "ai_pos": 2,
+      "fde_pos": 1
+    },
+    {
+      "name": "SJS Retail Jewellery Suite",
+      "meta": "React · Supabase · Live: retailjewellery.netlify.app",
+      "line": "Offline-first retail suite: billing, HUID tracking, PDF invoices; 20+ Vitest tests; used daily with no internet required.",
+      "ai_pos": 3,
+      "fde_pos": 3
+    },
+    {
+      "name": "Employee Attendance System",
+      "meta": "React · IndexedDB · Live: employeeattedance.netlify.app",
+      "line": "Camera QR/barcode check-in (~1s scans), 3 role tiers, queued offline sync, Excel export; zero records lost offline.",
+      "ai_pos": 4,
+      "fde_pos": 4
+    }
+  ],
+  "education": [
+    { "degree": "Bachelor of Computer Applications — Artificial Intelligence", "school": "Lingaya's Vidyapeeth, Faridabad", "period": "2023 – 2026", "result": "CGPA 9.0" },
+    { "degree": "Senior Secondary — Commerce", "school": "Grand Columbus International School, Faridabad", "period": "2021 – 2023", "result": "93%" }
+  ],
+  "certifications": "2026: Business Analysis Foundations (IIBA), Business Analysis Tools & Techniques; 2025: SQL Server 2022 Admin (Microsoft Press), MS SQL Server Skills, Transact-SQL, Power BI Data Analysis + Reports & Dashboards, SOAR AI Awareness (NASSCOM), MongoDB Basics (Credly); 2024: Business Intelligence (Infosys), OS Fundamentals (NPTEL IIT-KGP), Data Science, NumPy/Pandas ML (Udemy)."
+}

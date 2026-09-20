@@ -31,17 +31,19 @@ for (const url of ["https://retailjewellery.netlify.app", "https://employeeatted
   if (!full.includes(url)) fail(`llms-full.txt missing live product ${url}`);
 }
 
-// 3. Resume files referenced must exist.
-for (const f of ["public/resume/Daksh_Verma_Resume_2026.pdf", "public/resume/Daksh_Verma_Resume_2026.html"]) {
+// 3. Resume files referenced must exist (default pair + forward-deployed track).
+for (const f of ["public/resume/Daksh_Verma_Resume_2026.pdf", "public/resume/Daksh_Verma_Resume_2026.html", "public/resume/Daksh_Verma_Resume_2026.docx", "public/resume/Daksh_Verma_Resume_Forward_Deployed.pdf", "public/resume/Daksh_Verma_Resume_Forward_Deployed.html", "public/resume/Daksh_Verma_Resume_Forward_Deployed.docx"]) {
   if (!existsSync(join(root, f))) fail(`missing ${f}`);
   if (!full.includes("Daksh_Verma_Resume_2026.pdf")) fail("llms-full.txt missing resume reference");
 }
 
-// 4. Sitemap lists what exists: home + both resume variants.
+// 4. Sitemap lists what exists: home + all resume variants.
 for (const loc of [
   "<loc>https://portfolio-desibox.vercel.app/</loc>",
   "Daksh_Verma_Resume_2026.pdf",
   "Daksh_Verma_Resume_2026.html",
+  "Daksh_Verma_Resume_Forward_Deployed.pdf",
+  "Daksh_Verma_Resume_Forward_Deployed.html",
 ]) {
   if (!sitemap.includes(loc)) fail(`sitemap.xml missing ${loc}`);
 }
