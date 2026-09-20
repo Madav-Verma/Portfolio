@@ -1,0 +1,95 @@
+/* Statement band: the page's single full-bleed ink plate besides the
+   footer — a palate cleanser stating the strongest claim in display type.
+   Theme-stable ink mirrors Footer.css exactly: fixed dark ground in BOTH
+   themes (#191916 light / #0d0d0b dark), paper-ink foreground. Local tokens
+   keep it stable while the page above flips between paper and film. */
+.statement {
+  --sfg: #ecebe4;                            /* statement foreground, both themes */
+  --sdim: rgb(236 235 228 / 64%);
+  --sline: rgb(236 235 228 / 22%);
+  --saccent: #96a8ff;                        /* cobalt lifted for ink ground — figures + ticks only */
+  background: #191916;
+  color: var(--sfg);
+  padding-block: var(--section-gap);         /* clamp(96px, 14vh, 160px); own padding, never .section */
+}
+
+@media (prefers-color-scheme: dark) {
+  .statement {
+    background: #0d0d0b;                     /* deeper than the film ground */
+  }
+}
+
+/* Focus ring + selection must survive the dark ground in light theme too */
+.statement :focus-visible {
+  outline-color: var(--saccent);
+}
+
+.statement ::selection {
+  background: var(--sfg);
+  color: #171714;
+}
+
+.statement__inner {
+  display: grid;
+  gap: clamp(40px, 6vh, 72px);
+}
+
+.statement__claim {
+  font-size: clamp(2.2rem, 1.4rem + 4vw, 4rem);
+  font-weight: 640;
+  line-height: var(--leading-tight);
+  letter-spacing: var(--track-display);
+  max-width: 16ch;
+  text-wrap: balance;
+}
+
+.statement__figures {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--s-5) var(--s-4);
+  margin: 0;
+  padding-top: clamp(24px, 4vh, 40px);
+  border-top: 1px solid var(--sline);
+}
+
+.statement__figure {
+  display: grid;
+  gap: var(--s-2);
+  align-content: start;
+  margin: 0;
+}
+
+/* Cobalt tick: the only accent placement besides the figures */
+.statement__figure::before {
+  content: "";
+  width: 24px;
+  height: 2px;
+  background: var(--saccent);
+}
+
+.statement__label {
+  order: 2;
+  font-family: var(--font-mono);
+  font-size: var(--text-small);
+  color: var(--sdim);
+}
+
+.statement__value {
+  order: 1;
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: clamp(1.6rem, 1.1rem + 2vw, 2.25rem);
+  letter-spacing: -0.01em;
+  color: var(--saccent);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Figures wrap 2x2 on mobile */
+@media (max-width: 700px) {
+  .statement__figures {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* Reduced motion: the reveal engine fades (base.css) and the counter
+   renders final values immediately — nothing further to override. */

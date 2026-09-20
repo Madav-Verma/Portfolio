@@ -1,0 +1,86 @@
+/* ============================================================
+   PLOTTER SPINE — page-wide scroll hairline + diamond head
+   Fixed left-gutter track (track: var(--line-strong), fill + head:
+   var(--accent), the one accent). transform/opacity only, no
+   gradients, no glow, radius 0. Default hidden — JS reveals via
+   html.js (component also renders null until mounted, so no-JS
+   never shows a stuck bar). pointer-events none throughout.
+   Lives below the nav (--z-nav = 100).
+   ============================================================ */
+
+.plotter-spine {
+  display: none;
+  position: fixed;
+  left: 18px;
+  top: calc(var(--nav-h) + 16px);
+  bottom: 16px;
+  width: 11px;
+  z-index: 90;
+  pointer-events: none;
+}
+
+/* JS reveal gate (main.jsx adds .js to <html>). */
+html.js .plotter-spine {
+  display: block;
+}
+
+.plotter-spine__track {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+/* Full-height track hairline, centred in the 11px box. */
+.plotter-spine__track::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 5px;
+  width: 1px;
+  background: var(--line-strong);
+}
+
+/* Accent fill, drawn top-down via GPU-only scaleY (JS sets 0→1). */
+.plotter-spine__fill {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 5px;
+  width: 1px;
+  background: var(--accent);
+  transform: scaleY(0);
+  transform-origin: top;
+}
+
+/* 10px accent diamond (rotated square) riding the fill tip.
+   JS positions it: translate(-50%, y) rotate(45deg). */
+.plotter-spine__head {
+  position: absolute;
+  top: 0;
+  left: 5px;
+  width: 10px;
+  height: 10px;
+  background: var(--accent);
+  transform: translate(-50%, -5px) rotate(45deg);
+}
+
+/* Gutter too tight on mobile — spine stays off. */
+@media (max-width: 759px) {
+  html.js .plotter-spine {
+    display: none;
+  }
+}
+
+/* Reduced motion: never render the travelling head. */
+@media (prefers-reduced-motion: reduce) {
+  html.js .plotter-spine {
+    display: none;
+  }
+}
+
+@media print {
+  html.js .plotter-spine {
+    display: none;
+  }
+}
