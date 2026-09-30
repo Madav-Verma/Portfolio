@@ -1,0 +1,340 @@
+@import "tailwindcss";
+
+@theme {
+  /* ---- Daksh Verma portfolio tokens (see DESIGN.md) ---- */
+  --color-ivory: #f7f6f2;
+  --color-ivory-deep: #efede6;
+  --color-ink: #111111;
+  --color-ink-soft: #3d3a35;
+  --color-muted: #6f6a61;
+  --color-line: #e3e0d7;
+  --color-accent: #1d4ed8;
+  --color-accent-deep: #173da8;
+
+  --color-card-cream: #fbf7ef;
+  --color-card-blue: #eff4fb;
+  --color-card-green: #eff7f0;
+  --color-card-beige: #f7f3ea;
+  --color-card-gray: #f1f2f4;
+
+  --font-sans: "Manrope", ui-sans-serif, system-ui, -apple-system, "Segoe UI",
+    sans-serif;
+  --font-hand: "Caveat", "Segoe Script", cursive;
+  --font-editorial: "Instrument Serif", Georgia, serif;
+
+  --radius-card: 10px;
+  --radius-panel: 14px;
+  --radius-btn: 10px;
+
+  --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+/* ---- Header height: the single source of truth ----
+   The header is `position: fixed`, so every anchored section has to know how
+   tall it is or it scrolls underneath. Two values drive all of it:
+     --header-h   the fixed header's own height
+     --anchor-gap the breathing room between the header and a heading
+   Phone  : h-16 (64px)          Tablet: md:h-[72px]      Desktop: md:h-[72px]
+   Breakpoints match the ones Navbar.tsx uses (md = 768px, lg = 1024px).
+
+   This is deliberately a static token. Never measure the header at runtime:
+   the open mobile menu makes the header taller, and a measured value would
+   bake that wrong height into every anchor on the page as a permanent offset. */
+:root {
+  --header-h: 64px;
+  --anchor-gap: 16px;
+}
+
+@media (min-width: 768px) {
+  :root {
+    --header-h: 72px;
+    --anchor-gap: 20px;
+  }
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --anchor-gap: 24px;
+    /* Sticky /skills section-nav band height at lg: chip row 44
+       (min-h-11) + scroll-row pb-1 4 + band py-3 24 + borders 2 = 74.
+       The band hides its horizontal scrollbar (see SkillsSectionNav), so no
+       OS scrollbar can change this height. Static token, same philosophy as
+       --header-h: if the chips stop being one 44px line, update this. */
+    --section-nav-h: 74px;
+  }
+}
+
+/* Anchored navigation. The two are ADDITIVE, and that is the point:
+   scroll-padding-top is the clearance the fixed header needs, scroll-margin-top
+   is the extra air above a heading. Together they land the target just below
+   the header. Setting both to --header-h would double the offset, so they hold
+   the two different halves of the job instead. */
+html {
+  scroll-padding-top: var(--header-h);
+}
+
+:where([id]) {
+  scroll-margin-top: var(--anchor-gap);
+}
+
+/* /skills: the section-nav band is sticky on lg, flush under the fixed
+   header, so anchored targets inside its scope must clear BOTH the header
+   (scroll-padding-top) and the band. Without this every #domain-*, #tech-index
+   and #project-matrix jump lands under the pinned band. Scoped to the wrapper
+   div in app/skills/page.tsx so other pages keep the plain --anchor-gap. */
+@media (min-width: 1024px) {
+  .skills-anchor-scope :where([id]) {
+    scroll-margin-top: calc(var(--section-nav-h) + var(--anchor-gap));
+  }
+}
+
+/* Skills section-nav marquee. The chip row is wider than the band at every
+   width, so instead of a scrollbar it drifts as a seamless -50% loop: the
+   track holds two identical halves (see SkillsSectionNav), each ending in
+   pr-2, so the midpoint lands exactly on a half boundary.
+   Motion-allowed only: under reduced motion the track is static and the
+   viewport keeps its native horizontal scroll. The loop pauses on hover and
+   while a chip holds focus, so the links are never a moving target. */
+@keyframes skills-nav-marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .skills-marquee-viewport {
+    overflow: hidden;
+  }
+  .skills-marquee-track {
+    animation: skills-nav-marquee 36s linear infinite;
+  }
+  .skills-marquee-track:hover,
+  .skills-marquee-track:focus-within {
+    animation-play-state: paused;
+  }
+}
+
+/* Scroll lock while the mobile menu is open.
+   Lenis is initialised with window/documentElement as its root, so <html> is
+   the real scroller. Lenis writes scrollTop programmatically, which
+   `overflow: hidden` does not block, so CSS alone cannot stop it — that is
+   handled by `data-lenis-prevent` on <body> (see Navbar.tsx).
+   What remains for CSS is native wheel/touch and keyboard Space/PageDown,
+   and `overflow: hidden` on the scrolling element stops both without
+   touching Lenis's internal scroll state, so nothing shifts on release. */
+html.menu-open {
+  overflow: hidden;
+  overscroll-behavior: none;
+}
+
+body {
+  background: var(--color-ivory);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: clip;
+}
+
+::selection {
+  background: var(--color-accent);
+  color: #fff;
+}
+
+/* Display headings: tight, heavy, uppercase (explicit brief override of
+   sentence-case default) */
+.display-xl {
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 0.94;
+  text-transform: uppercase;
+  text-wrap: balance;
+}
+
+/* Hero fade: photograph stays visible, text stays readable.
+   Implemented in CSS per spec — never baked into the source photo.
+   Falls off fast after the copy block so the portrait (right side)
+   renders in full natural color. */
+.hero-fade {
+  background:
+    linear-gradient(
+      90deg,
+      rgba(247, 246, 242, 0.95) 0%,
+      rgba(247, 246, 242, 0.82) 20%,
+      rgba(247, 246, 242, 0.55) 36%,
+      rgba(247, 246, 242, 0.22) 52%,
+      rgba(247, 246, 242, 0.02) 68%,
+      rgba(247, 246, 242, 0) 80%
+    );
+}
+
+.hero-fade-vertical {
+  background: linear-gradient(
+    180deg,
+    rgba(247, 246, 242, 0.28) 0%,
+    rgba(247, 246, 242, 0) 26%,
+    rgba(247, 246, 242, 0) 62%,
+    rgba(247, 246, 242, 0.55) 100%
+  );
+}
+
+/* Mobile hero: vertical fade (transparent top -> ivory bottom) */
+@media (max-width: 767px) {
+  .hero-fade {
+    background: linear-gradient(
+      180deg,
+      rgba(247, 246, 242, 0.12) 0%,
+      rgba(247, 246, 242, 0.38) 34%,
+      rgba(247, 246, 242, 0.9) 62%,
+      rgba(247, 246, 242, 0.99) 100%
+    );
+  }
+}
+
+/* Tablet hero (768-1023px): the photograph is a block ABOVE the copy,
+   so no text sits over it. The 90-degree ivory fade that carries the
+   desktop composition would flatten the portrait here — replace it with
+   a narrow scrim under the fixed transparent header for nav legibility,
+   plus a short ivory blend where the block meets the copy below. */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .hero-fade {
+    background: linear-gradient(
+      180deg,
+      rgba(247, 246, 242, 0.42) 0%,
+      rgba(247, 246, 242, 0.1) 16%,
+      rgba(247, 246, 242, 0) 30%,
+      rgba(247, 246, 242, 0) 78%,
+      rgba(247, 246, 242, 0.85) 100%
+    );
+  }
+}
+
+/* Visible keyboard focus everywhere */
+:where(a, button, [tabindex]):focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* ---- Mobile navigation overlay ----
+   The mobile menu sits over the page behind a dimming backdrop, so it needs a
+   deliberate entrance. The travel is deliberately tiny (6px + opacity) to match
+   the calm editorial motion elsewhere; `--ease-out-soft` is the existing token.
+   The prefers-reduced-motion block below already collapses these durations. */
+@keyframes mobile-menu-in {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.mobile-menu-panel {
+  animation: mobile-menu-in 0.22s var(--ease-out-soft) both;
+}
+
+@keyframes mobile-backdrop-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.mobile-menu-backdrop {
+  animation: mobile-backdrop-in 0.2s ease-out both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Skills page: slow accent dot travelling through diagram connectors.
+   Horizontal on desktop, vertical below lg. Hidden entirely under
+   reduced motion (the diagram still reads as a static document). */
+@keyframes skills-pulse-x {
+  0% {
+    left: 0;
+    opacity: 0;
+  }
+  12% {
+    opacity: 1;
+  }
+  88% {
+    opacity: 1;
+  }
+  100% {
+    left: calc(100% - 5px);
+    opacity: 0;
+  }
+}
+
+@keyframes skills-pulse-y {
+  0% {
+    top: 0;
+    opacity: 0;
+  }
+  12% {
+    opacity: 1;
+  }
+  88% {
+    opacity: 1;
+  }
+  100% {
+    top: calc(100% - 5px);
+    opacity: 0;
+  }
+}
+
+.skills-pulse-dot {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  z-index: 1;
+  width: 5px;
+  height: 5px;
+  margin-top: -2.5px;
+  border-radius: 9999px;
+  background: var(--color-accent);
+  animation: skills-pulse-x 3.2s ease-in-out infinite;
+}
+
+@media (max-width: 1023.5px) {
+  .skills-pulse-dot {
+    top: 0;
+    left: 50%;
+    margin-top: 0;
+    margin-left: -2.5px;
+    animation-name: skills-pulse-y;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skills-pulse-dot {
+    display: none;
+  }
+}
